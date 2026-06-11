@@ -90,7 +90,7 @@
 \begin{flushleft}{
 	\Large
 	\textbf\newline{
-	  Coexistence of evolutionary strategies
+	  Strategic coexistence theory for evolutionary game theory
 	}
 }
 \newline
@@ -119,12 +119,12 @@ Thus, stabilizing niche differences arise when strategies are favored by differe
 In contrast, fitness differences represent differences in the ability of each strategy to compete under the limiting strategic environments created by its competitor. 
 This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another.
 
-So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition,
+So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains.
+Inspired by this effort, we present a Strategic Coexistence Theory (SCT) for predicting coexistene and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
+We begin by introducing SCT, which can be applied to any generic system of EGT described by replicator equation.
 
- to other competitive systems, allowing one to directly quantify niche and fitness differences of competing entities.
-Inspired by this work, we present a new theoretical framework for analyzing the coexistene and exclusion of competing strategies by quantifying their niche and fitness differences.
 
-\section*{Mathematical theory}
+\section*{Strategic coexistence theory}
 
 We begin with a classic replicator equation, which allows us to model changes in the frequency of competing strategies based on their payoffs:
 \begin{equation}
@@ -210,17 +210,36 @@ Building on this, we next apply this framework to microbial cooperation, where n
 \section*{Microbial cooperation and public goods}
 
 Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{gore2009snowdrift}. 
-Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. The payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
+Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
+Assuming a linear relationship between glucose availability and microbial growth, the payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
 \begin{align}
 \pi_C(f) &= \epsilon + f (1-\epsilon) - c,\\
 \pi_D(f) &= f (1-\epsilon),
 \end{align}
 where the use of glucose depends on the fraction of cooperators $f$. 
 The dynamics of cooperators and defectors are described by the following replicator equation:
-\begin{equation}
-\frac{df}{dt} = f(1-f)\left[\pi_C(f)-\pi_D(f)\right].
-\end{equation}
-For this model, cooperation is favored when efficiency is greater than the cost of cooperation, $\epsilon > c$, whereas defection is favored when the cost is greater than efficiency, $c > \epsilon$ \citep{gore2009snowdrift}.
+\begin{align}
+\frac{df}{dt} &= f(1-f)\left[\pi_C(f)-\pi_D(f)\right]\\
+&= f(1-f)(\epsilon - c)
+\end{align}
+For this linear growth model, the payoff difference is fixed to $\epsilon-c$ independent of $f$ (Figure 2A).
+Therefore, cooperation is favored when efficiency is greater than the cost of cooperation, $\epsilon > c$, whereas defection is favored when the cost is greater than efficiency, $c > \epsilon$ \citep{gore2009snowdrift}.
+
+\begin{figure}[!th]
+\includegraphics[width=\textwidth]{../figure/figure_microbial.pdf}
+\caption{
+\textbf{Caption.}
+(A) Payoff differences for linear and nonlinear models of microbial growth.
+In panel A, we assumed $\epsilon=0.4$, $c=0.2$, and $\alpha=0.15$ for illustrative purposes.
+(B) Effect of nonlinearity $\alpha$ on niche difference $1-\rho$.
+Each line assumes a different value of efficiency $\epsilon$.
+(C) Effect of nonlinearity $\alpha$ on both niche difference $1-\rho$ and fitness difference $\log(\kappa_D/\kappa_C)$.
+The gray shaded area represents the coexistence regime.
+The square represents the condition when $\alpha=0$.
+The circles represent the condition when $\alpha=0.15$, which correspond to the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}.
+In panels B and C, we assumed $c=0.2$, while allowing $\epsilon$ and $\alpha$ to vary.
+}
+\end{figure}
 
 Our framework allows us to reinterpret this result from the perspective of coexistence theory. 
 In particular, the two strategies have no niche difference, corresponding to complete niche overlap, $\rho = 1$. 
@@ -231,21 +250,33 @@ In contrast, the fitness difference is determined by the balance between private
 Therefore, this model always predicts competitive exclusion, except in the neutral case $c=\epsilon$. 
 The outcome is determined entirely by the fitness difference between cooperators and defectors, rather than by stabilizing niche differences.
 
-When both payoffs include the nonlinear effect of glucose on microbial growth, cooperators and defectors can coexist:
+In real biological systems, the effect of glucose on microbial growth can follow a nonlinear relationship:
 \begin{align}
 \pi_C(f) &= \left[\epsilon + f (1-\epsilon)\right]^\alpha - c,\\
 \pi_D(f) &= [f (1-\epsilon)]^\alpha,
 \end{align}
-where $\alpha=0.15$ reflects the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}.
-From a coexistence-theoretic perspective, this means that nonlinear growth can generate sufficient niche difference to overcome the fitness difference.
-Indeed, we can show that the niche and fitness differences for this model are given by
+where $\alpha=0.15$ reflects the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}. 
+Then, the dynamics of cooperators and defectors are described by the following replicator equation:
+\begin{align}
+\frac{df}{dt} &= f(1-f)\left[\left\{\epsilon + f (1-\epsilon)\right\}^\alpha - c - {f (1-\epsilon)}^\alpha \right].
+\end{align}
+Under this nonlinear assumption, the payoff difference decreases with the cooperator fraction $f$, which can promote the coexistence of cooperators and defectors (Figure 2A): cooperators have a competitive advantage when rare, whereas defectors have a competitive advantage when cooperators are abundant.
+
+From a coexistence-theoretic perspective, this means that nonlinear growth can generate sufficient stabilizing niche difference to overcome the fitness difference. 
+In particular, we can show that the niche and fitness differences for this model are given by
 \begin{align}
 1- \rho &= 1- \exp\left(\frac{1 - \epsilon^\alpha - (1-\epsilon)^\alpha }{2}\right),\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(c + \frac{(1-\epsilon)^\alpha - 1 - \epsilon^{\alpha} }{2} \right).
 \end{align}
-Interestingly, the cost of cooperation does not affect niche difference.
-Instead, niche difference is generated by the concave relationship between glucose availability and microbial growth, which increases the relative benefit of the private glucose captured by cooperators when rare.
-When $\alpha=1$, the niche difference completely disappears.
+These expressions clarify the separate roles of cost, efficiency, and nonlinearity.
+For example, the cost of cooperation does not affect niche difference. 
+Instead, niche difference is generated by the concave relationship between glucose availability and microbial growth, which increases from 0 to $1-\exp(-1/2)$ as $\alpha$ goes from 1 to 0  (Figure 2B,C).
+In contrast, as $\alpha \to 0$, the fitness difference approaches 
+\begin{equation}
+\log(\kappa_D/\kappa_C) \to c-\frac{1}{2},
+\end{equation}
+which no longer depends on the private capture efficiency $\epsilon$ (Figure 2C). 
+Thus, strong concavity not only generates stabilizing niche differences, but also acts as an equalizing mechanism (Figure 2C).
 
 
 \pagebreak
