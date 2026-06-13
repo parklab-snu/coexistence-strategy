@@ -126,7 +126,7 @@ This differs from payoff differences in EGT, which depend on the underlying stra
 So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains.
 Inspired by this effort, we present a Strategic Coexistence Theory (SCT) for predicting coexistene and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
 We begin by introducing SCT, which can be applied to any generic system of EGT described by replicator equations.
-
+We show that SCT can recover 
 
 \section*{Strategic coexistence theory}
 
@@ -285,7 +285,93 @@ Thus, strong concavity not only generates stabilizing niche differences, but als
 
 \pagebreak
 
+\renewcommand\theequation{S\arabic{equation}}    
+\setcounter{equation}{0}
+
 \section*{Supplementary Text}
+
+\subsection*{S1 Derivation of the strategic coexistence theory}
+
+To derive strategic coexistence theory (SCT), we begin with replicator equations:
+\begin{equation}
+\frac{dx_i}{dt} = x_i (\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x})),
+\end{equation}
+where $x_i$ represents the frequency of strategy $i$, $\pi_i$ represents the payoff of strategy $i$, and $\bar{\pi}$ represents the average payoff.
+Then, the mutual invasion condition for two competing strategies $i$ and $j$ can be written as
+\begin{align}
+\pi_j(\mathbf{e}_j) & <\pi_i(\mathbf{e}_j),\\
+\pi_i(\mathbf{e}_i) &< \pi_j(\mathbf{e}_i).
+\end{align}
+These inequalities will be preserved when we exponentiate the payoffs, $W_i(\mathbf{x}) = \exp(\pi_i(\mathbf{x}))$:
+\begin{align}
+W_j(\mathbf{e}_j) &< W_i(\mathbf{e}_j),\\
+W_i(\mathbf{e}_i) &< W_j(\mathbf{e}_i).
+\end{align}
+Rearranging, we obtain the following inequality:
+\begin{align}
+\frac{W_i(\mathbf{e}_i)}{W_j(\mathbf{e}_i)} < 1 < 
+\frac{W_i(\mathbf{e}_j)}{W_j(\mathbf{e}_j)}.
+\end{align}
+By multiplying $\sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}$ on both sides, we obtain:
+\begin{equation}
+\sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{  W_j(\mathbf{e}_i)W_i(\mathbf{e}_j)}} < 
+\sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}
+< 
+\sqrt{\frac{W_j(\mathbf{e}_i)W_i(\mathbf{e}_j)}{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j) } }
+\end{equation}
+Thus, by defining niche overlap $\rho$ and fitness difference $\kappa_j/\kappa_i$ as follows,
+\begin{align}
+\rho &= \sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j) }},\\
+\frac{\kappa_j}{\kappa_i} &= \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}},
+\end{align}
+we obtain the following inequality that defines conditions for mutual invasion and long-term coexistence of two competing strategies:
+\begin{equation}
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
+\end{equation}
+
+\subsection*{S2 Applications to classic two strategy games}
+
+Consider a two strategy game described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix}.
+\end{equation}
+There are four classic games that we can define from this simple payoff matrix:
+prisoner’s dilemma ($T>R > P>S$), hawk--dove game ($T>R$, $S>P$), stag--hunt game ($R>T$, $P>S$), and harmony game ($R>T$, $S>P$). 
+Here, we show that each game corresponds to a distinct region in the niche-fitness difference space under SCT.
+
+To do so, we first begin by deriving expressions for niche overlap $\rho$ and fitness difference $\kappa_j/\kappa_i$.
+Writing $x_1$ to denote the frequency of strategy 1, the expected payoff for each strategy corresponds to:
+\begin{align}
+\pi_1(\mathbf{x}) &= R x_1 + S(1-x_1),\\
+\pi_2(\mathbf{x}) &= T x_1 + P(1-x_1).
+\end{align}
+Then, multiplicative payoffs for each strategy when rare can be written as:
+\begin{align}
+W_1(1) &= \exp(R)\\
+W_1(0) &= \exp(S)\\
+W_2(1) &= \exp(T)\\
+W_2(0) &= \exp(P)
+\end{align}
+Therefore, we have:
+\begin{align}
+\rho &= \exp\left(\frac{R + P - S - T}{2}\right),\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right).
+\end{align}
+As before, SCT allows us to predict the mutual invasion of two strategy using the following inequality:
+\begin{equation}
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
+\end{equation}
+
+Then, simple algebra reveals that each condition in mutual invasion inequality can be equivalently described by the payoff inequality:
+\begin{align}
+\rho < \frac{\kappa_2}{\kappa_1} &\iff R < T\\
+\rho > \frac{\kappa_2}{\kappa_1} &\iff R > T\\
+\frac{\kappa_2}{\kappa_1} < \frac{1}{\rho} &\iff P < S\\
+\frac{\kappa_2}{\kappa_1} > \frac{1}{\rho} &\iff P > S
+\end{align}
 
 \bibliography{coexistence-strategy}
 
