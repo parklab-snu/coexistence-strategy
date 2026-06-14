@@ -158,7 +158,7 @@ Then, analogous to MCT, mutual invasion requires the fitness ratio to fall withi
 \end{equation}
 This decomposition allows us to understand how different mechanisms contribute to the coexistence or exclusion of competing strategies.
 
-\section*{Two strategy games}
+\section*{Classic two-strategy games}
 
 As an illustrative example, we begin with classic two-strategy games, which can be described by the following payoff matrix (Figure 1A):
 \begin{equation}
@@ -201,8 +201,8 @@ Prisoner's dilemma and harmony games correspond to competitive-exclusion regimes
 
 A coexistence-theoretic approach recovers the same classification but provides a different interpretation (Figure 1C). For a two-strategy game determined by this payoff matrix, the niche difference and fitness difference are given by
 \begin{align}
-1- \rho &= 1 - \exp\left(\frac{R + P - S - T}{2}\right),\\
-\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right).
+1- \rho &= 1 - \exp\left(\frac{R + P - S - T}{2}\right),\label{eq:nd}\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right)\label{eq:fd}.
 \end{align}
 As shown above, mutual invasion requires $\rho < \kappa_2/\kappa_1 < 1/\rho$, which is equivalent to $T > R$ and $S > P$.
 This corresponds to the hawk--dove game, in which each strategy can invade when rare and the two strategies coexist. 
@@ -210,7 +210,28 @@ The remaining games also have natural interpretations in niche--fitness differen
 Prisoner’s dilemma and harmony games represent competitive exclusion regimes, where one strategy has a fitness advantage that exceeds niche differences.
 In contrast, stag--hunt games represent a priority-effect regime, where neither strategy can invade the other and the outcome depends on initial conditions.
 Therefore, coexistence theory not only allows us to recover the classic results from two-strategy games but also provides new interpretations for these results in terms of niche and fitness differences.
+Building on this, we next apply this framework to comparing core mechanisms of cooperation.
+
+\section*{Comparisons of cooperation mechanisms}
+
+Even though cooperative behavior can be found across a wide range of biological systems, a simple prisoner's dilemma shows that cooperation is not an evolutionarily stable strategy.
+Thus, many researchers have sought to identify mechanisms that promote evolutionary stability of cooperation.
+Here, we compare five core mechanisms for the evolution of cooperation using SCT and ask how they differ from the perspective of strategy coexistence.
+Specifically, we consider the following mechanisms: kin selection, direct reciprocity, indirect reciprocity, network reciprocity, and group selection \citep{nowak2006five}.
+All of these mechanisms can be described by a simple $2\times 2$ payoff matrix, from which the corresponding niche and fitness differences can be computed using \eref{nd} and \eref{fd}.
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{../figure/figure_cooperation.pdf}
+\caption{
+\textbf{Comparisons of three mechanisms for the evolution of cooperation using SCT.}
+?
+}
+\end{figure}
+
+
 Building on this, we next apply this framework to microbial cooperation, where nonlinear benefits and environmental context can alter the coexistence of cooperators and defectors.
+
+
 
 \section*{Microbial cooperation and public goods}
 
