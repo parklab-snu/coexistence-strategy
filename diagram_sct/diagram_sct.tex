@@ -1,0 +1,134 @@
+\documentclass[tikz,border=2mm]{standalone}
+
+\usepackage{amsmath}
+\usetikzlibrary{arrows,positioning}
+\usetikzlibrary{fit,backgrounds}
+\usepackage{xcolor}
+
+\begin{document}
+
+\definecolor{beige}{RGB}{245,245,220}
+
+\begin{tikzpicture}[node distance=0.5cm,auto,>=latex',every node/.append style={align=center},int/.style={draw, shape=circle, minimum size=1.2cm},inverter/.style={circle,draw,inner sep=2pt,minimum size=6mm},posnode/.style={shape=circle, draw=orange, line width=2},
+  negnode/.style={shape=circle, draw=black, line width=2}]
+  
+  \node(eq1)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
+  text width=0.4\linewidth,
+  align=center,
+  minimum height=2.4cm] at (0,0) {
+$\displaystyle
+  \frac{dx_i}{dt} = x_i(\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x}))
+  $
+};
+  \node (title1) at (0,1.6) {\textbf{1. Replicator dynamics}};
+
+  \node(eq2)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
+  text width=0.4\linewidth,
+  align=center,
+  minimum height=2.4cm] at (7,0) {
+  At $\mathbf{e}_i$, can $j$ invade?\\
+  \vspace{0.2em}
+$\displaystyle
+  \pi_j(\mathbf{e}_i) > \pi_i(\mathbf{e}_i)
+  $\\
+  \vspace{0.2em}
+  At $\mathbf{e}_j$, can $i$ invade?\\
+  \vspace{0.2em}
+  $\displaystyle
+  \pi_i(\mathbf{e}_j) > \pi_j(\mathbf{e}_j)
+  $
+};
+  \node (title2) at (7,1.6) {\textbf{2. Mutual invasion conditions}};
+  
+  \node(eq3)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
+  text width=0.4\linewidth,
+  align=center,
+  minimum height=2.4cm] at (14,0) {
+  $\displaystyle
+  W_i(\mathbf{x}) = \exp(\pi_i(\mathbf{x}))
+  $\\
+  \vspace{0.8em}
+  Preserves invasion conditions and allows ratios
+};
+  \node (title3) at (14,1.6) {\textbf{3. Multiplicative payoffs}};
+  
+  
+  \node(eq4)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
+  text width=0.4\linewidth,
+  align=center,
+  minimum height=3.5cm] at (0,0-4.5) {
+$\displaystyle
+\begin{aligned}
+  1- \rho &= 1-\sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j)}}\\
+  \frac{\kappa_j}{\kappa_i} &= \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j)}{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}
+  \end{aligned}
+  $
+};
+  \node (title4) at (0,2-4) {\textbf{4. SCT decomposition}};
+
+
+  \node(eq5)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
+  text width=0.4\linewidth,
+  align=center,
+  minimum height=3.5cm] at (7,0-4.5) {
+$\displaystyle
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}
+  $\\
+  \vspace{0.8em}
+  Stabilizing niche differences must be greater than average fitness differences
+};
+  \node (title5) at (7,2-4) {\textbf{5. Coexistence criterion}};
+
+
+\begin{scope}[shift={(14,-4.5)}, x=3cm, y=2.52cm]
+  \def\xmin{-0.6}
+  \def\xmax{ 0.6}
+  \def\ymin{-0.7}
+  \def\ymax{ 0.7}
+
+  \pgfmathsetmacro{\xcrit}{1 - exp(-\ymax)}
+
+
+
+  % region labels
+  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (-0.04,0.43)
+    {$j$ excludes $i$};
+
+  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (0.35,0.00)
+    {Coexist-\\ence};
+
+  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (-0.35,0.00)
+    {Priority\\effect};
+
+  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (-0.04,-0.43)
+    {$i$ excludes $j$};
+    
+  % border
+  \draw[line width=0.8pt] (\xmin,\ymin) rectangle (\xmax,\ymax);
+
+  % axes
+  \draw[->, line width=0.8pt] (\xmin,\ymin) -- (\xmax+0.09,\ymin);
+  \draw[->, line width=0.8pt] (\xmin,\ymin) -- (\xmin,\ymax+0.12);
+
+  % axis labels
+  \node[below=10pt] at (0,-0.6)
+    {\footnotesize Niche difference, $1-\rho$};
+
+  \node[rotate=90, align=center] at (\xmin-0.16,0)
+    {\footnotesize Fitness difference, $\log(\kappa_j/\kappa_i)$};
+
+  % boundary curves
+  \draw[line width=1pt]
+    plot[domain=\xmin:\xcrit, samples=150]
+      (\x,{ln(1-\x)});
+
+  \draw[line width=1pt]
+    plot[domain=\xmin:\xcrit, samples=150]
+      (\x,{-ln(1-\x)});
+
+\end{scope}
+
+\node (title6) at (14,2-4) {\textbf{6. Niche-fitness difference space}};
+
+\end{tikzpicture}
+\end{document}
