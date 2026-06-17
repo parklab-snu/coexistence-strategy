@@ -72,7 +72,7 @@ nf_q <- lapply(qvec, function(q) {
 }) %>%
   bind_rows
 
-kvec <- seq(2.5, 100, length.out=21)
+kvec <- seq(2.4, 100, length.out=101)
 
 nf_k <- lapply(kvec, function(k) {
   H <- ((benefit-cost) * k - 2 * cost)/((k+1)*(k-2))
@@ -92,8 +92,8 @@ nf_k <- lapply(kvec, function(k) {
 }) %>%
   bind_rows
 
-mvec <- c(2, 3, 4)
-nvec <- seq(1, 5, length.out=21)
+mvec <- seq(2, 3, length.out=21)
+nvec <- c(5)
 
 mndata <- expand.grid(mvec, nvec)
 
@@ -146,6 +146,10 @@ g1 <- ggplot(nf_basic) +
   annotate("text", x=0, y=1.2, label="Prisoner's dilemma", hjust=1.1) +
   geom_path(data=nf_r, aes(nd, log(fd), col="Kin selection\n(genetic relatedness, $r$)"), 
             lwd=1.5, arrow = arrow(length=unit(0.2, "inches"))) +
+  geom_path(data=nf_mn, aes(nd+0.2, log(fd), col="Group selection\n(number of groups, $m$)"), 
+            lwd=1, arrow = arrow(length=unit(0.1, "inches"))) +
+  geom_path(data=nf_k, aes(nd + 0.1, log(fd), col="Network reciprocity\n(number of neighbors, $k$)"), 
+            lwd=1, arrow = arrow(length=unit(0.1, "inches"))) +
   geom_path(data=nf_w %>% filter(nd > -2), aes(nd, log(fd), col="Direct reciprocity\n(probability of next round, $w$)"), 
             lwd=1.5, arrow = arrow(length=unit(0.2, "inches"))) +
   geom_path(data=nf_q, aes(nd, log(fd), col="Indirect reciprocity\n(social acquaintanceship, $q$)"), 
@@ -155,6 +159,11 @@ g1 <- ggplot(nf_basic) +
                      expand=c(0, 0)) +
   scale_y_continuous("Fitness difference, $\\log(\\kappa_D/\\kappa_C)$",
                      expand=c(0, 0)) +
+  scale_color_discrete(breaks=c("Kin selection\n(genetic relatedness, $r$)",
+                                "Direct reciprocity\n(probability of next round, $w$)",
+                                "Indirect reciprocity\n(social acquaintanceship, $q$)",
+                                "Network reciprocity\n(number of neighbors, $k$)",
+                                "Group selection\n(number of groups, $m$)")) +
   guides(color=guide_legend(nrow=3,byrow=TRUE)) +
   coord_cartesian(ylim=c(ylim[1], ylim[2]), xlim=c(-2, 1)) +
   theme(
@@ -185,4 +194,4 @@ ggplot(nf_basic) +
   geom_line(data = coex_region, aes(x = nd, y = -log(1 - nd)), lty=2) +
   geom_point(aes(nd, log(fd))) +
   geom_path(data=nf_mn, aes(nd, log(fd))) +
-  facet_wrap(~m)
+  facet_wrap(~n)
