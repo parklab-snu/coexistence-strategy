@@ -27,7 +27,7 @@ pdiff_all <- bind_rows(
 g1 <- ggplot(pdiff_all) +
   geom_hline(yintercept=0, lty=3) +
   geom_line(aes(f, pdiff, lty=group), col="#00BBFF", lwd=1.5) +
-  scale_x_continuous("Fraction of cooperations, $f$",
+  scale_x_continuous("Fraction of cooperators, $f$",
                      breaks=c(0, 0.2, 0.4, 0.6, 0.8, 1),
                      labels=c("0", 0.2, 0.4, 0.6, 0.8, "1"),
                      expand=c(0,0)) +
