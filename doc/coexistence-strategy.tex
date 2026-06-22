@@ -560,7 +560,39 @@ In this case, the niche and fitness differences correspond to:
 1-\rho &= 1- \exp\left(\frac{(b-c)q}{2}\right),\\
 \frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{2c-(b+c)q}{2}\right).
 \end{align}
- 
+In this case, the condition for the dominance of defection (and therefore competitive exclusion of cooperation) can be written as:
+\begin{align}
+\rho &< \frac{\kappa_2}{\kappa_1}\\
+\iff bq  &< c
+\end{align}
+Moreover, the following inequality always holds as long as $c > 0$.
+\begin{align}
+\frac{1}{\rho} &< \frac{\kappa_2}{\kappa_1},
+\end{align}
+which implies that coexistence between cooperation and defection is not possible.
+Therefore, when $q < c/b$, then defection will competitively exclude cooperation. 
+Otherwise, the system will enter the priority-effect regime.
+
+Interestingly, when $q \to 1$, we have 
+\begin{align}
+\rho &= \exp\left(\frac{b-c}{2}\right)\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{c-b}{2}\right)\\
+\frac{1}{\rho} &= \exp\left(\frac{c-b}{2}\right)\\
+\end{align}
+In other words, the following inequality will hold:
+\begin{align}
+\frac{1}{\rho} = \frac{\kappa_2}{\kappa_1} < \rho 
+\end{align}
+
+\textbf{Network reciprocity.} Network reciprocity can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+b-c & H-c \\
+b-H & 0
+\end{pmatrix},
+\end{equation}
+where $H= [(b-c)k -2c]/[(k+1)(k-2)]$ and $k$ represents the number of neighbors. 
+
 \bibliography{coexistence-strategy}
 
 \end{document}
