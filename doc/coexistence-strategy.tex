@@ -474,7 +474,93 @@ Then, simple algebra reveals that each condition in mutual invasion inequality c
 \frac{\kappa_2}{\kappa_1} < \frac{1}{\rho} &\iff P < S\\
 \frac{\kappa_2}{\kappa_1} > \frac{1}{\rho} &\iff P > S
 \end{align}
+These inequalities then allow us to classify outcomes of two strategy games from the perspective of SCT.
+Note that the inequality between $R$ and $P$ does not affect the outcome.
 
+\subsection*{S3 Applications to mechanisms for the evolution of cooperation}
+
+We consider five mechanisms for the evolution of cooperation, all of which can be represented as a simple $2\times 2$ payoff matrix \citep{nowak2006five}.
+Here, we go through each mechanism and derive measures for niche and fitness differences.
+
+\textbf{Prisoner's dilemma.}
+Here, we consider a special case of Prisoner's dilemma which can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+b-c & -c \\
+b & 0
+\end{pmatrix},
+\end{equation}
+where $b$ represents the benefit for the recipient and $c$ represents cost for the donor.
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 0\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(c\right).
+\end{align}
+Therefore, as long as the cost is greater than zero, prisoner's dilemma always results in the competitive exclusion of cooperation.
+
+\textbf{Kin selection.}
+Kin selection can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+(b-c)(1+r) & br-c \\
+b-rc & 0
+\end{pmatrix},
+\end{equation}
+where $r$ represents the genetic relatedness. 
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 0\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(c-br\right).
+\end{align}
+Theerfore, defection will exclude cooperation when $c > br$. Equivalently, cooperation will be favored when $r > c/b$, which recovers the classic result.
+
+\textbf{Direct reciprocity.}
+Direct reciprocity can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+(b-c)/(1-w) & -c \\
+b & 0
+\end{pmatrix},
+\end{equation}
+where $w$ represents the probability of next round. 
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 1- \exp\left(\frac{(b-c)/(1-w) + c - b}{2}\right) \\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{b+c-(b-c)/(1-w)}{2}\right).
+\end{align}
+Therefore, defection will exclude cooperation when 
+\begin{align}
+\rho &< \frac{\kappa_2}{\kappa_1}\\
+\iff \exp\left(\frac{(b-c)/(1-w) + c - b}{2}\right) &< \exp\left(\frac{b+c-(b-c)/(1-w)}{2}\right)\\
+\iff bw &< c
+\end{align}
+
+However, note that the following equality holds whenever $c > 0$:
+\begin{align}
+\frac{1}{\rho} &< \frac{\kappa_2}{\kappa_1}.
+\end{align}
+Therefore, when $w > c/b$, we will have
+\begin{align}
+\frac{1}{\rho} < \frac{\kappa_2}{\kappa_1} < \rho,
+\end{align}
+which implies priority effect (equivalently, bistability).
+Even as $w \to 1$, this inequality holds and therefore, cooperation cannot competitively exclude defection.
+
+\textbf{Indirect reciprocity.}
+Indirect reciprocity can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+b-c & -c(1-q) \\
+b(1-q) & 0
+\end{pmatrix},
+\end{equation}
+where $q$ represents social acquaintanceship.
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 1- \exp\left(\frac{(b-c)q}{2}\right),\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{2c-(b+c)q}{2}\right).
+\end{align}
+ 
 \bibliography{coexistence-strategy}
 
 \end{document}
