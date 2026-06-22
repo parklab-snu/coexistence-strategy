@@ -248,12 +248,12 @@ Specifically, we consider the following mechanisms: kin selection, direct recipr
 Kin selection favors cooperation when two interacting individuals are genetic relatives, where the genetic relatedness $r$ must be greater than the cost-to-benefit ratio: $r > c/b$ \citep{hamilton1964genetical}.
 Direct reciprocity favors cooperation when current cooperation may promote future cooperation by the same individual through repeated encounters \citep{robert1971evolution,axelrod1981evolution}.
 In this case, the probability of repeated interaction (i.e., ``next round'') must be greater than the cost-to-benefit ratio: $w > c/b$.
-Indirect reciprocity favors cooperation when current cooperation may promote future cooperation by different individuals through reputation.
+Indirect reciprocity favors cooperation when current cooperation may promote future cooperation by different individuals through reputation \citep{nowak1998evolution,wedekind2000cooperation,nowak2005evolution}.
 Thus, the social acquaintanceship (i.e., the probability of knowing someone’s reputation) must be greater than the cost-to-benefit ratio: $q > c/b$.
-Network reciprocity favors cooperation via clustering of cooperators, requiring the benefit-to-cost ratio to be greater than the average number of neighbors: $b/c > k$.
-Finally, group selection favors cooperation via multilevel selection, where groups with more cooperators exhibit faster growth at the group level even if defectors reproduce faster at the individual level.
+Network reciprocity favors cooperation via clustering of cooperators, requiring the benefit-to-cost ratio to be greater than the average number of neighbors: $b/c > k$ \citep{nowak1992evolutionary,lieberman2005evolutionary}.
+Finally, group selection favors cooperation via multilevel selection, where groups with more cooperators exhibit faster growth at the group level even if defectors reproduce faster at the individual level \citep{traulsen2006evolution}.
 This requires $b/c > 1 + (n/m)$, where $n$ is the maximum group size and $m$ is the number of groups.
-All of these mechanisms can be described by a simple $2\times 2$ payoff matrix (Figure 3A), from which the corresponding niche and fitness differences can be computed using \eref{nd} and \eref{fd}.
+All of these mechanisms can be described by a simple $2\times 2$ payoff matrix \citep{nowak2006five}, from which the corresponding niche and fitness differences can be computed using \eref{nd} and \eref{fd}.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../diagram_cooperation/diagram_cooperation.pdf}
@@ -287,7 +287,7 @@ Therefore, we move on to the final example, applying SCT to microbial cooperatio
 
 \section*{Microbial cooperation and public goods}
 
-Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{gore2009snowdrift}. 
+Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}. 
 Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
 Assuming a linear relationship between glucose availability and microbial growth, the payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
 \begin{align}
@@ -360,21 +360,21 @@ Thus, strong concavity not only generates stabilizing niche differences, but als
 
 \section*{Discussion}
 
-Standard evolutionary game theory and replicator equations provide powerful tools for predicting the outcome of strategy competition, including strategic dominance, coexistence, and bistability.
+Standard evolutionary game theory and replicator equations provide powerful tools for predicting the outcome of strategy competition, including strategic dominance, coexistence, and bistability \citep{hofbauer1998evolutionary,cressman2014replicator}.
 However, these outcomes are typically understood by analyzing payoff differences within individual games, which makes it difficult to compare coexistence mechanisms across models.
-Building on Chesson's Modern Coexistence Theory from community ecology, we developed a strategic coexistence theory (SCT) that allows us to decompose strategy competition in terms of stabilizing niche differences and fitness differences.
+Building on Chesson's Modern Coexistence Theory from community ecology \citep{chesson2000mechanisms}, we developed a strategic coexistence theory (SCT) that allows us to decompose strategy competition in terms of stabilizing niche differences and fitness differences.
 This decomposition provides a unifying framework for comparing different games from the perspective of coexistence theory, allowing us to identify stabilizing and equalizing mechanisms for strategy competition.
 
 To demonstrate the utility of SCT, we considered three case studies.
-First, the analysis of classic two-strategy games showed that SCT recovers the original classification for these classic games, highlighting the similarities between evolutionary games and community ecology.
-Then, we compared different mechanisms for the evolution of cooperation, which showed that each mechanism promotes cooperation via different dynamical routes.
+First, the analysis of classic two-strategy games showed that SCT recovers the original classification for these classic games, highlighting the similarities between evolutionary games and community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}.
+Then, we compared different mechanisms for the evolution of cooperation, which showed that each mechanism promotes cooperation via different dynamical routes \citep{nowak2006five}.
 Kin selection, network reciprocity, and group selection primarily affect the fitness difference between cooperation and defection, whereas direct and indirect reciprocity can destabilize competition and generate priority effects.
-Finally, our analysis of microbial cooperation showed that coexistence between cooperators and defectors requires more than reducing the fitness cost of cooperation: nonlinear benefits can generate stabilizing niche differences while also reducing fitness asymmetry.
+Finally, our analysis of microbial cooperation showed that coexistence between cooperators and defectors requires more than reducing the fitness cost of cooperation: nonlinear benefits can generate stabilizing niche differences while also reducing fitness asymmetry \citep{gore2009snowdrift}.
 Taken together, these examples show that SCT can provide new insights into ecological underpinnings of strategy competition.
 
 There are several limitations to SCT.
-First, similar to MCT from community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies.
-Second, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates. 
+First, similar to MCT from community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies \citep{chesson2000mechanisms}.
+Second, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates.
 In such cases, replicator equations may fail to predict the outcome of competition \citep{tarnita2025reconciling}, and a full Lotka-Volterra model is needed to describe the abundances, rather than frequencies, of strategies.
 Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone. 
 When strategies differ intrinsically in growth, MCT may be required instead to tease apart mechanisms of strategy coexistence.
