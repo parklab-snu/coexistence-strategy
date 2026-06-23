@@ -134,7 +134,7 @@ This differs from payoff differences in EGT, which depend on the underlying stra
 So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
 Inspired by this effort, we present a Strategic Coexistence Theory (SCT) for predicting coexistence and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
 We begin by introducing SCT, which can be applied to any generic system of EGT described by replicator equations.
-We show that SCT can recover outcomes from classic, two strategy games, providing reinterpretation of classic results from coexistence-theoretic perspective.
+We show that SCT can recover outcomes from classic, two-strategy games, providing reinterpretation of classic results from coexistence-theoretic perspective.
 We then apply SCT to comparing five mechanisms for the evolution of cooperation, revealing that direct and indirect reciprocity destabilize competition between cooperation and defection, thus pushing the system towards priority effect regime. 
 Finally, we consider a case study of microbial cooperation, where nonlinear microbial growth can both stabilize and equalize competition between cooperation and defection, allowing coexistence of strategies.
 
@@ -254,7 +254,7 @@ Here, we compare five classic mechanisms for the evolution of cooperation using 
 
 Specifically, we consider the following mechanisms: kin selection, direct reciprocity, indirect reciprocity, network reciprocity, and group selection (Figure 3A).
 Kin selection favors cooperation when two interacting individuals are genetic relatives, where the genetic relatedness $r$ must be greater than the cost-to-benefit ratio: $r > c/b$ \citep{hamilton1964genetical}.
-Direct reciprocity favors cooperation when current cooperation may promote future cooperation by the same individual through repeated encounters \citep{robert1971evolution,axelrod1981evolution}.
+Direct reciprocity favors cooperation when current cooperation may promote future cooperation by the same individual through repeated encounters \citep{trivers1971evolution,axelrod1981evolution}.
 In this case, the probability of repeated interaction (i.e., ``next round'') must be greater than the cost-to-benefit ratio: $w > c/b$.
 Indirect reciprocity favors cooperation when current cooperation may promote future cooperation by different individuals through reputation \citep{nowak1998evolution,wedekind2000cooperation,nowak2005evolution}.
 Thus, the social acquaintanceship (i.e., the probability of knowing someone’s reputation) must be greater than the cost-to-benefit ratio: $q > c/b$.
@@ -322,7 +322,7 @@ Each line assumes a different value of efficiency $\epsilon$.
 Note that lines for $\epsilon=0.6$ and $\epsilon=0.4$ are completely overlapping.
 (C) Effect of nonlinearity $\alpha$ on both niche difference $1-\rho$ and fitness difference $\log(\kappa_D/\kappa_C)$.
 The gray shaded area represents the coexistence regime.
-The square represents the condition when $\alpha=0$.
+The square represents the condition when $\alpha \to 0^+$.
 The circles represent the condition when $\alpha=0.15$, which correspond to the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}.
 In panels B and C, we assumed $c=0.3$, while allowing $\epsilon$ and $\alpha$ to vary.
 }
@@ -439,9 +439,9 @@ we obtain the following inequality that defines conditions for mutual invasion a
 \rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
 \end{equation}
 
-\subsection*{S2 Applications to classic two strategy games}
+\subsection*{S2 Applications to classic two-strategy games}
 
-Consider a two strategy game described by the following payoff matrix:
+Consider a two-strategy game described by the following payoff matrix:
 \begin{equation}
 \begin{pmatrix}
 R & S \\
@@ -482,7 +482,7 @@ Then, simple algebra reveals that each condition in mutual invasion inequality c
 \frac{\kappa_2}{\kappa_1} < \frac{1}{\rho} &\iff P < S\\
 \frac{\kappa_2}{\kappa_1} > \frac{1}{\rho} &\iff P > S
 \end{align}
-These inequalities then allow us to classify outcomes of two strategy games from the perspective of SCT.
+These inequalities then allow us to classify outcomes of two-strategy games from the perspective of SCT.
 Note that the inequality between $R$ and $P$ does not affect the outcome.
 
 \subsection*{S3 Applications to mechanisms for the evolution of cooperation}
@@ -552,7 +552,7 @@ Therefore, when $w > c/b$, we will have
 \frac{1}{\rho} < \frac{\kappa_2}{\kappa_1} < \rho,
 \end{align}
 which implies priority effect (equivalently, bistability).
-Even as $w \to 1$, this inequality holds and therefore, cooperation cannot competitively exclude defection.
+Even as $w \to 1^-$, this inequality holds and therefore, cooperation cannot competitively exclude defection.
 
 \textbf{Indirect reciprocity.}
 Indirect reciprocity can be described by the following payoff matrix:
