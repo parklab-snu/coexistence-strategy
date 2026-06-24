@@ -188,6 +188,7 @@ Specifically, the condition for mutual invasion can be rewritten as \citep{chess
 \end{equation}
 This inequality applies to any games described by the classic replicator equation because $\rho$ and $\kappa_j/\kappa_i$ can be calculated directly from ratios of multiplicative payoffs.
 This decomposition not only allows us to understand how different mechanisms contribute to the coexistence or exclusion of competing strategies but also provides shared axes for comparing different games.
+Detailed derivations are provided in Supplementary Text S1.
 
 We note that the absolute magnitudes of niche and fitness differences are sensitive to payoff scaling because they are defined on an exponentiated payoff scale.
 However, the qualitative outcome of strategic competition under SCT is preserved because the exponential transformation does not alter invasion conditions.
@@ -234,13 +235,13 @@ $R > P$ is assumed throughout, but this does not affect coexistence outcome in a
 }
 \end{figure}
 
-A coexistence-theoretic approach recovers the same classification but provides a different interpretation (Figure 2C). For a two-strategy game determined by this payoff matrix, the niche difference and fitness difference are given by
+A coexistence-theoretic approach recovers the same classification but provides a different interpretation (Figure 2C). For a two-strategy game determined by this payoff matrix, the niche difference and fitness difference are given by the following set of equations (Supplementary Text S2):
 \begin{align}
 1- \rho &= 1 - \exp\left(\frac{R + P - S - T}{2}\right),\label{eq:nd}\\
 \frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right)\label{eq:fd}.
 \end{align}
 As shown above, mutual invasion requires $\rho < \kappa_2/\kappa_1 < 1/\rho$, which is equivalent to $T > R$ and $S > P$.
-This corresponds to the hawk--dove game, in which each strategy can invade when rare and the two strategies coexist. 
+This corresponds to the hawk--dove game, in which each strategy can invade its competitor when rare and the two strategies coexist. 
 The remaining games also have natural interpretations in niche--fitness difference space. 
 Prisoner’s dilemma and harmony games represent competitive exclusion regimes, where one strategy has a fitness advantage that exceeds niche differences.
 In contrast, stag--hunt games represent a priority-effect regime, where neither strategy can invade the other and the outcome depends on initial conditions.
@@ -250,8 +251,8 @@ Building on this, we next apply this framework to comparing core mechanisms of c
 \section*{Comparisons of mechanisms for the evolution of cooperation}
 
 Even though cooperative behavior can be found across a wide range of biological systems, a simple prisoner's dilemma shows that cooperation is not an evolutionarily stable strategy \citep{may1987more}.
-Thus, many researchers have sought to identify mechanisms that promote the evolution of cooperation \citep{west2007evolutionary}.
-Here, we compare five classic mechanisms for the evolution of cooperation using SCT and ask how they differ from the perspective of strategy coexistence.
+Thus, understanding mechanisms that promote the evolution of cooperation has remained a central goal in evolutionary biology \citep{west2007evolutionary}.
+Here, we compare five classic mechanisms for the evolution of cooperation using SCT \citep{nowak2006five} and ask how they differ from the perspective of SCT.
 
 Specifically, we consider the following mechanisms: kin selection, direct reciprocity, indirect reciprocity, network reciprocity, and group selection (Figure 3A).
 Kin selection favors cooperation when two interacting individuals are genetic relatives, where the genetic relatedness $r$ must be greater than the cost-to-benefit ratio: $r > c/b$ \citep{hamilton1964genetical}.
