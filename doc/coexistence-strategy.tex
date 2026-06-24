@@ -115,15 +115,16 @@ Together, these results show that SCT provides a complementary framework for com
 \section*{Introduction}
 
 Understanding the mechanisms that promote the evolutionary stability of competing strategies is a fundamental aim in evolutionary biology \citep{lewontin1961evolution,slobodkin1964strategy,smith1973logic,taylor1978evolutionary}.
-To this end, evolutionary game theory (EGT) and replicator dynamics have provided key foundations, allowing us to predict the outcome of strategic competition through payoff inequalities, invasion criteria, and stability analysis \citep{hofbauer1998evolutionary,cressman2014replicator}.
-However, less attention has been given to similarities between replicator dynamics and community ecology until recently \citep{tarnita2025reconciling,allesina2026global}, even though the classic replicator equation stems from the generalized Lotka-Volterra equation \citep{page2002unifying}.
+To this end, evolutionary game theory (EGT) and replicator dynamics have provided key foundations, allowing us to predict the outcome of strategic competition through payoff inequalities, invasion criteria, and stability analysis \citep{schuster1983replicator,hofbauer1998evolutionary,cressman2003evolutionary,shalizi2009dynamics,cressman2014replicator}.
+However, less attention has been given to similarities between replicator dynamics and community ecology until recently \citep{gokhale2025higher,tarnita2025reconciling,allesina2026global}, even though the classic replicator equations and the generalized Lotka-Volterra equation are mathematically equivalent \citep{hofbauer1981occurrence,page2002unifying}.
 
 Interestingly, even a simple two-strategy game can yield heterogeneous outcomes that mirror outcomes in community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}: the dominance of a single strategy (prisoner’s dilemma and harmony games), coexistence (hawk–dove games), and bistability (stag-hunt games).
-Such differences in conditions that promote evolutionary stability and dominance of a single strategy and those that permit strategy coexistence indicate that EGT can be understood from the perspective of coexistence theory \citep{motro1991co,doebeli2005models,gore2009snowdrift}.
-Recasting game dynamics as a coexistence problem immediately raises the following question: when two strategies coexist, does the corresponding mechanism stabilize or equalize competition?
-Even though EGT allows us to predict whether two strategies can coexist or not, a framework for quantifying coexistence mechanisms between competing strategies remains elusive.
+Such differences in conditions that promote evolutionary stability and dominance of a single strategy and those that permit strategy coexistence indicate that EGT can be understood from the perspective of coexistence theory \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
+In fact, stable polymorphism of evolutionary strategies, such as coexistence of cooperators and defectors, are observed in microbial and other biological systems \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}, but coexistence-theoretic perspective has often remained implicit.
+Recasting game dynamics as a coexistence problem immediately raises the following question: when two strategies coexist, does the corresponding mechanism stabilize or equalize competition \citep{chesson2000mechanisms}?
+While EGT allows us to predict whether two strategies can coexist or not, a framework for quantifying coexistence mechanisms between competing strategies remains elusive.
 
-Modern coexistence theory (MCT) from community ecology presents a particularly useful framework for quantifying coexistence mechanisms \citep{chesson2000mechanisms,godoy2014phylogenetic,godoy2014phenology,kraft2015plant}. 
+Modern coexistence theory (MCT) from community ecology presents a particularly useful framework for quantifying coexistence mechanisms \citep{chesson2000mechanisms,godoy2014phylogenetic,godoy2014phenology,kraft2015plant,adler2026have}. 
 MCT predicts that coexistence of two competing entities, be they species or strategies, requires stabilizing niche differences to overcome average fitness differences. 
 In community ecology, stabilizing niche differences represent differences in factors that limit the growth of competing species, causing each species to limit itself more than it limits its competitor \citep{chesson2000mechanisms}.
 In EGT, a strategy’s niche can be interpreted as strategic environments defined by the composition of competing strategies and the resulting interactions.
@@ -141,7 +142,7 @@ Finally, we consider a case study of microbial cooperation, where nonlinear micr
 \section*{Strategic coexistence theory}
 
 Here, we present a brief derivation of strategic coexistence theory (SCT) (Figure 1).
-To do so, we begin with a classic replicator equation, which allows us to model changes in the frequency of competing strategies based on their payoffs \citep{hofbauer1998evolutionary,cressman2014replicator}:
+To do so, we begin with a classic replicator equation, which allows us to model changes in the frequency of competing strategies based on their payoffs \citep{schuster1983replicator,hofbauer1998evolutionary,cressman2003evolutionary,shalizi2009dynamics,cressman2014replicator}:
 \begin{equation}
 \frac{dx_i}{dt} = x_i (\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x})),
 \end{equation}
