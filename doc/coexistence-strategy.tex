@@ -95,10 +95,11 @@
 }
 \newline
 \\
-Sang Woo Park\textsuperscript{1,*}
+Sang Woo Park\textsuperscript{1,2,*}
 \\
 \bigskip
-\textbf{1} School of Biological Sciences, Seoul National University, Seoul, Korea
+\textbf{1} School of Biological Sciences, Seoul National University, Seoul, Korea\\
+\textbf{2} Institute for Data Innovation in Science, Seoul National University, Seoul, Korea
 *Corresponding author: sangwoopark@snu.ac.kr
 \end{flushleft}
 
@@ -124,13 +125,13 @@ In fact, stable polymorphism of evolutionary strategies, such as coexistence of 
 Recasting game dynamics as a coexistence problem immediately raises the following question: when two strategies coexist, does the corresponding mechanism stabilize or equalize competition \citep{chesson2000mechanisms}?
 While EGT allows us to predict whether two strategies can coexist or not, a framework for quantifying coexistence mechanisms between competing strategies remains elusive.
 
-Modern coexistence theory (MCT) from community ecology presents a particularly useful framework for quantifying coexistence mechanisms \citep{chesson2000mechanisms,godoy2014phylogenetic,godoy2014phenology,kraft2015plant,adler2026have}. 
-MCT predicts that coexistence of two competing entities, be they species or strategies, requires stabilizing niche differences to overcome average fitness differences. 
+Modern coexistence theory (MCT) from community ecology presents a particularly useful framework for quantifying coexistence mechanisms \citep{chesson2000mechanisms,adler2007niche,godoy2014phylogenetic,godoy2014phenology,kraft2015plant,adler2026have}. 
+MCT predicts that coexistence of two competing entities, be they species or strategies, requires stabilizing niche differences to overcome average fitness differences \citep{chesson2000mechanisms,adler2007niche,kraft2015plant}.
 In community ecology, stabilizing niche differences represent differences in factors that limit the growth of competing species, causing each species to limit itself more than it limits its competitor \citep{chesson2000mechanisms}.
-In EGT, a strategy’s niche can be interpreted as strategic environments defined by the composition of competing strategies and the resulting interactions.
+In EGT, a strategy’s niche can be interpreted as strategic environments defined by the composition of competing strategies and the resulting interactions \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
 Thus, stabilizing niche differences arise when each strategy is favored by a different strategic environment, such that the spread of each strategy creates conditions that limit its own relative growth and favor the recovery of its competitor.
-In contrast, fitness differences represent differences in the ability of each entity to compete under the limiting environments created by its competitor \citep{chesson2000mechanisms}. 
-This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another.
+In contrast, fitness differences represent differences in the ability of each entity to compete under the limiting environments created by its competitor \citep{chesson2000mechanisms}.
+This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
 
 So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
 Inspired by this effort, we present a Strategic Coexistence Theory (SCT) for predicting coexistence and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
@@ -250,8 +251,8 @@ Building on this, we next apply this framework to comparing core mechanisms of c
 
 \section*{Comparisons of mechanisms for the evolution of cooperation}
 
-Even though cooperative behavior can be found across a wide range of biological systems, a simple prisoner's dilemma shows that cooperation is not an evolutionarily stable strategy \citep{may1987more}.
-Thus, understanding mechanisms that promote the evolution of cooperation has remained a central goal in evolutionary biology \citep{west2007evolutionary}.
+Even though cooperative behavior can be found across a wide range of biological systems, a simple prisoner's dilemma shows that cooperation is not an evolutionarily stable strategy \citep{axelrod1981evolution,may1987more}.
+Thus, understanding mechanisms that promote the evolution of cooperation has remained a central goal in evolutionary biology \citep{west2007evolutionary,fletcher2008simple,clutton2009cooperation,kingma2014group,rakoff2016evolution,hilbe2018evolution,apicella2019evolution,west2021ten,lee2022bacterial,palmer2022bacterial,michel2024evolution}.
 Here, we compare five classic mechanisms for the evolution of cooperation using SCT \citep{nowak2006five} and ask how they differ from the perspective of SCT.
 
 Specifically, we consider the following mechanisms: kin selection, direct reciprocity, indirect reciprocity, network reciprocity, and group selection (Figure 3A).
@@ -264,6 +265,7 @@ Network reciprocity favors cooperation via clustering of cooperators, requiring 
 Finally, group selection favors cooperation via multilevel selection, where groups with more cooperators exhibit faster growth at the group level even if defectors reproduce faster at the individual level \citep{traulsen2006evolution}.
 This requires $b/c > 1 + (n/m)$, where $n$ is the maximum group size and $m$ is the number of groups.
 All of these mechanisms can be described by a simple $2\times 2$ payoff matrix \citep{nowak2006five}, from which the corresponding niche and fitness differences can be computed using \eref{nd} and \eref{fd}.
+Details on niche and fitness difference calculations are presented in Supplementary Text S3.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../diagram_cooperation/diagram_cooperation.pdf}
@@ -289,10 +291,11 @@ In contrast, direct and indirect reciprocity destabilize competition while incre
 Equivalently, these two mechanisms promote bistability of defection and cooperation.
 
 SCT further reveals another difference between direct and indirect reciprocity.
-In particular, direct reciprocity is unable to generate sufficient fitness difference to competitively exclude defection even when the probability of next round $w$ reaches 1.
-In contrast, indirect reciprocity is able to generate sufficient fitness difference to push the system towards the boundary between priority-effect regime and competitive-exclusion regime as social acquaintanceship $q$ reaches 1, indicating that an additional mechanism will be able to promote complete dominance of cooperation.
+In particular, direct reciprocity is unable to generate sufficient fitness difference to competitively exclude defection even when the probability of next round $w$ reaches 1 (Supplementary Text S3).
+In contrast, indirect reciprocity is able to generate sufficient fitness difference to push the system towards the boundary between priority-effect regime and competitive-exclusion regime as social acquaintanceship $q$ reaches 1, indicating that an additional mechanism may be able to promote complete dominance of cooperation (Supplementary Text S3).
 
 We note that none of these mechanisms allow coexistence of cooperation and defection.
+In many biological systems, such coexistence is often observed \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}.
 Therefore, we move on to the final example, applying SCT to microbial cooperation, where nonlinear benefits and environmental context can promote coexistence of cooperators and defectors.
 
 \section*{Microbial cooperation and public goods}
@@ -340,7 +343,7 @@ Therefore, this model always predicts competitive exclusion, except in the neutr
 The outcome is determined entirely by the fitness difference between cooperators and defectors, rather than by stabilizing niche differences.
 This example resembles the prisoner's dilemma discussed in the previous example (Figure 3).
 
-In real biological systems, the effect of glucose on microbial growth can follow a nonlinear relationship:
+In real biological systems, the effect of glucose on microbial growth follows a nonlinear relationship:
 \begin{align}
 \pi_C(f) &= \left[\epsilon + f (1-\epsilon)\right]^\alpha - c,\\
 \pi_D(f) &= [f (1-\epsilon)]^\alpha,
@@ -367,10 +370,11 @@ In contrast, as $\alpha \to 0^+$, the fitness difference approaches
 \end{equation}
 which no longer depends on the private capture efficiency $\epsilon$ (Figure 4C). 
 Thus, strong concavity not only generates stabilizing niche differences, but also acts as an equalizing mechanism (Figure 4C).
+Such stabilizing mechanisms are key ingredients for coexistence of cooperators and defectors.
 
 \section*{Discussion}
 
-Standard evolutionary game theory and replicator equations provide powerful tools for predicting the outcome of strategy competition, including strategic dominance, coexistence, and bistability \citep{hofbauer1998evolutionary,cressman2014replicator}.
+Standard evolutionary game theory and replicator equations provide powerful tools for predicting the outcome of strategy competition, including strategic dominance, coexistence, and bistability \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
 However, these outcomes are typically understood by analyzing payoff differences within individual games, which makes it difficult to compare coexistence mechanisms across models.
 Building on Chesson's Modern Coexistence Theory from community ecology \citep{chesson2000mechanisms}, we developed a strategic coexistence theory (SCT) that allows us to decompose strategy competition in terms of stabilizing niche differences and fitness differences.
 This decomposition provides a unifying framework for comparing different games from the perspective of coexistence theory, allowing us to identify stabilizing and equalizing mechanisms for strategy competition.
@@ -386,14 +390,27 @@ There are several limitations to SCT.
 First, similar to MCT from community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies \citep{chesson2000mechanisms}.
 Second, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates.
 In such cases, replicator equations may fail to predict the outcome of competition \citep{tarnita2025reconciling}, and a full Lotka-Volterra model is needed to describe the abundances, rather than frequencies, of strategies.
-Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone. 
+Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone \citep{tarnita2025reconciling}.
 When strategies differ intrinsically in growth, MCT may be required instead to tease apart mechanisms of strategy coexistence.
-Finally, we have focused on simple examples to illustrate the utility of SCT, but many games involve additional complexities, including population structure \citep{nowak2010evolutionary}, stochasticity \citep{wang2025evolution,bodin2026eco}, and explicit ecological feedback.
+Finally, we have focused on simple examples to illustrate the utility of SCT, but many games involve additional complexities, including population structure \citep{nowak2010evolutionary}, stochasticity \citep{wang2025evolution,bodin2026eco}, and explicit ecological feedback \citep{tarnita2025reconciling}.
 Extending SCT to these settings will be necessary to determine how broadly stabilizing and equalizing mechanisms can be compared across evolutionary games.
 
 In conclusion, SCT provides a bridge between evolutionary game theory and community ecology, allowing strategy competition to be understood from the perspective of coexistence theory. 
 Therefore, rather than replacing existing EGT or replicator-dynamics frameworks, SCT provides a complementary tool for teasing apart the coexistence mechanisms underlying evolutionary games.
 More broadly, our study builds on recent efforts to extend MCT beyond species competition \citep{park2024predicting,park2026unifying}, providing a foundation for building unifying coexistence theory for competing entities, including species, pathogen strains, and behavioral strategies.
+
+\section*{Acknowledgement}
+
+We thank Jonathan Levine for the helpful discussion.
+S.W.P. was supported by the New Faculty Startup Fund from Seoul National University and by the Global-LAMP Program of the National Research Foundation of Korea (NRF) grant funded by the Ministry of Education (No. RS-2023-00301976).
+
+\section*{Competing interests}
+
+The authors declare no competing interest.
+
+\section*{Data availability}
+
+All data and code are stored in a publicly available GitHub repository (\url{https://github.com/parklab-snu/coexistence-strategy}).
 
 \pagebreak
 
