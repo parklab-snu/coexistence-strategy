@@ -8,12 +8,17 @@
 \begin{document}
 
 \definecolor{beige}{RGB}{245,245,220}
+\colorlet{pdcol}{red!12}
+\colorlet{hdcol}{green!14}
+\colorlet{shcol}{blue!10}
+\colorlet{hmcol}{orange!12}
 
 \begin{tikzpicture}[node distance=0.5cm,auto,>=latex',every node/.append style={align=center},int/.style={draw, shape=circle, minimum size=1.2cm},inverter/.style={circle,draw,inner sep=2pt,minimum size=6mm},posnode/.style={shape=circle, draw=orange, line width=2},
   negnode/.style={shape=circle, draw=black, line width=2}]
   
   \node(eq1)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
   text width=0.4\linewidth,
+  fill=beige,
   align=center,
   minimum height=2.4cm] at (0,0) {
 $\displaystyle
@@ -24,6 +29,7 @@ $\displaystyle
 
   \node(eq2)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
   text width=0.4\linewidth,
+  fill=beige,
   align=center,
   minimum height=2.4cm] at (7,0) {
   At $\mathbf{e}_i$, can $j$ invade?\\
@@ -42,6 +48,7 @@ $\displaystyle
   
   \node(eq3)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
   text width=0.4\linewidth,
+  fill=beige,
   align=center,
   minimum height=2.4cm] at (14,0) {
   $\displaystyle
@@ -55,6 +62,7 @@ $\displaystyle
   
   \node(eq4)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
   text width=0.4\linewidth,
+  fill=beige,
   align=center,
   minimum height=3.5cm] at (0,0-4.5) {
 $\displaystyle
@@ -69,13 +77,14 @@ $\displaystyle
 
   \node(eq5)[draw, shape=rectangle,inner sep=10pt, line width=2,  rounded corners=6pt,
   text width=0.4\linewidth,
+  fill=beige,
   align=center,
   minimum height=3.5cm] at (7,0-4.5) {
 $\displaystyle
 \rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}
   $\\
   \vspace{0.8em}
-  Stabilizing niche differences must be greater than average fitness differences
+  Stabilizing niche differences must overcome average fitness differences
 };
   \node (title5) at (7,2-4) {\textbf{5. Coexistence criterion}};
 
@@ -89,18 +98,50 @@ $\displaystyle
   \pgfmathsetmacro{\xcrit}{1 - exp(-\ymax)}
 
 
+            \fill[pdcol]
+            (\xmin,\ymax) --
+            (\xmax,\ymax) --
+            plot[domain=\xmax:0, samples=150]
+                (\x,{min(-ln(1-\x),\ymax)}) --
+            plot[domain=0:\xmin, samples=150]
+                (\x,{min( ln(1-\x),\ymax)}) --
+            cycle;
+
+            \fill[hmcol]
+            (\xmin,\ymin) --
+            (\xmax,\ymin) --
+            plot[domain=\xmax:0, samples=150]
+                (\x,{max( ln(1-\x),\ymin)}) --
+            plot[domain=0:\xmin, samples=150]
+                (\x,{max(-ln(1-\x),\ymin)}) --
+            cycle;
+            
+             \fill[shcol]
+            plot[domain=\xmin:0, samples=150]
+                (\x,{ ln(1-\x)}) --
+            plot[domain=0:\xmin, samples=150]
+                (\x,{-ln(1-\x)}) --
+            cycle;
+            
+            \fill[hdcol]
+            plot[domain=0:\xmax, samples=150]
+                (\x,{max( ln(1-\x),\ymin)}) --
+            plot[domain=\xmax:0, samples=150]
+                (\x,{min(-ln(1-\x),\ymax)}) --
+            cycle;
+
 
   % region labels
-  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (-0.04,0.43)
+  \node[font=\footnotesize, align=center, text width=1.7cm] at (-0.04,0.43)
     {$j$ excludes $i$};
 
-  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (0.35,0.00)
+  \node[font=\footnotesize, align=center, text width=1.7cm] at (0.35,0.00)
     {Coexist-\\ence};
 
-  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (-0.35,0.00)
+  \node[font=\footnotesize, align=center, text width=1.7cm] at (-0.35,0.00)
     {Priority\\effect};
 
-  \node[font=\footnotesize, align=center, text width=1.7cm,fill=white] at (-0.04,-0.43)
+  \node[font=\footnotesize, align=center, text width=1.7cm] at (-0.04,-0.43)
     {$i$ excludes $j$};
     
   % border
@@ -125,7 +166,6 @@ $\displaystyle
   \draw[line width=1pt]
     plot[domain=\xmin:\xcrit, samples=150]
       (\x,{-ln(1-\x)});
-
 \end{scope}
 
 \node (title6) at (14,2-4) {\textbf{6. Niche-fitness difference space}};

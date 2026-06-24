@@ -103,7 +103,7 @@ g3 <- ggplot(nd_data_B) +
   annotate("point", x=1-exp(-1/2), y=c_A-1/2, size=1, 
            shape=22,
            fill="gray90", stroke=2, col="#EF6351") +
-  annotate("text", x=1-exp(-1/2), y=c_A-1/2, label="$\\alpha=0$",
+  annotate("text", x=0.36, y=-0.23, label="$\\alpha \\to 0^+$",
            hjust=-0.25, vjust=0.4,
            col="#EF6351",
            size=3) +
@@ -131,7 +131,7 @@ g3 <- ggplot(nd_data_B) +
                      expand=c(0, 0)) +
   scale_y_continuous("Fitness difference, $\\log(\\kappa_D/\\kappa_C)$",
                      breaks=c(-0.4, -0.2, 0, 0.2, 0.4),
-                     labels=c(-0.4, -0.4, "0", 0.2, 0.4),
+                     labels=c(-0.4, -0.2, "0", 0.2, 0.4),
                      limits=c(-0.4, 0.4),
                      expand=c(0, 0)) +
   theme(
