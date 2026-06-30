@@ -106,18 +106,28 @@ Sang Woo Park\textsuperscript{1,2,*}
 \section*{Abstract}
 
 Evolutionary game theory and ecological coexistence theory both seek to predict the outcome of competition between biological entities, be they strategies or species, but the two fields have relied on largely separate approaches.
-Replicator equations provide a foundation for analyzing strategy competition, yet they do not explicitly separate the mechanisms that stabilize competition from those that equalize fitness differences between strategies.
-Here, we extend modern coexistence theory from community ecology to develop strategic coexistence theory (SCT), a framework for quantifying strategic niche and fitness differences between competing strategies.
+Replicator equations provide a foundation for predicting the outcome of strategic competition, yet they do not explicitly decompose the mechanisms underlying these outcomes.
+Inspired by modern coexistence theory from community ecology, we develop Strategic Coexistence Theory (SCT), which translates payoff-based invasion conditions into strategic niche differences and fitness differences between any two competing strategies described by classic replicator dynamics.
 SCT recovers the classic classification of two-strategy games, distinguishing competitive exclusion, coexistence, and priority effects within a shared niche–fitness difference space.
 Applying SCT to five mechanisms for the evolution of cooperation further reveals that these mechanisms promote cooperation through distinct dynamical routes: kin selection, network reciprocity, and group selection primarily reduce fitness differences, whereas direct and indirect reciprocity destabilize competition and generate priority effects.
-Finally, applying SCT to microbial public-goods game shows that nonlinear microbial growth can both stabilize and equalize competition between cooperators and defectors, allowing coexistence.
-Together, these results show that SCT provides a complementary framework for comparing evolutionary games and teasing apart the coexistence mechanisms underlying strategy competition.
+Finally, applying SCT to microbial public-goods competition shows that nonlinear microbial growth can both stabilize and equalize competition between cooperators and defectors, allowing coexistence.
+Together, these results show that SCT provides a common language for comparing coexistence mechanisms across evolutionary games.
+
+\section*{Significance statement}
+
+Evolutionary game theory provides a powerful framework for predicting the outcome of competition between strategies, including the dominance of one strategy, coexistence of multiple strategies, and bistability.
+However, a framework for quantifying the mechanisms that allow strategies to coexist remains elusive, even though stable polymorphisms, such as the coexistence of cooperators and defectors, are widely observed across biological systems.
+To address this gap, we developed Strategic Coexistence Theory (SCT), which extends Modern Coexistence Theory from community ecology to evolutionary games.
+Applying SCT to classic games, mechanisms of cooperation, and microbial public-goods competition shows that seemingly similar evolutionary outcomes can arise through distinct mechanisms.
+This approach links ecological theory with replicator dynamics, providing a complementary tool for analyzing evolutionary games.
 
 \section*{Introduction}
 
 Understanding the mechanisms that promote the evolutionary stability of competing strategies is a fundamental aim in evolutionary biology \citep{lewontin1961evolution,slobodkin1964strategy,smith1973logic,taylor1978evolutionary}.
 To this end, evolutionary game theory (EGT) and replicator dynamics have provided key foundations, allowing us to predict the outcome of strategic competition through payoff inequalities, invasion criteria, and stability analysis \citep{schuster1983replicator,hofbauer1998evolutionary,cressman2003evolutionary,cressman2014replicator}.
-However, less attention has been given to similarities between replicator dynamics and community ecology until recently \citep{gokhale2025higher,tarnita2025reconciling,allesina2026global}, even though the classic replicator equations and the generalized Lotka-Volterra equation are mathematically equivalent \citep{hofbauer1981occurrence,page2002unifying}.
+Recently, there has been growing interest in characterizing similarities between replicator dynamics and the dynamics of competing species \citep{gokhale2025higher,tarnita2025reconciling,allesina2026global}, building on the classical mathematical equivalence between replicator equations and generalized Lotka–Volterra models \citep{hofbauer1981occurrence,page2002unifying}.
+In particular, \cite{tarnita2025reconciling} recently argued that a closer synthesis between ecology and evolutionary game theory can provide new insights into ecological and evolutionary assembly, competition, and coexistence.
+This renewed perspective between ecological and evolutionary dynamics suggests that evolutionary games may be interpreted not only as payoff-based competition but also as problems of strategic coexistence.
 
 Interestingly, even a simple two-strategy game can yield heterogeneous outcomes that mirror outcomes in community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}: the dominance of a single strategy (prisoner’s dilemma and harmony games), coexistence (hawk–dove games), and bistability (stag-hunt games).
 Such differences in conditions that promote evolutionary stability and dominance of a single strategy and those that permit strategy coexistence indicate that EGT can be understood from the perspective of coexistence theory \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
@@ -134,10 +144,10 @@ In contrast, fitness differences represent differences in the ability of each en
 This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
 
 So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
-Inspired by this effort, we present a Strategic Coexistence Theory (SCT) for predicting coexistence and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
+Inspired by this effort, we present Strategic Coexistence Theory (SCT) for predicting coexistence and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
 We begin by introducing SCT, which can be applied to any generic system of EGT described by replicator equations.
 We show that SCT can recover outcomes from classic, two-strategy games, providing a reinterpretation of classic results from coexistence-theoretic perspective.
-We then apply SCT to comparing five mechanisms for the evolution of cooperation, revealing that direct and indirect reciprocity destabilize competition between cooperation and defection, thus pushing the system towards priority effect regime. 
+We then apply SCT to comparing five mechanisms for the evolution of cooperation, revealing that direct and indirect reciprocity destabilize competition between cooperators and defectors, thus pushing the system towards priority effect regime. 
 Finally, we consider a case study of microbial cooperation, where nonlinear microbial growth can both stabilize and equalize competition between cooperation and defection, allowing coexistence of strategies.
 
 \section*{Strategic coexistence theory}
@@ -629,7 +639,7 @@ In this case, the niche and fitness differences correspond to:
 \frac{\kappa_2}{\kappa_1} &= \exp\left(-H+c\right),
 \end{align}
 which implies that there is complete niche overlap and that fitness difference decreases with $H$.
-Since $H$ is a monotonically decreasing function of $k$ for $k > 2$, fitness difference will increase with $k$.
+Since $H$ is a monotonically decreasing function of $k$ when $k > 2$ and $b/c \geq 2$, fitness difference will increase with $k$.
 In particular, cooperation will competitively exclude defection when $H>c$, meaning that:
 \begin{equation}
 b/c > k.
