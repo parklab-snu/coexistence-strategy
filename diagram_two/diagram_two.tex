@@ -24,17 +24,11 @@
     }
 ]
 
-% ---------------------------------
-% Colors
-% ---------------------------------
 \colorlet{pdcol}{red!12}
 \colorlet{hdcol}{green!14}
 \colorlet{shcol}{blue!10}
 \colorlet{hmcol}{orange!12}
 
-% ---------------------------------
-% Left: payoff matrix
-% ---------------------------------
 \node at (-2.7, 3.2) {\textbf{(A) Payoff matrix}};
 
 \node at (-2.7, 0.2) {
@@ -46,9 +40,6 @@
     \right)$
 };
 
-% ---------------------------------
-% Middle: game space
-% ---------------------------------
 \node at (2.2, 3.2) {\textbf{(B) Game space}};
 
 \begin{scope}[shift={(2.2,0.2)}, x=2.5cm, y=2.5cm]
@@ -89,26 +80,19 @@
         {\textbf{Harmony}\\\textbf{Game}\\[0.15em](Strategy 1 wins)};
 \end{scope}
 
-% ---------------------------------
-% Right: niche--fitness space
-% ---------------------------------
 \node at (9, 3.2) {\textbf{(C) Niche--fitness difference space}};
 
-% Physical size = 5cm x 5cm
 \begin{scope}[shift={(9,0.2)}, x=4.166667cm, y=3.571429cm]
     \def\xmin{-0.6}
     \def\xmax{ 0.6}
     \def\ymin{-0.7}
     \def\ymax{ 0.7}
 
-    % x-value where the curves hit the top/bottom of the plotting window
     \pgfmathsetmacro{\xcrit}{1 - exp(-\ymax)}
 
-    % Clip all colored regions to the plotting window
     \begin{scope}
         \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
 
-        % Prisoner's dilemma: above the upper envelope
         \fill[pdcol]
             (\xmin,\ymax) --
             (\xmax,\ymax) --
@@ -118,7 +102,6 @@
                 (\x,{min( ln(1-\x),\ymax)}) --
             cycle;
 
-        % Harmony: below the lower envelope
         \fill[hmcol]
             (\xmin,\ymin) --
             (\xmax,\ymin) --
@@ -128,7 +111,6 @@
                 (\x,{max(-ln(1-\x),\ymin)}) --
             cycle;
 
-        % Stag-hunt: between curves for x < 0
         \fill[shcol]
             plot[domain=\xmin:0, samples=150]
                 (\x,{ ln(1-\x)}) --
@@ -136,8 +118,6 @@
                 (\x,{-ln(1-\x)}) --
             cycle;
 
-        % Hawk-dove: between curves for x > 0,
-        % clamped to the visible plotting window
         \fill[hdcol]
             plot[domain=0:\xmax, samples=150]
                 (\x,{max( ln(1-\x),\ymin)}) --
@@ -146,14 +126,11 @@
             cycle;
     \end{scope}
 
-    % Panel border
     \draw[thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
 
-    % Zero reference lines
     \draw[dashed, gray] (\xmin,0) -- (\xmax,0);
     \draw[dashed, gray] (0,\ymin) -- (0,\ymax);
 
-    % Boundary curves, drawn only while inside the plotting window
     \draw[thick]
         plot[domain=\xmin:\xcrit, samples=150]
             (\x,{ ln(1-\x)});
@@ -162,22 +139,18 @@
         plot[domain=\xmin:\xcrit, samples=150]
             (\x,{-ln(1-\x)});
 
-    % Axes
     \draw[->, thick] (\xmin,\ymin) -- (\xmax+0.05,\ymin);
     \draw[->, thick] (\xmin,\ymin) -- (\xmin,\ymax+0.06);
 
-    % Axis labels
     \node[below=12pt] at (0,\ymin)
         {Niche difference, $1-\rho$};
 
     \node[rotate=90, align=center] at (\xmin-0.19,0)
         {Fitness difference\\$\log(\kappa_D/\kappa_C)$};
 
-    % Zero labels
     \node[below=2pt] at (0,\ymin) {$0$};
     \node[left=2pt]  at (\xmin,0) {$0$};
 
-    % Region labels
     \node[reglabel, fill=pdcol] at (0.00, 0.42)
         {\textbf{Prisoner's}\\\textbf{Dilemma}\\(Competitive exclusion)};
 
