@@ -1,0 +1,671 @@
+\documentclass[12pt]{article}
+% \usepackage[top=1in,left=1in, right = 1in, footskip=1in]{geometry}
+\usepackage[top=1in,footskip=1in]{geometry}
+
+\usepackage{graphicx}
+\usepackage{xspace}
+%\usepackage{adjustbox}
+
+\usepackage{pdflscape}
+
+\usepackage{grffile}
+
+\newcommand{\comment}{\showcomment}
+%% \newcommand{\comment}{\nocomment}
+
+\newcommand{\showcomment}[3]{\textcolor{#1}{\textbf{[#2: }\textsl{#3}\textbf{]}}}
+\newcommand{\nocomment}[3]{}
+
+\newcommand{\jd}[1]{\comment{cyan}{JD}{#1}}
+\newcommand{\swp}[1]{\comment{magenta}{SWP}{#1}}
+\newcommand{\bmb}[1]{\comment{blue}{BMB}{#1}}
+\newcommand{\djde}[1]{\comment{red}{DJDE}{#1}}
+
+\newcommand{\eref}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\fref}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\Fref}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\sref}[1]{Sec.~\ref{#1}}
+\newcommand{\frange}[2]{Fig.~\ref{fig:#1}--\ref{fig:#2}}
+\newcommand{\tref}[1]{Table~\ref{tab:#1}}
+\newcommand{\tlab}[1]{\label{tab:#1}}
+\newcommand{\seminar}{SE\mbox{$^m$}I\mbox{$^n$}R}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[utf8]{inputenc} % make sure fancy dashes etc. don't get dropped
+
+\usepackage{lineno}
+\linenumbers
+
+\usepackage[pdfencoding=auto, psdextra]{hyperref}
+
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\date{\today}
+
+\usepackage{xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+
+\usepackage{color}
+
+\newcommand{\Rx}[1]{\ensuremath{{\mathcal R}_{#1}}\xspace} 
+\newcommand{\RR}{\ensuremath{{\mathcal R}}\xspace}
+\newcommand{\Rres}{\Rx{\mathrm{res}}}
+\newcommand{\Rinv}{\Rx{\mathrm{inv}}}
+\newcommand{\Rhat}{\ensuremath{{\hat\RR}}}
+\newcommand{\Rt}{\ensuremath{{\mathcal R}(t)}\xspace}
+\newcommand{\tsub}[2]{#1_{{\textrm{\tiny #2}}}}
+\newcommand{\dd}[1]{\ensuremath{\, \mathrm{d}#1}}
+\newcommand{\dtau}{\dd{\tau}}
+\newcommand{\dx}{\dd{x}}
+\newcommand{\dsigma}{\dd{\sigma}}
+
+\newcommand{\rx}[1]{\ensuremath{{r}_{#1}}\xspace} 
+\newcommand{\rres}{\rx{\mathrm{res}}}
+\newcommand{\rinv}{\rx{\mathrm{inv}}}
+
+\newcommand{\psymp}{\ensuremath{p}} %% primary symptom time
+\newcommand{\ssymp}{\ensuremath{s}} %% secondary symptom time
+\newcommand{\pinf}{\ensuremath{\alpha_1}} %% primary infection time
+\newcommand{\sinf}{\ensuremath{\alpha_2}} %% secondary infection time
+
+\newcommand{\psize}{{\mathcal P}} %% primary cohort size
+\newcommand{\ssize}{{\mathcal S}} %% secondary cohort size
+
+\newcommand{\gtime}{\tau_{\rm g}} %% generation interval
+\newcommand{\gdist}{g} %% generation-interval distribution
+\newcommand{\idist}{\ell} %% incubation-period distribution
+
+\newcommand{\total}{{\mathcal T}} %% total number of serial intervals
+
+\usepackage{lettrine}
+
+\newcommand{\dropcapfont}{\fontfamily{lmss}\bfseries\fontsize{26pt}{28pt}\selectfont}
+\newcommand{\dropcap}[1]{\lettrine[lines=2,lraise=0.05,findent=0.1em, nindent=0em]{{\dropcapfont{#1}}}{}}
+
+\begin{document}
+
+\begin{flushleft}{
+	\Large
+	\textbf\newline{
+	  Strategic coexistence theory for evolutionary games
+	}
+}
+\newline
+\\
+Sang Woo Park\textsuperscript{1,2,*}
+\\
+\bigskip
+\textbf{1} School of Biological Sciences, Seoul National University, Seoul, Korea\\
+\textbf{2} Institute for Data Innovation in Science, Seoul National University, Seoul, Korea
+*Corresponding author: sangwoopark@snu.ac.kr
+\end{flushleft}
+
+\section*{Abstract}
+
+Evolutionary game theory and ecological coexistence theory both seek to predict the outcome of competition between biological entities, be they strategies or species, but the two fields have relied on largely separate approaches.
+Replicator equations provide a foundation for predicting the outcome of strategic competition, yet they do not explicitly decompose the mechanisms underlying these outcomes.
+Inspired by modern coexistence theory from community ecology, we develop Strategic Coexistence Theory (SCT), which translates payoff-based invasion conditions into strategic niche differences and fitness differences between any two competing strategies described by classic replicator dynamics.
+SCT recovers the classic classification of two-strategy games, distinguishing competitive exclusion, coexistence, and priority effects within a shared niche–fitness difference space.
+Applying SCT to five mechanisms for the evolution of cooperation further reveals that these mechanisms promote cooperation through distinct dynamical routes: kin selection, network reciprocity, and group selection primarily reduce fitness differences, whereas direct and indirect reciprocity destabilize competition and generate priority effects.
+Finally, applying SCT to microbial public-goods competition shows that nonlinear microbial growth can both stabilize and equalize competition between cooperators and defectors, allowing coexistence.
+Together, these results show that SCT provides a common language for comparing coexistence mechanisms across evolutionary games.
+
+\section*{Significance statement}
+
+Evolutionary game theory provides a powerful framework for predicting the outcome of competition between strategies, including the dominance of one strategy, coexistence of multiple strategies, and bistability.
+However, a framework for quantifying the mechanisms that allow strategies to coexist remains elusive, even though stable polymorphisms, such as the coexistence of cooperators and defectors, are widely observed across biological systems.
+To address this gap, we developed Strategic Coexistence Theory (SCT), which extends Modern Coexistence Theory from community ecology to evolutionary games.
+Applying SCT to classic games, mechanisms of cooperation, and microbial public-goods competition shows that seemingly similar evolutionary outcomes can arise through distinct mechanisms.
+This approach links ecological theory with replicator dynamics, providing a complementary tool for analyzing evolutionary games.
+
+\section*{Introduction}
+
+Understanding the mechanisms that promote the evolutionary stability of competing strategies is a fundamental aim in evolutionary biology \citep{lewontin1961evolution,slobodkin1964strategy,smith1973logic,taylor1978evolutionary}.
+To this end, evolutionary game theory (EGT) and replicator dynamics have provided key foundations, allowing us to predict the outcome of strategic competition through payoff inequalities, invasion criteria, and stability analysis \citep{schuster1983replicator,hofbauer1998evolutionary,cressman2003evolutionary,cressman2014replicator}.
+Recently, there has been growing interest in characterizing similarities between replicator dynamics and the dynamics of competing species \citep{gokhale2025higher,tarnita2025reconciling,allesina2026global}, building on the classical mathematical equivalence between replicator equations and generalized Lotka–Volterra models \citep{hofbauer1981occurrence,page2002unifying}.
+In particular, \cite{tarnita2025reconciling} recently argued that a closer synthesis between ecology and evolutionary game theory can provide new insights into ecological and evolutionary assembly, competition, and coexistence.
+This renewed perspective between ecological and evolutionary dynamics suggests that evolutionary games may be interpreted not only as payoff-based competition but also as problems of strategic coexistence.
+
+Interestingly, even a simple two-strategy game can yield heterogeneous outcomes that mirror outcomes in community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}: the dominance of a single strategy (prisoner’s dilemma and harmony games), coexistence (hawk–dove games), and bistability (stag-hunt games).
+Such differences in conditions that promote evolutionary stability and dominance of a single strategy and those that permit strategy coexistence indicate that EGT can be understood from the perspective of coexistence theory \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
+In fact, stable polymorphisms of evolutionary strategies, such as coexistence of cooperators and defectors, are observed in microbial and other biological systems \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}, but coexistence-theoretic perspective has often remained implicit.
+Recasting game dynamics as a coexistence problem immediately raises the following question: when two strategies coexist, does the corresponding mechanism stabilize or equalize competition \citep{chesson2000mechanisms}?
+While EGT allows us to predict whether two strategies can coexist or not, a framework for quantifying coexistence mechanisms between competing strategies remains elusive.
+
+Modern coexistence theory (MCT) from community ecology presents a particularly useful framework for quantifying coexistence mechanisms \citep{chesson2000mechanisms,adler2007niche,godoy2014phylogenetic,godoy2014phenology,kraft2015plant,adler2026have}. 
+MCT predicts that coexistence of two competing entities, be they species or strategies, requires stabilizing niche differences to overcome average fitness differences \citep{chesson2000mechanisms,adler2007niche,kraft2015plant}.
+In community ecology, stabilizing niche differences represent differences in factors that limit the growth of competing species, causing each species to limit itself more than it limits its competitor \citep{chesson2000mechanisms}.
+In EGT, a strategy’s niche can be interpreted as strategic environments defined by the composition of competing strategies and the resulting interactions \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
+Thus, stabilizing niche differences arise when each strategy is favored by a different strategic environment, such that the spread of each strategy creates conditions that limit its own relative growth and favor the recovery of its competitor.
+In contrast, fitness differences represent differences in the ability of each entity to compete under the limiting environments created by its competitor \citep{chesson2000mechanisms}.
+This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
+
+So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
+Inspired by this effort, we present Strategic Coexistence Theory (SCT) for predicting coexistence and exclusion of competing strategies in EGT by quantifying strategic niche and fitness differences.
+We begin by introducing SCT, which can be applied to any generic system of EGT described by replicator equations.
+We show that SCT can recover outcomes from classic, two-strategy games, providing a reinterpretation of classic results from coexistence-theoretic perspective.
+We then apply SCT to comparing five mechanisms for the evolution of cooperation, revealing that direct and indirect reciprocity destabilize competition between cooperators and defectors, thus pushing the system towards priority effect regime. 
+Finally, we consider a case study of microbial cooperation, where nonlinear microbial growth can both stabilize and equalize competition between cooperation and defection, allowing coexistence of strategies.
+Together, these examples show that SCT provides a common, ecological language for comparing the mechanisms underlying strategic evolution.
+
+\section*{Strategic coexistence theory}
+
+Here, we present a brief derivation of strategic coexistence theory (SCT) (Figure 1).
+To do so, we begin with a classic replicator equation, which allows us to model changes in the frequency of competing strategies based on their payoffs \citep{schuster1983replicator,hofbauer1998evolutionary,cressman2003evolutionary,cressman2014replicator}:
+\begin{equation}
+\frac{dx_i}{dt} = x_i (\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x})),
+\end{equation}
+where $x_i$ represents the frequency of strategy $i$, $\pi_i(\mathbf{x})$ represents the payoff of strategy $i$ for a given strategy distribution $\mathbf{x}$, and $\bar{\pi}(\mathbf{x}) = \sum_i \pi_i(\mathbf{x}) x_i$ represents the average payoff. Since strategy frequencies must sum to 1 (i.e., $\sum_i x_i = 1$), a single-strategy equilibrium dominated by strategy $i$ can be described by a unit vector $\mathbf{e}_i$, where all elements are equal to zero except for the $i$-th element. 
+We use these single-strategy equilibria to define niche and fitness differences between two competing strategies $i$ and $j$. 
+
+Because payoffs in many games can be negative, payoff ratios can be difficult to interpret.
+Thus, we work on a positive multiplicative scale by exponentiating the payoff terms:
+\begin{equation}
+W_i(\mathbf{x}) = \exp(\pi_i(\mathbf{x})).
+\end{equation}
+This exponential transformation is convenient because it preserves the payoff ordering and does not alter the invasion conditions.
+Therefore, this allows us to compare strategic environments through ratios, as in modern coexistence theory.
+For convenience, we refer to $W_i(\mathbf{x})$ as the multiplicative payoff of strategy $i$.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{../diagram_sct/diagram_sct.pdf}
+\caption{
+\textbf{A schematic diagram summarizing strategic coexistence theory.}
+Strategic coexistence theory decomposes pairwise replicator dynamics into stabilizing and equalizing mechanisms.
+Mutual invasion conditions can be rewritten on a multiplicative payoff scale, allowing us to derive strategic niche difference $1-\rho$ and fitness difference $\kappa_j/\kappa_i$ based on multiplicative payoff ratios.
+Then, the inequality $\rho < \kappa_j/\kappa_i < 1/\rho$ determines mutual invasion.
+}
+\end{figure}
+
+First, we define the niche overlap $\rho$ between strategies $i$ and $j$ as the ratio between the geometric mean of each strategy’s multiplicative payoff in the strategic environment that it creates when common, $\sqrt{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}$, and the geometric mean of each strategy’s multiplicative payoff in the environment generated by its competitor, $\sqrt{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j)}$. 
+The corresponding niche difference is then given by
+\begin{equation}
+1- \rho = 1-\sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j)}}.
+\end{equation}
+When $1-\rho > 0$, each strategy performs better, on average, in the environment generated by its competitor than in the environment generated by itself. 
+In other words, intraspecific competition is stronger than interspecific competition.
+Second, we define the fitness difference as the ratio between the geometric means of the multiplicative payoff of each strategy across the two single-strategy environments:
+\begin{equation}
+\frac{\kappa_j}{\kappa_i} = \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j)}{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}.
+\end{equation}
+In other words, strategy $j$ has an average competitive advantage over strategy $i$ ($\kappa_j/\kappa_i > 1$) when it performs better, on average, across the environments generated by itself and its competitor.
+
+Together, for any two strategies described by the classic replicator equation, mutual invasion requires stabilizing niche differences to overcome average fitness differences.
+Specifically, the condition for mutual invasion can be rewritten as \citep{chesson2000mechanisms}:
+\begin{equation}
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
+\end{equation}
+This inequality applies to any games described by the classic replicator equation because $\rho$ and $\kappa_j/\kappa_i$ can be calculated directly from ratios of multiplicative payoffs.
+This decomposition not only allows us to understand how different mechanisms contribute to the coexistence or exclusion of competing strategies but also provides shared axes for comparing different games.
+Detailed derivations are provided in Supplementary Text S1.
+
+We note that the absolute magnitudes of niche and fitness differences are sensitive to payoff scaling because they are defined on an exponentiated payoff scale.
+However, the qualitative outcome of strategic competition under SCT is preserved because the exponential transformation does not alter invasion conditions.
+
+\section*{Classic two-strategy games}
+
+As an illustrative example, we begin with classic two-strategy games \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}, which can be described by the following payoff matrix (Figure 2A):
+\begin{equation}
+\begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix}.
+\end{equation}
+Here, the first and second rows represent strategies 1 and 2, respectively, and the columns represent the strategy of the interacting opponent. 
+Writing $x_1$ to denote the frequency of strategy 1, the expected payoffs are
+\begin{align}
+\pi_1(\mathbf{x}) &= R x_1 + S(1-x_1),\\
+\pi_2(\mathbf{x}) &= T x_1 + P(1-x_1).
+\end{align}
+Thus, the dynamics can be written as
+\begin{equation}
+\frac{dx_1}{dt} = x_1(1-x_1)\left[(R-T)x_1 + (S-P)(1-x_1)\right].
+\end{equation}
+The signs of $T-R$ and $S-P$ determine whether each strategy can invade the other when rare.
+Specifically, strategy 2 can invade strategy 1 when $T>R$, whereas strategy 1 can invade strategy 2 when $S>P$. 
+These two invasion conditions partition the game space into four regimes (Figure 2B): 
+prisoner’s dilemma ($T>R > P>S$), hawk--dove game ($T>R$, $S>P$), stag--hunt game ($R>T$, $P>S$), and harmony game ($R>T$, $S>P$).
+In standard EGT, these outcomes are obtained by analyzing the stability of equilibrium conditions. 
+For simple games, this analysis is straightforward.
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{../diagram_two/diagram_two.pdf}
+\caption{
+\textbf{Coexistence-theoretic interpretation of classic two-strategy games.}
+(A) General payoff matrix for a two-strategy game, where rows represent the focal strategy and columns represent the strategy of the interacting opponent.
+(B) Classification of four classic games based on the payoff differences $T-R$ and $S-P$.
+Prisoner's dilemma and harmony games lead to the dominance of one strategy;
+hawk--dove games allow coexistence;
+and stag--hunt games result in bistability.
+(C) Mapping of the same four games onto niche--fitness difference space.
+Hawk--dove games correspond to the coexistence regime, where stabilizing niche differences overcome fitness differences.
+Prisoner's dilemma and harmony games correspond to competitive-exclusion regimes, whereas stag--hunt games correspond to the priority-effect regime.
+$R > P$ is assumed throughout, but this does not affect coexistence outcome in any way.
+}
+\end{figure}
+
+A coexistence-theoretic approach recovers the same classification but provides a different interpretation (Figure 2C). For a two-strategy game determined by this payoff matrix, the niche difference and fitness difference are given by the following set of equations (Supplementary Text S2):
+\begin{align}
+1- \rho &= 1 - \exp\left(\frac{R + P - S - T}{2}\right),\label{eq:nd}\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right)\label{eq:fd}.
+\end{align}
+As shown above, mutual invasion requires $\rho < \kappa_2/\kappa_1 < 1/\rho$, which is equivalent to $T > R$ and $S > P$.
+This corresponds to the hawk--dove game, in which each strategy can invade its competitor when rare and the two strategies coexist. 
+The remaining games also have natural interpretations in niche--fitness difference space. 
+Prisoner’s dilemma and harmony games represent competitive exclusion regimes, where one strategy has a fitness advantage that exceeds niche differences.
+In contrast, stag--hunt games represent a priority-effect regime, where neither strategy can invade the other and the outcome depends on initial conditions.
+Therefore, coexistence theory not only allows us to recover the classic results from two-strategy games but also provides new interpretations for these results in terms of niche and fitness differences.
+Building on this, we next apply this framework to comparing core mechanisms of cooperation.
+
+\section*{Comparisons of mechanisms for the evolution of cooperation}
+
+Even though cooperative behavior can be found across a wide range of biological systems, a simple prisoner's dilemma shows that cooperation is not an evolutionarily stable strategy \citep{axelrod1981evolution,may1987more}.
+Thus, understanding mechanisms that promote the evolution of cooperation has remained a central goal in evolutionary biology \citep{west2007evolutionary,fletcher2008simple,clutton2009cooperation,kingma2014group,rakoff2016evolution,hilbe2018evolution,apicella2019evolution,west2021ten,lee2022bacterial,palmer2022bacterial,michel2024evolution}.
+Here, we compare five classic mechanisms for the evolution of cooperation using SCT \citep{nowak2006five} and ask how they differ from the perspective of SCT.
+
+Specifically, we consider the following mechanisms: kin selection, direct reciprocity, indirect reciprocity, network reciprocity, and group selection (Figure 3A).
+Kin selection favors cooperation when two interacting individuals are genetic relatives, where the genetic relatedness $r$ must be greater than the cost-to-benefit ratio: $r > c/b$ \citep{hamilton1964genetical}.
+Direct reciprocity favors cooperation when current cooperation may promote future cooperation by the same individual through repeated encounters \citep{trivers1971evolution,axelrod1981evolution}.
+In this case, the probability of repeated interaction (i.e., ``next round'') must be greater than the cost-to-benefit ratio: $w > c/b$.
+Indirect reciprocity favors cooperation when current cooperation may promote future cooperation by different individuals through reputation \citep{nowak1998evolution,wedekind2000cooperation,nowak2005evolution}.
+Thus, the social acquaintanceship (i.e., the probability of knowing someone’s reputation) must be greater than the cost-to-benefit ratio: $q > c/b$.
+Network reciprocity favors cooperation via clustering of cooperators, requiring the benefit-to-cost ratio to be greater than the average number of neighbors: $b/c > k$ \citep{nowak1992evolutionary,lieberman2005evolutionary}.
+Finally, group selection favors cooperation via multilevel selection, where groups with more cooperators exhibit faster growth at the group level even if defectors reproduce faster at the individual level \citep{traulsen2006evolution}.
+This requires $b/c > 1 + (n/m)$, where $n$ is the maximum group size and $m$ is the number of groups.
+All of these mechanisms can be described by a simple $2\times 2$ payoff matrix \citep{nowak2006five}, from which the corresponding niche and fitness differences can be computed using \eref{nd} and \eref{fd}.
+Details on niche and fitness difference calculations are presented in Supplementary Text S3.
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{../diagram_cooperation/diagram_cooperation.pdf}
+\caption{
+\textbf{Comparisons of five mechanisms for the evolution of cooperation using SCT.}
+(A) Payoff matrices for the baseline scenario (prisoner's dilemma) and five mechanisms for the evolution of cooperation  \citep{nowak2006five}.
+Prisoner's dilemma is characterized by the benefit for the recipient $b$ and the cost for the donor $c$.
+Network reciprocity is parameterized based on $H= [(b-c)k -2c]/[(k+1)(k-2)]$.
+Parameters for all other mechanisms are described in panel B.
+(B) Changes in niche and fitness differences driven by each mechanism.
+Each arrow represents the direction of change as we increase the corresponding parameter, indicated in figure legends.
+Note that kin selection, network reciprocity, and group selection all result in changes in fitness difference without causing any changes in niche difference.
+Therefore, we indicate the direction of change for network reciprocity and group selection separately to avoid overlapping arrows.
+For simplicity, we focus on the effect of number of groups $m$ for group selection; increasing the number of maximum group size $n$ has the opposite effect (Supplementary Text S3).
+}
+\end{figure}
+
+First, the prisoner's dilemma provides a baseline scenario, where defection is evolutionarily stable (Figure 3A).
+From the perspective of SCT, there is complete niche overlap, and therefore defection competitively excludes cooperation (Figure 3B).
+Building on this, SCT shows that five mechanisms promote evolutionary stability of cooperation via different dynamical routes  (Figure 3B).
+For example, kin selection allows the fitness of cooperation to increase as genetic relatedness $r$ increases (Figure 3B).
+However, it does not affect the niche difference between cooperation and defection.
+Similarly, network reciprocity and group selection modulate the fitness of cooperation without causing any changes in strategic niches.
+In contrast, direct and indirect reciprocity destabilize competition while increasing the fitness of cooperation, thereby pushing the competition outcome towards a priority effect regime.
+Equivalently, these two mechanisms promote bistability of defection and cooperation.
+
+SCT further reveals another difference between direct and indirect reciprocity.
+In particular, direct reciprocity is unable to generate sufficient fitness difference to competitively exclude defection even when the probability of next round $w$ reaches 1 (Supplementary Text S3).
+In contrast, indirect reciprocity is able to generate sufficient fitness difference to push the system towards the boundary between priority-effect regime and competitive-exclusion regime as social acquaintanceship $q$ reaches 1, indicating that an additional mechanism may be able to promote complete dominance of cooperation (Supplementary Text S3).
+
+We note that none of these mechanisms allow coexistence of cooperation and defection.
+In many biological systems, such coexistence is often observed \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}.
+Therefore, we move on to the final example, applying SCT to microbial cooperation, where nonlinear benefits and environmental context can promote coexistence of cooperators and defectors.
+
+\section*{Microbial cooperation and public goods}
+
+Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}. 
+Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
+Assuming a linear relationship between glucose availability and microbial growth, the payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
+\begin{align}
+\pi_C(f) &= \epsilon + f (1-\epsilon) - c,\\
+\pi_D(f) &= f (1-\epsilon),
+\end{align}
+where the use of glucose depends on the fraction of cooperators $f$. 
+The dynamics of cooperators and defectors are described by the following replicator equation:
+\begin{align}
+\frac{df}{dt} &= f(1-f)\left[\pi_C(f)-\pi_D(f)\right]\\
+&= f(1-f)(\epsilon - c)
+\end{align}
+For this linear growth model, the payoff difference is fixed to $\epsilon-c$ independent of $f$ (Figure 4A).
+Therefore, cooperation is favored when efficiency is greater than the cost of cooperation, $\epsilon > c$, whereas defection is favored when the cost is greater than efficiency, $c > \epsilon$ \citep{gore2009snowdrift}.
+
+\begin{figure}[!th]
+\includegraphics[width=\textwidth]{../figure/figure_microbial.pdf}
+\caption{
+\textbf{Effects of nonlinear microbial growth on coexistence of cooperation and defection.}
+(A) Payoff differences between cooperation and defection for linear and nonlinear models of microbial growth.
+In panel A, we assumed $\epsilon=0.4$, $c=0.3$, and $\alpha=0.15$ for illustrative purposes.
+(B) Effect of nonlinearity $\alpha$ on niche difference $1-\rho$.
+Each line assumes a different value of efficiency $\epsilon$.
+Note that lines for $\epsilon=0.6$ and $\epsilon=0.4$ are nearly overlapping and are indistinguishable.
+(C) Effect of nonlinearity $\alpha$ on both niche difference $1-\rho$ and fitness difference $\log(\kappa_D/\kappa_C)$.
+The gray shaded area represents the coexistence regime.
+The square represents the condition when $\alpha \to 0^+$.
+The circles represent the condition when $\alpha=0.15$, which correspond to the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}.
+In panels B and C, we assumed $c=0.3$, while allowing $\epsilon$ and $\alpha$ to vary.
+}
+\end{figure}
+
+Our framework allows us to reinterpret this result from the perspective of coexistence theory. 
+In particular, the two strategies have no niche difference, corresponding to complete niche overlap, $\rho = 1$. 
+In contrast, the fitness difference is determined by the balance between private efficiency and the cost of cooperation:
+\begin{equation}
+\frac{\kappa_D}{\kappa_C} = \exp(c - \epsilon).
+\end{equation}
+Therefore, this model always predicts competitive exclusion, except in the neutral case $c=\epsilon$. 
+The outcome is determined entirely by the fitness difference between cooperators and defectors, rather than by stabilizing niche differences.
+This example resembles the prisoner's dilemma discussed in the previous example (Figure 3).
+
+In real biological systems, the effect of glucose on microbial growth follows a nonlinear relationship:
+\begin{align}
+\pi_C(f) &= \left[\epsilon + f (1-\epsilon)\right]^\alpha - c,\\
+\pi_D(f) &= [f (1-\epsilon)]^\alpha,
+\end{align}
+where $\alpha=0.15$ reflects the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}. 
+Then, the dynamics of cooperators and defectors are described by the following replicator equation:
+\begin{align}
+\frac{df}{dt} &= f(1-f)\left[\left\{\epsilon + f (1-\epsilon)\right\}^\alpha - c - \{f (1-\epsilon)\}^\alpha \right].
+\end{align}
+Under this nonlinear assumption, the payoff difference decreases with the cooperator fraction $f$, which can promote the coexistence of cooperators and defectors (Figure 4A): cooperators have a competitive advantage when rare, whereas defectors have a competitive advantage when cooperators are abundant.
+
+From a coexistence-theoretic perspective, this means that nonlinear growth can generate sufficient stabilizing niche difference to overcome the fitness difference. 
+In particular, the niche and fitness differences for this model correspond to:
+\begin{align}
+1- \rho &= 1- \exp\left(\frac{1 - \epsilon^\alpha - (1-\epsilon)^\alpha }{2}\right),\\
+\frac{\kappa_D}{\kappa_C} &= \exp\left(c + \frac{(1-\epsilon)^\alpha - 1 - \epsilon^{\alpha} }{2} \right).
+\end{align}
+These expressions clarify the separate roles of cost, efficiency, and nonlinearity.
+For example, the cost of cooperation does not affect niche difference and only affects fitness difference.  
+Instead, niche difference is generated by the concave relationship between glucose availability and microbial growth, which increases from 0 to $1-\exp(-1/2)$ as $\alpha$ goes from 1 to 0  (Figure 4B,C).
+In contrast, as $\alpha \to 0^+$, the fitness difference approaches 
+\begin{equation}
+\log(\kappa_D/\kappa_C) \to c-\frac{1}{2},
+\end{equation}
+which no longer depends on the private capture efficiency $\epsilon$ (Figure 4C). 
+Thus, strong concavity not only generates stabilizing niche differences, but also acts as an equalizing mechanism (Figure 4C).
+Such stabilizing mechanisms are key ingredients for coexistence of cooperators and defectors.
+
+\section*{Discussion}
+
+Standard evolutionary game theory and replicator equations provide powerful tools for predicting the outcome of strategy competition, including strategic dominance, coexistence, and bistability \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
+However, these outcomes are typically understood by analyzing payoff differences within individual games, which makes it difficult to compare coexistence mechanisms across models.
+Building on Chesson's Modern Coexistence Theory from community ecology \citep{chesson2000mechanisms}, we developed a strategic coexistence theory (SCT) that allows us to decompose strategy competition in terms of stabilizing niche differences and fitness differences.
+This decomposition provides a unifying framework for comparing different games from the perspective of coexistence theory, allowing us to identify stabilizing and equalizing mechanisms for strategy competition.
+
+To demonstrate the utility of SCT, we considered three case studies.
+First, the analysis of classic two-strategy games showed that SCT recovers the original classification for these classic games, highlighting the similarities between evolutionary games and community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}.
+Then, we compared different mechanisms for the evolution of cooperation, which showed that each mechanism promotes cooperation via different dynamical routes \citep{nowak2006five}.
+Kin selection, network reciprocity, and group selection primarily affect the fitness difference between cooperation and defection, whereas direct and indirect reciprocity can destabilize competition and generate priority effects.
+Finally, our analysis of microbial cooperation showed that coexistence between cooperators and defectors requires more than reducing the fitness cost of cooperation: nonlinear benefits can generate stabilizing niche differences while also reducing fitness asymmetry \citep{gore2009snowdrift}.
+Taken together, these examples show that SCT can provide new insights into ecological underpinnings of strategy competition.
+
+There are several limitations to SCT.
+First, similar to MCT from community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies \citep{chesson2000mechanisms}.
+Second, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates.
+In such cases, replicator equations may fail to predict the outcome of competition \citep{tarnita2025reconciling}, and a full Lotka-Volterra model is needed to describe the abundances, rather than frequencies, of strategies.
+Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone \citep{tarnita2025reconciling}.
+When strategies differ intrinsically in growth, MCT may be required instead to tease apart mechanisms of strategy coexistence.
+Finally, we have focused on simple examples to illustrate the utility of SCT, but many games involve additional complexities, including population structure \citep{nowak2010evolutionary}, stochasticity \citep{wang2025evolution,bodin2026eco}, and explicit ecological feedback \citep{tarnita2025reconciling}.
+Extending SCT to these settings will be necessary to determine how broadly stabilizing and equalizing mechanisms can be compared across evolutionary games.
+
+In conclusion, SCT provides a bridge between evolutionary game theory and community ecology, allowing strategy competition to be understood from the perspective of coexistence theory. 
+Therefore, rather than replacing existing EGT or replicator-dynamics frameworks, SCT provides a complementary tool for teasing apart the coexistence mechanisms underlying evolutionary games.
+More broadly, our study builds on recent efforts to extend MCT beyond species competition \citep{park2024predicting,park2026unifying}, providing a foundation for building unifying coexistence theory for competing entities, including species, pathogen strains, and behavioral strategies.
+
+\section*{Acknowledgement}
+
+We thank Jonathan Levine for the helpful discussion.
+S.W.P. was supported by the New Faculty Startup Fund from Seoul National University,
+the National Research Foundation of Korea (NRF) grant funded by the Korea government (MSIT) (RS-2026-25474574),
+and the Global-LAMP Program of the National Research Foundation of Korea (NRF) grant funded by the Ministry of Education (No. RS-2023-00301976).
+
+\section*{Competing interests}
+
+The authors declare no competing interest.
+
+\section*{Data availability}
+
+All data and code are stored in a publicly available GitHub repository (\url{https://github.com/parklab-snu/coexistence-strategy}).
+
+\pagebreak
+
+\renewcommand\theequation{S\arabic{equation}}    
+\setcounter{equation}{0}
+
+\section*{Supplementary Text}
+
+\subsection*{S1 Derivation of the strategic coexistence theory}
+
+To derive strategic coexistence theory (SCT), we begin with replicator equations:
+\begin{align}
+\frac{dx_i}{dt} &= x_i (\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x})),
+\end{align}
+where $x_i$ represents the frequency of strategy $i$, $\pi_i$ represents the payoff of strategy $i$, and $\bar{\pi}$ represents the average payoff.
+Then, the mutual invasion condition for two competing strategies $i$ and $j$ can be written as
+\begin{align}
+\pi_j(\mathbf{e}_j) & <\pi_i(\mathbf{e}_j),\\
+\pi_i(\mathbf{e}_i) &< \pi_j(\mathbf{e}_i).
+\end{align}
+These inequalities will be preserved when we exponentiate the payoffs, $W_i(\mathbf{x}) = \exp(\pi_i(\mathbf{x}))$:
+\begin{align}
+W_j(\mathbf{e}_j) &< W_i(\mathbf{e}_j),\\
+W_i(\mathbf{e}_i) &< W_j(\mathbf{e}_i).
+\end{align}
+Rearranging, we obtain the following inequality:
+\begin{align}
+\frac{W_i(\mathbf{e}_i)}{W_j(\mathbf{e}_i)} < 1 < 
+\frac{W_i(\mathbf{e}_j)}{W_j(\mathbf{e}_j)}.
+\end{align}
+By multiplying $\sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}$ on both sides, we obtain:
+\begin{equation}
+\sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{  W_j(\mathbf{e}_i)W_i(\mathbf{e}_j)}} < 
+\sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}
+< 
+\sqrt{\frac{W_j(\mathbf{e}_i)W_i(\mathbf{e}_j)}{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j) } }
+\end{equation}
+Thus, by defining niche overlap $\rho$ and fitness difference $\kappa_j/\kappa_i$ as follows,
+\begin{align}
+\rho &= \sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j) }},\\
+\frac{\kappa_j}{\kappa_i} &= \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}},
+\end{align}
+we obtain the following inequality that defines conditions for mutual invasion and long-term coexistence of two competing strategies:
+\begin{equation}
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
+\end{equation}
+
+\subsection*{S2 Applications to classic two-strategy games}
+
+Consider a two-strategy game described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix}.
+\end{equation}
+There are four classic games that we can define from this simple payoff matrix:
+prisoner’s dilemma ($T>R > P>S$), hawk--dove game ($T>R$, $S>P$), stag--hunt game ($R>T$, $P>S$), and harmony game ($R>T$, $S>P$). 
+Here, we show that each game corresponds to a distinct region in the niche-fitness difference space under SCT.
+
+To do so, we first begin by deriving expressions for niche overlap $\rho$ and fitness difference $\kappa_j/\kappa_i$.
+Writing $x_1$ to denote the frequency of strategy 1, the expected payoff for each strategy corresponds to:
+\begin{align}
+\pi_1(\mathbf{x}) &= R x_1 + S(1-x_1),\\
+\pi_2(\mathbf{x}) &= T x_1 + P(1-x_1).
+\end{align}
+Then, multiplicative payoffs for each strategy when rare can be written as:
+\begin{align}
+W_1(1) &= \exp(R)\\
+W_1(0) &= \exp(S)\\
+W_2(1) &= \exp(T)\\
+W_2(0) &= \exp(P)
+\end{align}
+Therefore, we have:
+\begin{align}
+\rho &= \exp\left(\frac{R + P - S - T}{2}\right),\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right).
+\end{align}
+As before, SCT allows us to predict the mutual invasion of two strategy using the following inequality:
+\begin{equation}
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
+\end{equation}
+
+Then, simple algebra reveals that each condition in mutual invasion inequality can be equivalently described by the payoff inequality:
+\begin{align}
+\rho < \frac{\kappa_2}{\kappa_1} &\iff R < T\\
+\rho > \frac{\kappa_2}{\kappa_1} &\iff R > T\\
+\frac{\kappa_2}{\kappa_1} < \frac{1}{\rho} &\iff P < S\\
+\frac{\kappa_2}{\kappa_1} > \frac{1}{\rho} &\iff P > S
+\end{align}
+These inequalities then allow us to classify outcomes of two-strategy games from the perspective of SCT.
+Note that the inequality between $R$ and $P$ does not affect the outcome.
+
+\subsection*{S3 Applications to mechanisms for the evolution of cooperation}
+
+We consider five mechanisms for the evolution of cooperation, all of which can be represented as a simple $2\times 2$ payoff matrix \citep{nowak2006five}.
+Here, we go through each mechanism and derive measures for niche and fitness differences.
+
+\textbf{Prisoner's dilemma.}
+Here, we consider a special case of Prisoner's dilemma which can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+b-c & -c \\
+b & 0
+\end{pmatrix},
+\end{equation}
+where $b$ represents the benefit for the recipient and $c$ represents cost for the donor.
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 0\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(c\right).
+\end{align}
+Therefore, as long as the cost is greater than zero, prisoner's dilemma always results in the competitive exclusion of cooperation.
+
+\textbf{Kin selection.}
+Kin selection can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+(b-c)(1+r) & br-c \\
+b-rc & 0
+\end{pmatrix},
+\end{equation}
+where $r$ represents the genetic relatedness. 
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 0\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(c-br\right).
+\end{align}
+Therefore, defection will exclude cooperation when $c > br$. Equivalently, cooperation will be favored when $r > c/b$, which recovers the classic result.
+
+\textbf{Direct reciprocity.}
+Direct reciprocity can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+(b-c)/(1-w) & -c \\
+b & 0
+\end{pmatrix},
+\end{equation}
+where $w$ represents the probability of next round. 
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 1- \exp\left(\frac{(b-c)/(1-w) + c - b}{2}\right) \\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{b+c-(b-c)/(1-w)}{2}\right).
+\end{align}
+Therefore, defection will exclude cooperation when 
+\begin{align}
+\rho &< \frac{\kappa_2}{\kappa_1}\\
+\iff \exp\left(\frac{(b-c)/(1-w) + c - b}{2}\right) &< \exp\left(\frac{b+c-(b-c)/(1-w)}{2}\right)\\
+\iff bw &< c
+\end{align}
+
+However, note that the following equality holds whenever $c > 0$:
+\begin{align}
+\frac{1}{\rho} &< \frac{\kappa_2}{\kappa_1}.
+\end{align}
+Therefore, when $w > c/b$, we will have
+\begin{align}
+\frac{1}{\rho} < \frac{\kappa_2}{\kappa_1} < \rho,
+\end{align}
+which implies priority effect (equivalently, bistability).
+Even as $w \to 1^-$, this inequality holds and therefore, cooperation cannot competitively exclude defection.
+
+\textbf{Indirect reciprocity.}
+Indirect reciprocity can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+b-c & -c(1-q) \\
+b(1-q) & 0
+\end{pmatrix},
+\end{equation}
+where $q$ represents social acquaintanceship.
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 1- \exp\left(\frac{(b-c)q}{2}\right),\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{2c-(b+c)q}{2}\right).
+\end{align}
+In this case, the condition for the dominance of defection (and therefore competitive exclusion of cooperation) can be written as:
+\begin{align}
+\rho &< \frac{\kappa_2}{\kappa_1}\\
+\iff bq  &< c
+\end{align}
+Moreover, the following inequality always holds as long as $c > 0$.
+\begin{align}
+\frac{1}{\rho} &< \frac{\kappa_2}{\kappa_1},
+\end{align}
+which implies that coexistence between cooperation and defection is not possible.
+Therefore, when $q < c/b$, then defection will competitively exclude cooperation. 
+Otherwise, the system will enter the priority-effect regime.
+
+Interestingly, when $q \to 1$, we have 
+\begin{align}
+\rho &= \exp\left(\frac{b-c}{2}\right)\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{c-b}{2}\right)\\
+\frac{1}{\rho} &= \exp\left(\frac{c-b}{2}\right)\\
+\end{align}
+In other words, the following inequality will hold:
+\begin{align}
+\frac{1}{\rho} = \frac{\kappa_2}{\kappa_1} < \rho 
+\end{align}
+
+\textbf{Network reciprocity.} Network reciprocity can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+b-c & H-c \\
+b-H & 0
+\end{pmatrix},
+\end{equation}
+where $H= [(b-c)k -2c]/[(k+1)(k-2)]$ and $k$ represents the number of neighbors. 
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 0,\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left(-H+c\right),
+\end{align}
+which implies that there is complete niche overlap and that fitness difference decreases with $H$.
+Since $H$ is a monotonically decreasing function of $k$ when $k > 2$ and $b/c \geq 2$, fitness difference will increase with $k$.
+In particular, cooperation will competitively exclude defection when $H>c$, meaning that:
+\begin{equation}
+b/c > k.
+\end{equation}
+
+\textbf{Group selection.} Group selection can be described by the following payoff matrix:
+\begin{equation}
+\begin{pmatrix}
+(b-c)(m+n) & (b-c)m - cn \\
+bn & 0
+\end{pmatrix},
+\end{equation}
+where $m$ represents the number of groups and $n$ represents the group size.
+In this case, the niche and fitness differences correspond to:
+\begin{align}
+1-\rho &= 0,\\
+\frac{\kappa_2}{\kappa_1} &= \exp\left((c-b)m+cn \right),
+\end{align}
+which implies that there is complete niche overlap.
+The fitness difference will increase with $n$ but decrease with $m$, provided that $b > c$.
+In particular, cooperation will competitively exclude defection under the following condition:
+\begin{equation}
+1+ \frac{n}{m} < \frac{b}{c}.
+\end{equation}
+
+\bibliography{coexistence-strategy}
+
+\end{document}
