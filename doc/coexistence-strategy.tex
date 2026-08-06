@@ -205,7 +205,7 @@ Detailed derivations are provided in Supplementary Text S1.
 
 We note that the absolute magnitudes of niche and fitness differences are sensitive to payoff scaling because they are defined on an exponentiated payoff scale.
 Therefore, while SCT allows us to compare different games on shared axes, we cannot compare the exact values of niche and fitness differences across different games.
-Nonetheless, as we show in Supplementary Text S2, the qualitative outcome of strategic competition under SCT is preserved because the exponential transformation does not alter invasion conditions.
+Nonetheless, as we show in Supplementary Text S2, the qualitative outcome of strategic competition under SCT is preserved because payoff rescaling preserves payoff orderings.
 Therefore, we focus on comparing qualitative outcomes from SCT, including directions of change in niche and fitness difference and resulting dynamical regimes, and refrain from making any comparisons of magnitude of niche and fitness difference values.
 
 \section*{Classic two-strategy games}
@@ -309,8 +309,7 @@ In contrast, direct and indirect reciprocity destabilize competition while incre
 Equivalently, these two mechanisms promote bistability of defection and cooperation.
 
 SCT further reveals another difference between direct and indirect reciprocity.
-In particular, direct reciprocity is unable to generate sufficient fitness difference to competitively exclude defection even when the probability of next round $w$ reaches 1 (Supplementary Text S4).
-In contrast, indirect reciprocity is able to generate sufficient fitness difference to push the system towards the boundary between priority-effect regime and competitive-exclusion regime as social acquaintanceship $q$ reaches 1 (Supplementary Text S4).
+Direct reciprocity remains within the priority-effect regime as $w# reaches 1, whereas indirect reciprocity reaches the boundary between the priority-effect and competitive-exclusion regimes at $q=1$ (Supplementary Text S4).
 
 We note that none of these mechanisms allow coexistence of cooperation and defection.
 In many biological systems, such coexistence is often observed \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}.
@@ -409,7 +408,7 @@ First, similar to MCT from community ecology, SCT only allows for comparisons of
 Second, the exact values of strategic niche and fitness differences are sensitive to payoff scaling.
 SCT therefore supports quantitative comparisons only when models share a justified payoff normalization. 
 Without such normalization, comparisons are restricted to qualitative changes in dynamical regimes, directions, and boundary crossings.
-Second, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates.
+Third, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates.
 In such cases, replicator equations may fail to predict the outcome of competition \citep{tarnita2025reconciling}, and a full Lotka-Volterra model is needed to describe the abundances, rather than frequencies, of strategies.
 Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone \citep{tarnita2025reconciling}.
 When strategies differ intrinsically in growth, MCT may be required instead to tease apart mechanisms of strategy coexistence.
@@ -493,15 +492,15 @@ In this case, multiplying the payoffs by a constant $s > 0$ only changes time an
 \frac{dx_i}{dt} &= x_i (\pi'_i(\mathbf{x}) - \bar{\pi'}(\mathbf{x}))\\
 &= s x_i (\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x})),
 \end{align}
-where $\pi'_i = s \pi$ is the scaled payoff.
-Then, the multiplicative payoff corresponds to $W_i' = \exp(s\pi_i) = W_i^s$.
+where $\pi'_i(\mathbf{x}) = s \pi(\mathbf{x})$ is the scaled payoff.
+Then, the multiplicative payoff corresponds to $W_i'(\mathbf{x}) = \exp(s\pi_i) = W_i(\mathbf{x})^s$.
 
 If we try to calculate niche overlap and fitness difference based on the scaled payoffs, we get:
 \begin{align}
 \rho' &= \sqrt{\frac{W_i'(\mathbf{e}_i) W_j'(\mathbf{e}_j)}{W_j'(\mathbf{e}_i) W_i'(\mathbf{e}_j) }},\\
 &= \left(\sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j)}}\right)^s,\\
 &= \rho^s\\
-\frac{\kappa_j'}{\kappa_i'} &= \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}},\\
+\frac{\kappa_j'}{\kappa_i'} &= \sqrt{\frac{W_j'(\mathbf{e}_i)W_j'(\mathbf{e}_j) }{W_i'(\mathbf{e}_i) W_i'(\mathbf{e}_j)}},\\
 &=  \left(\sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}\right)^s,\\
 &= \left(\frac{\kappa_j}{\kappa_i}\right)^s
 \end{align}
@@ -509,7 +508,7 @@ This implies that the exact values of niche and fitness difference are sensitive
 
 Nonetheless, the inequality for mutual invasion condition still holds under payoff scaling:
 \begin{equation}
-\rho' < \frac{\kappa_j'}{\kappa_i'} < \frac{1}{\rho'}.
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho} \iff \rho^s < \left(\frac{\kappa_j}{\kappa_i}\right)^s < \frac{1}{\rho^s}.
 \end{equation}
 Furthermore, boundary conditions for complete niche overlap ($\rho=\rho'=1$) and complete niche difference ($\rho=\rho'=0$) are preserved.
 Moreover, the direction of changes in fitness and niche difference is also preserved under payoff scaling.
@@ -519,7 +518,10 @@ Specifically, for parameter $\theta$, we have:
 \frac{d}{d\theta}\left(\frac{\kappa_j'}{\kappa_i'}\right) &= s \left(\frac{\kappa_j}{\kappa_i}\right)^{s-1} \frac{d}{d\theta}\left(\frac{\kappa_j}{\kappa_i}\right).
 \end{align}
 Since $\rho$ and $\kappa_j/\kappa_i$ are always positive, directional sensitivities of $\rho$ and $\kappa_j/\kappa_i$ to parameter $\theta$ are preserved.
-Similarly, directional sensitivities of $1-\rho$ to $\theta$ are preserved.
+Similarly, directional sensitivities of $1-\rho$ to $\theta$ are preserved:
+\begin{align}
+\frac{d(1-\rho')}{d\theta} &= s \rho^{s-1} \frac{d(1-\rho)}{d\theta}
+\end{align}
 Therefore, we focus on comparisons of qualitative outcomes from SCT and refrain from making any comparisons of magnitude of niche and fitness difference values.
 
 \subsection*{S3 Applications to classic two-strategy games}
