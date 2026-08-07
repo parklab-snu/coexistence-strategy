@@ -328,7 +328,7 @@ Thus, although stochasticity can stabilize competition near the boundaries, it c
 This immediately raises a question of stochasticity can generate sufficiently strong positive frequency dependence to destabilize competition, thus pushing the system out of the coexistence regime.
 Here, we use SCT to separate these effects and clarify whether stochasticity stabilizes or destabilizes strategic competition.
 
-Following \cite{wang2025evolution}, we consider a $2×2$ game in the presence of environmental noise. 
+Following \cite{wang2025evolution}, we consider a $2\times 2$ game in the presence of environmental noise. 
 The stochastic payoff matrix is given by
 \begin{equation}
 \begin{pmatrix}
@@ -343,17 +343,17 @@ T & P
 where the first matrix represents deterministic payoffs,
 $\zeta$ represents a noise term with zero mean and unit variance,
 and the second matrix determines the intensity of environmental stochasticity.
-Assuming weak selection $s<<1$, the evolution of two competing strategies in a large population can be described by the following equation:
+Assuming weak selection $s\ll 1$, the evolution of two competing strategies in a large population can be described by the following equation:
 \begin{equation}
 \frac{dx}{dt} = s x (1-x) \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right),
 \end{equation}
 where $\pi_C = Rx + S(1-x)$ and $\pi_D = T x + P(1-x)$ and $\sigma_C = \sigma_R x + \sigma_S (1-x)$ and $\sigma_D = \sigma_T x + \sigma_P (1-x)$.
-For this system, the invasion growth rates of each strategy when rare can be written as:
+After rescaling time as $\tau = st$, the invasion growth rates of each strategy when rare can be written as:
 \begin{align}
 r_C &= S - P + \frac{1}{2}(\sigma_S - \sigma_P)^2,\\
 r_D &= T - R + \frac{1}{2}(\sigma_T - \sigma_R)^2. 
 \end{align}
-This shows that environmental stochasticity always increases the invasion growth rates, meaning that it is is intrinsically stabilizing.
+This shows that environmental stochasticity increases the invasion growth rates, meaning that it is intrinsically stabilizing.
 
 Then, an extended SCT decomposition shows that niche overlap and fitness difference can be written as:
 \begin{align}
@@ -365,7 +365,7 @@ Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap
 \Delta \log \rho = \log \rho -  \log  \hat{\rho}&=- \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4}\\
 \Delta \log \frac{\kappa_D}{\kappa_C} = \log \frac{\kappa_D}{\kappa_C}-\log \frac{\hat{\kappa}_D}{\hat{\kappa}_C} &= \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4}.
 \end{align}
-Therefore, stochasticity always reduces niche overlap and therefore increases niche difference.
+Therefore, stochasticity reduces niche overlap and increases niche difference.
 In contrast, stochasticity can either amplify or reduce fitness differences depending on which strategy’s invasion rate is more strongly affected by environmental fluctuations.
 Notably, changes in fitness difference driven by environmental stochasticity will be always bounded by those in niche overlap:
 \begin{align}
@@ -403,8 +403,8 @@ Notably, for the SH game, the system begins from the priority effect regime and 
 Consequently, $x^\ast=1$ (pure cooperation) becomes unstable first, and then $x^\ast=0$ (pure defection) also becomes unstable.
 
 This example also illustrates an important limitation of the original MCT as well as its extension, SCT.
-Since MCT and SCT solely rely on boundary conditions, they cannot predict the dynamics within interior, especially the presence of multiple internal equilibrium.
-In our example of the SH game, there is always an unstable internal equilibrium across all ranges of $k$ we consider (Figure 4C).
+Since MCT and SCT solely rely on boundary conditions, they cannot predict the presence of multiple internal equilibria or their stability.
+In the SH example, there is always an unstable internal equilibrium across all ranges of $k$ we consider (Figure 4C).
 Thus, when mutual invasion is allowed, the system permits two additional, stable internal equilibria (Figure 4C).
 In this example, the presence of internal equilibrium creates a contradiction to the traditional interpretation of MCT:
 when the SH game enters the ``competitive exclusion'' regime, coexistence becomes possible due to unstable internal equilibrium preventing competitive exclusion.
