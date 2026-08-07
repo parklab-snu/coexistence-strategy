@@ -318,6 +318,99 @@ We note that none of these mechanisms allow coexistence of cooperation and defec
 In many biological systems, such coexistence is often observed \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}.
 Therefore, we move on to the final example, applying SCT to microbial cooperation, where nonlinear benefits and environmental context can promote coexistence of cooperators and defectors.
 
+\section*{Can environmental stochasticity prevent coexistence?}
+
+So far, we have focused on simple deterministic games. 
+However, many ecological and evolutionary processes are intrinsically stochastic.
+Recently, \cite{wang2025evolution} showed that environmental fluctuations can promote coexistence in games that would otherwise lead to competitive exclusion in a deterministic environment. 
+From the perspective of SCT, this suggests that stochasticity can stabilize competition by promoting the recovery of strategies when rare. 
+Interestingly, \cite{wang2025evolution} also showed that stochasticity can generate bistable coexistence and multiple internal equilibrium.
+Thus, although stochasticity can stabilize competition near the boundaries, it can also generate destabilizing frequency dependence in the interior. 
+This immediately raises a question of stochasticity can generate sufficiently strong positive frequency dependence to destabilize competition, thus pushing the system out of the coexistence regime.
+Here, we use SCT to separate these effects and clarify whether stochasticity stabilizes or destabilizes strategic competition.
+
+Following \cite{wang2025evolution}, we consider a $2×2$ game in the presence of environmental noise. 
+The stochastic payoff matrix is given by
+\begin{equation}
+\begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix} +
+\frac{\zeta}{\sqrt{s}} \begin{pmatrix}
+\sigma_R & \sigma_S \\
+\sigma_T & \sigma_P
+\end{pmatrix}, 
+\end{equation}
+where the first matrix represents deterministic payoffs,
+$\zeta$ represents a noise term with zero mean and unit variance,
+and the second matrix determines the intensity of environmental stochasticity.
+Assuming weak selection $s<<1$, the evolution of two competing strategies in a large population can be described by the following equation:
+\begin{equation}
+\frac{dx}{dt} = s x (1-x) \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right),
+\end{equation}
+where $\pi_C = Rx + S(1-x)$ and $\pi_D = T x + P(1-x)$ and $\sigma_C = \sigma_R x + \sigma_S (1-x)$ and $\sigma_D = \sigma_T x + \sigma_P (1-x)$.
+For this system, the invasion growth rates of each strategy when rare can be written as:
+\begin{align}
+r_C &= S - P + \frac{1}{2}(\sigma_S - \sigma_P)^2,\\
+r_D &= T - R + \frac{1}{2}(\sigma_T - \sigma_R)^2. 
+\end{align}
+This shows that environmental stochasticity always increases the invasion growth rates, meaning that it is is intrinsically stabilizing.
+
+Then, an extended SCT decomposition shows that niche overlap and fitness difference can be written as:
+\begin{align}
+\rho &= \exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
+\frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
+\end{align}
+Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap and fitness difference in the absence of stochasticity and taking logs of both sides for convenience, we have:
+\begin{align}
+\Delta \log \rho = \log \rho -  \log  \hat{\rho}&=- \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4}\\
+\Delta \log \frac{\kappa_D}{\kappa_C} = \log \frac{\kappa_D}{\kappa_C}-\log \frac{\hat{\kappa}_D}{\hat{\kappa}_C} &= \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4}.
+\end{align}
+Therefore, stochasticity always reduces niche overlap and therefore increases niche difference.
+In contrast, stochasticity can either amplify or reduce fitness differences depending on which strategy’s invasion rate is more strongly affected by environmental fluctuations.
+Notably, changes in fitness difference driven by environmental stochasticity will be always bounded by those in niche overlap:
+\begin{align}
+\Delta \log \rho \leq \Delta \log \frac{\kappa_D}{\kappa_C} \leq - \Delta \log \rho
+\end{align}
+This result implies that environmental stochasticity cannot generate sufficient fitness difference to push the system out of the coexistence regime.
+
+\begin{figure}[!th]
+\includegraphics[width=\textwidth]{../diagram_stoch/diagram_stoch.pdf}
+\caption{
+\textbf{Effects of environmental stochasticity on strategic competition.}
+(A) Assumed deterministic payoff structures across four scenarios.
+Environmental stochasticity is assumed to be proportional to these payoffs, scaled by a term $k$.
+(B) Arrows indicate the direction of changes in dynamical regime as the amount of stochasticity $k$ increases.
+(C) Bifurcation diagrams under each scenario as a function of $k$. 
+Solid and dashed lines represent stable and unstable equilibrium, respectively.
+}
+\end{figure}
+
+As an example, consider a scenario where the amount of stochasticity is assumed to be proportional to deterministic payoffs \citep{wang2025evolution}:
+\begin{equation}
+ \begin{pmatrix}
+\sigma_R & \sigma_S \\
+\sigma_T & \sigma_P
+\end{pmatrix} =k \begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix}.
+\end{equation}
+Following previous case studies, we consider four deterministic payoff structures (Figure 4A): Prisoner's Dillema (PD), Hawk-Dove Game (HD), Stag-Hunt Game (SH) and Harmony Game (HG).
+Across all these examples, stochasticity eventually pushes the system inside the mutual invasion regime (Figure 4B).
+Notably, changes in dynamical regimes predicted by SCT accurately capture bifurcations occuring at the boundaries (Figure 4C): 
+for PD, HD, and SH games, both boundary equilibria eventually become unstable.
+Notably, for the SH game, the system begins from the priority effect regime and enters the competitive exclusion regime before eventually it enters the mutual invasion regime (Figure 4B).
+Consequently, $x^\ast=1$ (pure cooperation) becomes unstable first, and then $x^\ast=0$ (pure defection) also becomes unstable.
+
+This example also illustrates an important limitation of the original MCT as well as its extension, SCT.
+Since MCT and SCT solely rely on boundary conditions, they cannot predict the dynamics within interior, especially the presence of multiple internal equilibrium.
+In our example of the SH game, there is always an unstable internal equilibrium across all ranges of $k$ we consider (Figure 4C).
+Thus, when mutual invasion is allowed, the system permits two additional, stable internal equilibria (Figure 4C).
+In this example, the presence of internal equilibrium creates a contradiction to the traditional interpretation of MCT:
+when the SH game enters the ``competitive exclusion'' regime, coexistence becomes possible due to unstable internal equilibrium preventing competitive exclusion.
+Therefore, while MCT and SCT accurately capture the behavior at the boundary via invasibility, they may not correctly predict whether coexistence is possible.
+
 \section*{Microbial cooperation and public goods}
 
 Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}. 
@@ -719,6 +812,95 @@ In particular, cooperation will competitively exclude defection under the follow
 \begin{equation}
 1+ \frac{n}{m} < \frac{b}{c}.
 \end{equation}
+
+\section*{S5 Applications to evolutionary games with environmental stochasticity}
+
+
+Consider a competition of two strategies under stochastic payoffs:
+\begin{equation}
+\begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix} +
+\frac{\zeta}{\sqrt{s}} \begin{pmatrix}
+\sigma_R & \sigma_S \\
+\sigma_T & \sigma_P
+\end{pmatrix}, 
+\end{equation}
+Assuming weak selection $s<<1$, the evolution of two competing strategies in a large population can be described by the following equation:
+\begin{equation}
+\frac{dx}{dt} = s x (1-x) \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right),
+\end{equation}
+To simplify, we write
+\begin{equation}
+\frac{dx}{dt} = s x (1-x) G(x),
+\end{equation}
+where
+\begin{equation}
+G(x) = \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right).
+\end{equation}
+Thus, the sign of $G(x)$ at boundary conditions determines whether a strategy can invade when the competing strategy is at equilibrium.
+
+Note that we cannot immediately apply the original SCT presented in the main text here because $G(x)$ does not uniquely separate into two payoff measures.
+Instead, we can still utilize the invasion growth rate when rare and follow the same procedure.
+In particular, the mutual invasion condition at monomorphic boundary can be written as:
+\begin{align}
+0 &< G(0)\\
+0 &< -G(1)
+\end{align}
+Exponentiating both, we can combine them into a single inequality:
+\begin{align}
+\exp(G(1)) < 1< \exp(G(0))
+\end{align}
+Dividing both sides by $\exp((G(1) + G(0))/2)$, we get:
+\begin{align}
+\exp\left(\frac{G(1)-G(0)}{2}\right)<  \exp\left(-\frac{G(1)+G(0)}{2}\right) < \exp\left(\frac{G(0)-G(1)}{2}\right),
+\end{align}
+which gives us expressions for niche overlap and fitness difference:
+\begin{align}
+\rho &= \exp\left(\frac{G(1)-G(0)}{2}\right)\\
+\frac{\kappa_D}{\kappa_C} &= \exp\left(-\frac{G(1)+G(0)}{2}\right)
+\end{align}
+Then, by substituting expressions for $G(0)$ and $G(1)$, we obtain following expressions for niche and fitness difference:
+\begin{align}
+1- \rho &= 1-\exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
+\frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
+\end{align}
+
+Now, to study the interior behavior of the system, we assume that the amount of stochasticity is proportional to deterministic payoffs \citep{wang2025evolution}:
+\begin{equation}
+ \begin{pmatrix}
+\sigma_R & \sigma_S \\
+\sigma_T & \sigma_P
+\end{pmatrix} =k \begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix}.
+\end{equation}
+Then, the expression for $G(x)$ can be written as:
+\begin{align}
+G(x) &= \left( (R-T)x + (S-P)(1-x) \right) \times\\
+&\quad{}\left(1+ k^2 \left(\frac{1}{2} - x \right) ((R-T)x + (S-P)(1-x))\right)\\
+&= \left( (R+P-T-S)x + (S-P) \right) \times\\
+&\quad{}\left(1+ k^2 \left(\frac{1}{2} - x \right) ((R+P-T-S)x + (S-P))\right)\\
+&= k^2 (R+P-T-S)^2 \left(x-x^\ast \right) \left(K + \left(\frac{1}{2} - x \right) (x - x^\ast)\right),
+\end{align}
+where $x^\ast = (P-S)/(R+P-T-S)$ and $K = 1/(k^2(R+P-T-S))$.
+Therefore, this system has interal equilibrium $x=x^\ast$ when $0 < (P-S)/(R+P-T-S) < 1$.
+It can also have two additional equilibrium when $K + \left(\frac{1}{2} - x \right) (x - x^\ast) = 0$ has positive, real roots.
+In particular, the latter equation can be written as:
+\begin{equation}
+x^2 -\left(\frac{1}{2} + x^\ast \right) x + \frac{x^\ast}{2} - K = 0.
+\end{equation}
+Thus, two additional equilibrium correspond to:
+\begin{equation}
+x = \frac{x^\ast + \frac{1}{2} \pm \sqrt{\left(\frac{1}{2} - x^\ast \right)^2 + 4K}}{2}.
+\end{equation}
+This shows that two additional equilibrium exists when 
+\begin{equation}
+\left(\frac{1}{2} - x^\ast \right)^2 + 4K > 0.
+\end{equation}
+Note that these equilibrium may not necessarily fall between 0 and 1.
 
 \bibliography{coexistence-strategy}
 

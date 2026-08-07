@@ -35,71 +35,62 @@
 % ---------------------------------
 % Left: payoff matrix
 % ---------------------------------
-\node at (0, 5) {\textbf{(A)}};
+\node at (-5, 2) {\textbf{(A)}};
+
+\node at (-2.7, 1) {\textbf{Prisoner's Dilemma}};
 
 \node at (-2.7, 0.2) {
     $\left(
     \begin{array}{cc}
-    b-c & -c \\
-    b & 0
+    0.4 & -0.4 \\
+    1 & 0
     \end{array}
     \right)$
 };
 
-\node at (2, 1) {\textbf{Kin selection}};
+\node at (1, 1) {\textbf{Hawk-Dove Game}};
 
-\node at (2, 0.2) {
+\node at (1, 0.2) {
     $\left(
     \begin{array}{cc}
-    (b-c)(1+r) & br -c \\
-    b - rc & 0
+    0.4 & 0.4 \\
+    1 & 0
     \end{array}
     \right)$
 };
 
-\node at (-2.7, 1-2) {\textbf{Direct reciprocity}};
+\node at (-2.7, 1-2) {\textbf{Stag-Hunt Game}};
 
 \node at (-2.7, 0.2-2) {
     $\left(
     \begin{array}{cc}
-    (b-c)/(1-w) & -c \\
-    b & 0
+    1 & -0.4 \\
+    0.4 & 0
     \end{array}
     \right)$
 };
 
-\node at (2, 1-2) {\textbf{Indirect reciprocity}};
+\node at (1, 1-2) {\textbf{Harmony Game}};
 
-\node at (2, 0.2-2) {
+\node at (1, 0.2-2) {
     $\left(
     \begin{array}{cc}
-    b-c & -c(1-q) \\
-    b(1-q) & 0
+    1 & 0.4 \\
+    0.4 & 0
     \end{array}
     \right)$
 };
 
-\node at (-2.7, 1-2-2) {\textbf{Network reciprocity}};
+\node at (3.5, 2) {\textbf{(B)}};
+\pgfdeclareimage[width=6cm]{img1a}{figure_stoch.pdf}
+  \node (img1a) at (7, -1) {\pgfuseimage{img1a}};
 
-\node at (-2.7, 0.2-2-2) {
-    $\left(
-    \begin{array}{cc}
-    b-c & H-c \\
-    b-H & 0
-    \end{array}
-    \right)$
-};
+\pgfdeclareimage{img2a}{figure_stoch_bifur.pdf}
+  \node (img2a) at (2.5, -9) {\pgfuseimage{img2a}};
 
-\node at (2, 1-2-2) {\textbf{Group selection}};
 
-\node at (2, 0.2-2-2) {
-    $\left(
-    \begin{array}{cc}
-    (b-c)(m+n) & (b-c)m - cn \\
-    bn & 0
-    \end{array}
-    \right)$
-};
+\node at (-5, -4) {\textbf{(C)}};
+
 
 \end{tikzpicture}
 \end{document}
