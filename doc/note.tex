@@ -234,20 +234,21 @@ G(x) &= \left( (R-T)x + (S-P)(1-x) \right) \times\\
 &= k^2 (R+P-T-S)^2 \left(x-x^\ast \right) \left(K + \left(\frac{1}{2} - x \right) (x - x^\ast)\right),
 \end{align}
 where $x^\ast = (P-S)/(R+P-T-S)$ and $K = 1/(k^2(R+P-T-S))$.
-Therefore, this system has interal equilibrium $x=x^\ast$ when $P-S > 0$ and $R-T > 0$.
+Therefore, this system has interal equilibrium $x=x^\ast$ when $0 < (P-S)/(R+P-T-S) < 1$.
 It can also have two additional equilibrium when $K + \left(\frac{1}{2} - x \right) (x - x^\ast) = 0$ has positive, real roots.
 In particular, the latter equation can be written as:
 \begin{equation}
-x^2 -\left(\frac{1}{2} + x^\ast \right) x + \frac{x^\ast}{1} - K = 0.
+x^2 -\left(\frac{1}{2} + x^\ast \right) x + \frac{x^\ast}{2} - K = 0.
 \end{equation}
 Thus, two additional equilibrium correspond to:
 \begin{equation}
-x = \frac{x^\ast + \frac{1}{2} \pm \sqrt{\left(\frac{1}{2} + x^\ast \right)^2 + 4K}}{2}.
+x = \frac{x^\ast + \frac{1}{2} \pm \sqrt{\left(\frac{1}{2} - x^\ast \right)^2 + 4K}}{2}.
 \end{equation}
-This shows that two internal equilibrium exists when 
+This shows that two additional equilibrium exists when 
 \begin{equation}
-\left(\frac{1}{2} + x^\ast \right)^2 + 4K > 0.
+\left(\frac{1}{2} - x^\ast \right)^2 + 4K > 0.
 \end{equation}
+Note that these equilibrium may not necessarily fall between 0 and 1.
 
 \bibliography{coexistence-strategy}
 

@@ -19,3 +19,4 @@ calculate_nf_stoch <- function(Amat,
     fd=fd
   )
 }
+
