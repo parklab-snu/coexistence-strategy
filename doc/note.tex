@@ -107,9 +107,10 @@ So far, we have focused on simple deterministic 2×2 games.
 However, many ecological and evolutionary processes are intrinsically stochastic.
 Recently, \cite{wang2025evolution} showed that environmental fluctuations can promote coexistence in games that would otherwise lead to competitive exclusion in a deterministic environment. 
 From the perspective of SCT, this suggests that stochasticity can stabilize competition by promoting the recovery of strategies when rare. 
-Interestingly, \cite{wang2025evolution} also showed that stochasticity can generate bistable coexistence and multiple internal equilibria.
+Interestingly, \cite{wang2025evolution} also showed that stochasticity can generate bistable coexistence and multiple internal equilibrium.
 Thus, although stochasticity can stabilize competition near the boundaries, it can also generate destabilizing frequency dependence in the interior. 
-Here, we use SCT to separate these effects and clarify how stochasticity can both stabilize and destabilize strategic competition.
+This immediately raises a question of stochasticity can generate sufficiently strong positive frequency dependence to destabilize competition, thus pushing the system out of the coexistence regime.
+Here, we use SCT to separate these effects and clarify whether stochasticity stabilizes or destabilizes strategic competition.
 
 Following \cite{wang2025evolution}, we consider a $2×2$ game in the presence of environmental noise. 
 The stochastic payoff matrix is given by
@@ -138,12 +139,12 @@ r_D &= T - R + \frac{1}{2}(\sigma_T - \sigma_R)^2.
 \end{align}
 This shows that environmental stochasticity always increases the invasion growth rates, meaning that it is is intrinsically stabilizing.
 
-Then, an extended SCT decompsition shows that niche overlap and fitness difference can be written as:
+Then, an extended SCT decomposition shows that niche overlap and fitness difference can be written as:
 \begin{align}
 \rho &= \exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
 \end{align}
-Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap and fitness difference in the absence of stochasticity and takign logs of both sides for convenience, we have:
+Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap and fitness difference in the absence of stochasticity and taking logs of both sides for convenience, we have:
 \begin{align}
 \Delta \log \rho = \log \rho -  \log  \hat{\rho}&=- \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4}\\
 \Delta \log \frac{\kappa_D}{\kappa_C} = \log \frac{\kappa_D}{\kappa_C}-\log \frac{\hat{\kappa}_D}{\hat{\kappa}_C} &= \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4}.
@@ -151,9 +152,15 @@ Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap
 Therefore, stochasticity always reduces niche overlap and therefore increases niche difference.
 In contrast, stochasticity can either amplify or reduce fitness differences depending on which strategy’s invasion rate is more strongly affected by environmental fluctuations.
 
-This immediately raises a question of whether stochasticity can push the system out of the coexistence regime.
-However, this is not possible.
+Notably, changes in fitness difference driven by environmental stochasticity will be always bounded by those in niche overlap:
+\begin{align}
+\Delta \log \rho \leq \Delta \log \frac{\kappa_D}{\kappa_C} \leq - \Delta \log \rho
+\end{align}
+This result implies that environmental stochasticity cannot generate sufficient fitness difference to push the system out of the coexistence regime.
 
+This example also illustrates an important limitation of SCT, as well as the original MCT.
+Since SCT and MCT solely depend on boundary conditions, it cannot predict the dynamics within interior, especially the presence of multiple internal equilibrium.
+For example, 
 
 \subsection*{Supp}
 
@@ -180,7 +187,7 @@ where
 \begin{equation}
 G(x) = \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right).
 \end{equation}
-Thus, the sign of $G(x)$ at boundary conditions determines whether a strategy can invade when the competing strategy is at equilibrum.
+Thus, the sign of $G(x)$ at boundary conditions determines whether a strategy can invade when the competing strategy is at equilibrium.
 
 Note that we cannot immediately apply the original SCT presented in the main text here because $G(x)$ does not uniquely separate into two payoff measures.
 Instead, we can still utilize the invasion growth rate when rare and follow the same procedure.
@@ -202,11 +209,45 @@ which gives us expressions for niche overlap and fitness difference:
 \rho &= \exp\left(\frac{G(1)-G(0)}{2}\right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(-\frac{G(1)+G(0)}{2}\right)
 \end{align}
-Then, by substituting expressions for $G(0)$ amd $G(1)$, we obtain following expressions for niche and fitness difference:
+Then, by substituting expressions for $G(0)$ and $G(1)$, we obtain following expressions for niche and fitness difference:
 \begin{align}
 1- \rho &= 1-\exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
 \end{align}
+
+Now, to study the interior behavior of the system, we assume that the amount of stochasticity is proportional to deterministic payoffs \citep{wang2025evolution}:
+\begin{equation}
+ \begin{pmatrix}
+\sigma_R & \sigma_S \\
+\sigma_T & \sigma_P
+\end{pmatrix} =k \begin{pmatrix}
+R & S \\
+T & P
+\end{pmatrix}.
+\end{equation}
+Then, the expression for $G(x)$ can be written as:
+\begin{align}
+G(x) &= \left( (R-T)x + (S-P)(1-x) \right) \times\\
+&\quad{}\left(1+ k^2 \left(\frac{1}{2} - x \right) ((R-T)x + (S-P)(1-x))\right)\\
+&= \left( (R+P-T-S)x + (S-P) \right) \times\\
+&\quad{}\left(1+ k^2 \left(\frac{1}{2} - x \right) ((R+P-T-S)x + (S-P))\right)\\
+&= k^2 (R+P-T-S)^2 \left(x-x^\ast \right) \left(K + \left(\frac{1}{2} - x \right) (x - x^\ast)\right),
+\end{align}
+where $x^\ast = (P-S)/(R+P-T-S)$ and $K = 1/(k^2(R+P-T-S))$.
+Therefore, this system has interal equilibrium $x=x^\ast$ when $P-S > 0$ and $R-T > 0$.
+It can also have two additional equilibrium when $K + \left(\frac{1}{2} - x \right) (x - x^\ast) = 0$ has positive, real roots.
+In particular, the latter equation can be written as:
+\begin{equation}
+x^2 -\left(\frac{1}{2} + x^\ast \right) x + \frac{x^\ast}{1} - K = 0.
+\end{equation}
+Thus, two additional equilibrium correspond to:
+\begin{equation}
+x = \frac{x^\ast + \frac{1}{2} \pm \sqrt{\left(\frac{1}{2} + x^\ast \right)^2 + 4K}}{2}.
+\end{equation}
+This shows that two internal equilibrium exists when 
+\begin{equation}
+\left(\frac{1}{2} + x^\ast \right)^2 + 4K > 0.
+\end{equation}
 
 \bibliography{coexistence-strategy}
 

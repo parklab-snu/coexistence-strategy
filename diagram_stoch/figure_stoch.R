@@ -62,17 +62,25 @@ g1 <- ggplot(nf_pd_k) +
   geom_vline(xintercept=0, lty=3) +
   geom_path(aes(nd, log(fd)), 
             lwd=1, arrow = arrow(length=unit(0.1, "inches"))) +
+  geom_point(data=filter(nf_pd_k, k==0), aes(nd, log(fd)), size=4) + 
+  geom_text(data=filter(nf_pd_k, k==0), aes(nd, log(fd), label="PD"), vjust=-2, family="Times") + 
   geom_path(data=nf_hg_k, aes(nd, log(fd)), 
             lwd=1, arrow = arrow(length=unit(0.1, "inches"))) +
+  geom_point(data=filter(nf_hg_k, k==0), aes(nd, log(fd)), size=4) + 
+  geom_text(data=filter(nf_hg_k, k==0), aes(nd, log(fd), label="HG"), vjust=2, family="Times") + 
   geom_path(data=nf_co_k, aes(nd, log(fd)), 
             lwd=1, arrow = arrow(length=unit(0.1, "inches"))) +
+  geom_point(data=filter(nf_co_k, k==0), aes(nd, log(fd)), size=4) + 
+  geom_text(data=filter(nf_co_k, k==0), aes(nd, log(fd), label="SH"), vjust=-2, family="Times") + 
   geom_path(data=nf_sd_k, aes(nd, log(fd)), 
             lwd=1, arrow = arrow(length=unit(0.1, "inches"))) +
+  geom_point(data=filter(nf_sd_k, k==0), aes(nd, log(fd)), size=4) + 
+  geom_text(data=filter(nf_sd_k, k==0), aes(nd, log(fd), label="HD"), vjust=2, family="Times") + 
   scale_x_continuous("Niche difference, $1-\\rho$",
                      expand=c(0, 0)) +
   scale_y_continuous("Fitness difference, $\\log(\\kappa_D/\\kappa_C)$",
                      expand=c(0, 0)) +
-  coord_cartesian(ylim=c(ylim[1], ylim[2]), xlim=c(-2, 1)) +
+  coord_cartesian(ylim=c(ylim[1], ylim[2]), xlim=c(-1, 1)) +
   theme(
     panel.grid = element_blank(),
     panel.border = element_rect(linewidth=2),
