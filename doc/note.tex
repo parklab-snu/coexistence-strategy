@@ -104,7 +104,7 @@ Sang Woo Park\textsuperscript{1,2,*}
 \end{flushleft}
 
 So far, we have focused on simple deterministic 2×2 games. 
-However, many ecological and evolutionary dynamics are intrinsically stochastic.
+However, many ecological and evolutionary processes are intrinsically stochastic.
 Recently, \cite{wang2025evolution} showed that environmental fluctuations can promote coexistence in games that would otherwise lead to competitive exclusion in a deterministic environment. 
 From the perspective of SCT, this suggests that stochasticity can stabilize competition by promoting the recovery of strategies when rare. 
 Interestingly, \cite{wang2025evolution} also showed that stochasticity can generate bistable coexistence and multiple internal equilibria.
@@ -131,19 +131,29 @@ Assuming weak selection $s<<1$, the evolution of two competing strategies in a l
 \frac{dx}{dt} = s x (1-x) \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right),
 \end{equation}
 where $\pi_C = Rx + S(1-x)$ and $\pi_D = T x + P(1-x)$ and $\sigma_C = \sigma_R x + \sigma_S (1-x)$ and $\sigma_D = \sigma_T x + \sigma_P (1-x)$.
+For this system, the invasion growth rates of each strategy when rare can be written as:
+\begin{align}
+r_C &= S - P + \frac{1}{2}(\sigma_S - \sigma_P)^2,\\
+r_D &= T - R + \frac{1}{2}(\sigma_T - \sigma_R)^2. 
+\end{align}
+This shows that environmental stochasticity always increases the invasion growth rates, meaning that it is is intrinsically stabilizing.
 
 Then, an extended SCT decompsition shows that niche overlap and fitness difference can be written as:
 \begin{align}
 \rho &= \exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
 \end{align}
-Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap and fitness difference in the absence of stochasticity, we have:
+Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap and fitness difference in the absence of stochasticity and takign logs of both sides for convenience, we have:
 \begin{align}
-\rho &= \hat{\rho}\exp\left(- \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
-\frac{\kappa_D}{\kappa_C} &= \frac{\hat{\kappa}_D}{\hat{\kappa}_C} \exp\left(\frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right).
+\Delta \log \rho = \log \rho -  \log  \hat{\rho}&=- \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4}\\
+\Delta \log \frac{\kappa_D}{\kappa_C} = \log \frac{\kappa_D}{\kappa_C}-\log \frac{\hat{\kappa}_D}{\hat{\kappa}_C} &= \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4}.
 \end{align}
-Therefore, stochasticity always reduces niche overlap, thereby increasing niche difference and stabilizing competition.
-In contrast, it can have opposing effects on 
+Therefore, stochasticity always reduces niche overlap and therefore increases niche difference.
+In contrast, stochasticity can either amplify or reduce fitness differences depending on which strategy’s invasion rate is more strongly affected by environmental fluctuations.
+
+This immediately raises a question of whether stochasticity can push the system out of the coexistence regime.
+However, this is not possible.
+
 
 \subsection*{Supp}
 
