@@ -317,15 +317,15 @@ We note that none of these mechanisms allow coexistence of cooperation and defec
 In many biological systems, such coexistence is often observed \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}.
 Therefore, we move on to the final example, applying SCT to microbial cooperation, where nonlinear benefits and environmental context can promote coexistence of cooperators and defectors.
 
-\section*{Can environmental stochasticity prevent coexistence?}
+\section*{Can stochasticity prevent coexistence?}
 
 So far, we have focused on simple deterministic games. 
 However, many ecological and evolutionary processes are intrinsically stochastic.
 Recently, \cite{wang2025evolution} showed that environmental fluctuations can promote coexistence in games that would otherwise lead to competitive exclusion in a deterministic environment. 
 From the perspective of SCT, this suggests that stochasticity can stabilize competition by promoting the recovery of strategies when rare. 
-Interestingly, \cite{wang2025evolution} also showed that stochasticity can generate bistable coexistence and multiple internal equilibrium.
+Interestingly, \cite{wang2025evolution} also showed that stochasticity can generate bistable coexistence and multiple internal equilibria.
 Thus, although stochasticity can stabilize competition near the boundaries, it can also generate destabilizing frequency dependence in the interior. 
-This immediately raises a question of stochasticity can generate sufficiently strong positive frequency dependence to destabilize competition, thus pushing the system out of the coexistence regime.
+This immediately raises the question of whether stochasticity can generate sufficiently strong positive frequency dependence to destabilize competition, thus pushing the system out of the coexistence regime.
 Here, we use SCT to separate these effects and clarify whether stochasticity stabilizes or destabilizes strategic competition.
 
 Following \cite{wang2025evolution}, we consider a $2\times 2$ game in the presence of environmental noise. 
@@ -353,7 +353,7 @@ After rescaling time as $\tau = st$, the invasion growth rates of each strategy 
 r_C &= S - P + \frac{1}{2}(\sigma_S - \sigma_P)^2,\\
 r_D &= T - R + \frac{1}{2}(\sigma_T - \sigma_R)^2. 
 \end{align}
-This shows that environmental stochasticity increases the invasion growth rates, meaning that it is intrinsically stabilizing.
+This shows that invasion growth rates under environmental stochasticity will be greater than or equal to their deterministic counterparts, meaning that environmental stochasticity at the boundaries is intrinsically stabilizing.
 
 Then, an extended SCT decomposition shows that niche overlap and fitness difference can be written as:
 \begin{align}
@@ -367,7 +367,7 @@ Writing $\hat{\rho}$ and $\hat{\kappa}_D/\hat{\kappa}_C$ to denote niche overlap
 \end{align}
 Therefore, stochasticity reduces niche overlap and increases niche difference.
 In contrast, stochasticity can either amplify or reduce fitness differences depending on which strategy’s invasion rate is more strongly affected by environmental fluctuations.
-Notably, changes in fitness difference driven by environmental stochasticity will be always bounded by those in niche overlap:
+Notably, changes in fitness difference driven by environmental stochasticity will always be bounded by those in niche overlap:
 \begin{align}
 \Delta \log \rho \leq \Delta \log \frac{\kappa_D}{\kappa_C} \leq - \Delta \log \rho
 \end{align}
@@ -381,7 +381,7 @@ This result implies that environmental stochasticity cannot generate sufficient 
 Environmental stochasticity is assumed to be proportional to these payoffs, scaled by a term $k$.
 (B) Arrows indicate the direction of changes in dynamical regime as the amount of stochasticity $k$ increases.
 (C) Bifurcation diagrams under each scenario as a function of $k$. 
-Solid and dashed lines represent stable and unstable equilibrium, respectively.
+Solid and dashed lines represent stable and unstable equilibria, respectively.
 }
 \end{figure}
 
@@ -395,20 +395,19 @@ R & S \\
 T & P
 \end{pmatrix}.
 \end{equation}
-Following previous case studies, we consider four deterministic payoff structures (Figure 4A): Prisoner's Dillema (PD), Hawk-Dove Game (HD), Stag-Hunt Game (SH) and Harmony Game (HG).
+Following previous case studies, we consider four deterministic payoff structures (Figure 4A): Prisoner's Dilemma (PD), Hawk-Dove Game (HD), Stag-Hunt Game (SH) and Harmony Game (HG).
 Across all these examples, stochasticity eventually pushes the system inside the mutual invasion regime (Figure 4B).
-Notably, changes in dynamical regimes predicted by SCT accurately capture bifurcations occuring at the boundaries (Figure 4C): 
-for PD, HD, and SH games, both boundary equilibria eventually become unstable.
-Notably, for the SH game, the system begins from the priority effect regime and enters the competitive exclusion regime before eventually it enters the mutual invasion regime (Figure 4B).
-Consequently, $x^\ast=1$ (pure cooperation) becomes unstable first, and then $x^\ast=0$ (pure defection) also becomes unstable.
+Notably, changes in dynamical regimes predicted by SCT accurately capture bifurcations occurring at the boundaries (Figure 4C): 
+at sufficiently large $k$, both boundary equilibria are unstable in all four games.
+Notably, for the SH game, the system begins from the priority effect regime and enters the competitive exclusion regime before eventually entering the mutual invasion regime (Figure 4B).
+Consequently, $x=1$ (pure cooperation) becomes unstable first, and then $x=0$ (pure defection) also becomes unstable.
 
 This example also illustrates an important limitation of the original MCT as well as its extension, SCT.
 Since MCT and SCT solely rely on boundary conditions, they cannot predict the presence of multiple internal equilibria or their stability.
-In the SH example, there is always an unstable internal equilibrium across all ranges of $k$ we consider (Figure 4C).
-Thus, when mutual invasion is allowed, the system permits two additional, stable internal equilibria (Figure 4C).
-In this example, the presence of internal equilibrium creates a contradiction to the traditional interpretation of MCT:
-when the SH game enters the ``competitive exclusion'' regime, coexistence becomes possible due to unstable internal equilibrium preventing competitive exclusion.
-Therefore, while MCT and SCT accurately capture the behavior at the boundary via invasibility, they may not correctly predict whether coexistence is possible.
+In the SH example, there is an unstable internal equilibrium across all ranges of $k$ we consider (Figure 4C).
+When the system enters the competitive-exclusion regime, an additional stable internal equilibrium appears, allowing coexistence.
+Furthermore, when mutual invasion is allowed, two stable coexistence equilibria are present.
+Therefore, while MCT and SCT accurately capture the behavior at the boundary via invasibility, they do not fully characterize the interior dynamics or all conditions under which coexistence is possible.
 
 \section*{Microbial cooperation and public goods}
 
@@ -826,7 +825,7 @@ T & P
 \sigma_T & \sigma_P
 \end{pmatrix}, 
 \end{equation}
-Assuming weak selection $s<<1$, the evolution of two competing strategies in a large population can be described by the following equation:
+Assuming weak selection $s\ll 1$, the evolution of two competing strategies in a large population can be described by the following equation:
 \begin{equation}
 \frac{dx}{dt} = s x (1-x) \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)^2 \right),
 \end{equation}
@@ -842,7 +841,7 @@ Thus, the sign of $G(x)$ at boundary conditions determines whether a strategy ca
 
 Note that we cannot immediately apply the original SCT presented in the main text here because $G(x)$ does not uniquely separate into two payoff measures.
 Instead, we can still utilize the invasion growth rate when rare and follow the same procedure.
-In particular, the mutual invasion condition at monomorphic boundary can be written as:
+In particular, the mutual invasion condition at the monomorphic boundary can be written as:
 \begin{align}
 0 &< G(0)\\
 0 &< -G(1)
@@ -860,7 +859,7 @@ which gives us expressions for niche overlap and fitness difference:
 \rho &= \exp\left(\frac{G(1)-G(0)}{2}\right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(-\frac{G(1)+G(0)}{2}\right)
 \end{align}
-Then, by substituting expressions for $G(0)$ and $G(1)$, we obtain following expressions for niche and fitness difference:
+Then, by substituting expressions for $G(0)$ and $G(1)$, we obtain the following expressions for niche and fitness difference:
 \begin{align}
 1- \rho &= 1-\exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
@@ -884,22 +883,23 @@ G(x) &= \left( (R-T)x + (S-P)(1-x) \right) \times\\
 &\quad{}\left(1+ k^2 \left(\frac{1}{2} - x \right) ((R+P-T-S)x + (S-P))\right)\\
 &= k^2 (R+P-T-S)^2 \left(x-x^\ast \right) \left(K + \left(\frac{1}{2} - x \right) (x - x^\ast)\right),
 \end{align}
-where $x^\ast = (P-S)/(R+P-T-S)$ and $K = 1/(k^2(R+P-T-S))$.
-Therefore, this system has interal equilibrium $x=x^\ast$ when $0 < (P-S)/(R+P-T-S) < 1$.
-It can also have two additional equilibrium when $K + \left(\frac{1}{2} - x \right) (x - x^\ast) = 0$ has positive, real roots.
-In particular, the latter equation can be written as:
+where $x^\ast = (P-S)/(R+P-T-S)$ and $K = 1/(k^2(R+P-T-S))$ for $k > 0$ and $R + P -T - S \neq 0$.
+Therefore, this system has an internal equilibrium $x=x^\ast$ when $0 < (P-S)/(R+P-T-S) < 1$.
+
+The system can also have up to two additional equilibria when $K + \left(\frac{1}{2} - x \right) (x - x^\ast) = 0$ has positive, real roots and when these roots fall between 0 and 1.
+In particular, the quadratic equation can be written as:
 \begin{equation}
 x^2 -\left(\frac{1}{2} + x^\ast \right) x + \frac{x^\ast}{2} - K = 0.
 \end{equation}
-Thus, two additional equilibrium correspond to:
+Thus, the two solutions of the quadratic equation correspond to:
 \begin{equation}
 x = \frac{x^\ast + \frac{1}{2} \pm \sqrt{\left(\frac{1}{2} - x^\ast \right)^2 + 4K}}{2}.
 \end{equation}
-This shows that two additional equilibrium exists when 
+These solutions are real when:
 \begin{equation}
 \left(\frac{1}{2} - x^\ast \right)^2 + 4K > 0.
 \end{equation}
-Note that these equilibrium may not necessarily fall between 0 and 1.
+When these solutions fall between 0 and 1, they correspond to additional internal equilibria.
 
 \bibliography{coexistence-strategy}
 
