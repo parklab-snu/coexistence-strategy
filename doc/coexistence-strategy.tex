@@ -129,9 +129,9 @@ Recently, there has been growing interest in characterizing similarities between
 In particular, \cite{tarnita2025reconciling} recently argued that a closer synthesis between ecology and evolutionary game theory can provide new insights into ecological and evolutionary assembly, competition, and coexistence.
 This renewed perspective between ecological and evolutionary dynamics suggests that evolutionary games may be interpreted not only as payoff-based competition but also as problems of strategic coexistence.
 
-Interestingly, even a simple two-strategy game can yield heterogeneous outcomes that mirror outcomes in community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}: the dominance of a single strategy (prisoner’s dilemma and harmony games), coexistence (hawk–dove games), and bistability (stag-hunt games).
+Interestingly, even a simple two-strategy game can yield heterogeneous outcomes that mirror those in community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}: the dominance of a single strategy (prisoner’s dilemma and harmony games), coexistence (hawk–dove games), and bistability (stag-hunt games).
 Such differences in conditions that promote evolutionary stability and dominance of a single strategy and those that permit strategy coexistence indicate that EGT can be understood from the perspective of coexistence theory \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
-In fact, stable polymorphisms of evolutionary strategies are observed in microbial and other biological systems \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}, but coexistence-theoretic perspective has often remained implicit.
+In fact, stable polymorphisms of evolutionary strategies are observed in microbial and other biological systems \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}, but a coexistence-theoretic perspective has often remained implicit.
 Recasting game dynamics as a coexistence problem immediately raises the following question: when two strategies coexist, does the corresponding mechanism stabilize or equalize competition \citep{chesson2000mechanisms}?
 While EGT allows us to predict whether two strategies can coexist or not, a common framework for comparing coexistence mechanisms between competing strategies remains elusive.
 
@@ -139,17 +139,20 @@ Modern coexistence theory (MCT) from community ecology presents a particularly u
 MCT predicts that coexistence of two competing entities, be they species or strategies, requires stabilizing niche differences to overcome average fitness differences \citep{chesson2000mechanisms,adler2007niche,kraft2015plant}.
 In community ecology, stabilizing niche differences represent differences in factors that limit the growth of competing species, causing each species to limit itself more than it limits its competitor \citep{chesson2000mechanisms}.
 In EGT, a strategy’s niche can be interpreted as strategic environments defined by the composition of competing strategies and the resulting interactions \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
-Thus, stabilizing niche differences arise when each strategy is favored by a different strategic environment, such that the spread of each strategy creates conditions that limit its own relative growth and favor the recovery of its competitor.
+From the perspective of MCT, stabilizing niche differences arise when each strategy is favored under the monomorphic boundary condition created by its competitor than under the one created by itself, such that the spread of each strategy limits its own relative growth and favors the recovery of its competitor.
 In contrast, fitness differences represent differences in the ability of each entity to compete under the limiting environments created by its competitor \citep{chesson2000mechanisms}.
 This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
 
 So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
-Inspired by this effort, we present Strategic Coexistence Theory (SCT) for predicting coexistence and exclusion of competing strategies in EGT by decomposing invasion growth rates into strategic niche and fitness differences.
-We begin by introducing SCT, which can be applied to any generic system of EGT described by replicator equations.
-We show that SCT can recover outcomes from classic, two-strategy games, providing a reinterpretation of classic results from coexistence-theoretic perspective.
-We then apply SCT to comparing five mechanisms for the evolution of cooperation, revealing that direct and indirect reciprocity destabilize competition between cooperators and defectors, thus pushing the system towards priority effect regime.
-Finally, we consider a case study of microbial cooperation, where nonlinear microbial growth can both stabilize and equalize competition between cooperation and defection, allowing coexistence of strategies.
-Together, these examples show that SCT provides a common, ecological language for comparing the mechanisms underlying strategic evolution.
+Inspired by this effort, we present Strategic Coexistence Theory (SCT), which translates the invasion growth rates of competing strategies at monomorphic boundary conditions into strategic niche and fitness differences.
+In doing so, we apply SCT to four different case studies: classic two-strategy games, mechanisms for the evolution of cooperation, environmental stochasticity, and multiplayer public-goods games.
+For classic-game and stochasticity applications, we consider four different game types: Prisoner’s Dilemma, Hawk–Dove, Stag–Hunt, and Harmony.
+In the cooperation-mechanism application, prisoner's dilemma serves as a common baseline for comparing five pairwise mechanisms.
+In contrast, the multiplayer public-goods application considers an explicit $N$-player game with nonlinearity effect on public goods.
+
+Overall, these examples illustrate the utility of a coexistence-theoretic perspective for comparing mechanisms of strategy competition.
+However, since SCT is based on invasion growth rates at monomorphic boundary conditions, it does not provide a complete picture for the interior dynamics.
+Within this scope, SCT provides a common framework for linking coexistence theory in community ecology with evolutionary game theory.
 
 \section*{Strategic coexistence theory}
 
@@ -159,7 +162,7 @@ To do so, we begin with a classic replicator equation, which allows us to model 
 \frac{dx_i}{dt} = x_i (\pi_i(\mathbf{x}) - \bar{\pi}(\mathbf{x})),
 \end{equation}
 where $x_i$ represents the frequency of strategy $i$, $\pi_i(\mathbf{x})$ represents the payoff of strategy $i$ for a given strategy distribution $\mathbf{x}$, and $\bar{\pi}(\mathbf{x}) = \sum_i \pi_i(\mathbf{x}) x_i$ represents the average payoff. Since strategy frequencies must sum to 1 (i.e., $\sum_i x_i = 1$), a single-strategy equilibrium dominated by strategy $i$ can be described by a unit vector $\mathbf{e}_i$, where all elements are equal to zero except for the $i$-th element. 
-We use these single-strategy equilibria to define niche and fitness differences between two competing strategies $i$ and $j$. 
+We use these single-strategy equilibria to define niche and fitness differences between two competing strategies $i$ and $j$.
 
 Because payoffs in many games can be negative, payoff ratios can be difficult to interpret.
 Thus, we work on a positive multiplicative scale by exponentiating the payoff terms:
@@ -271,15 +274,17 @@ This corresponds to the hawk--dove game, in which each strategy can invade its c
 The remaining games also have natural interpretations in niche--fitness difference space. 
 Prisoner’s dilemma and harmony games represent competitive exclusion regimes, where one strategy has a fitness advantage that exceeds niche differences.
 In contrast, stag--hunt games represent a priority-effect regime, where neither strategy can invade the other and the outcome depends on initial conditions.
-Therefore, coexistence theory not only allows us to recover the classic results from two-strategy games but also provides new interpretations for these results in terms of niche and fitness differences.
+Therefore, coexistence theory not only allows us to recover the classic results from two-strategy games but also expresses these results in terms of niche and fitness differences.
 Building on this, we next apply this framework to comparing core mechanisms of cooperation.
 
 \section*{Comparisons of mechanisms for the evolution of cooperation}
 
 Understanding mechanisms that promote the evolution of cooperation is a central goal in evolutionary biology \citep{west2007evolutionary,fletcher2008simple,clutton2009cooperation,kingma2014group,rakoff2016evolution,hilbe2018evolution,apicella2019evolution,west2021ten,lee2022bacterial,palmer2022bacterial,michel2024evolution}.
 Here, we compare five classic mechanisms for the evolution of cooperation using SCT \citep{nowak2006five} and ask how they differ from the perspective of SCT.
-
 Specifically, we consider the following mechanisms: kin selection, direct reciprocity, indirect reciprocity, network reciprocity, and group selection (Figure 3A).
+Following \cite{nowak2006five}, these five mechanisms are formulated as modifications of a pairwise Prisoner’s Dilemma.
+We use the Prisoner’s Dilemma as a common baseline for comparing these specific formulations in this case study, rather than as a general model of cooperation.
+
 Kin selection favors cooperation when two interacting individuals are genetic relatives, where the genetic relatedness $r$ must be greater than the cost-to-benefit ratio: $r > c/b$ \citep{hamilton1964genetical}.
 Direct reciprocity favors cooperation when current cooperation may promote future cooperation by the same individual through repeated encounters \citep{trivers1971evolution,axelrod1981evolution}.
 In this case, the probability of repeated interaction (i.e., ``next round'') must be greater than the cost-to-benefit ratio: $w > c/b$.
@@ -318,12 +323,12 @@ Similarly, network reciprocity and group selection modulate the fitness of coope
 In contrast, direct and indirect reciprocity destabilize competition while increasing the fitness of cooperation, thereby pushing the competition outcome towards a priority effect regime.
 Equivalently, these two mechanisms promote bistability of defection and cooperation.
 
-SCT further reveals another difference between direct and indirect reciprocity.
+SCT further illustrates another difference between direct and indirect reciprocity.
 Direct reciprocity remains within the priority-effect regime as $w$ reaches 1, whereas indirect reciprocity reaches the boundary between the priority-effect and competitive-exclusion regimes at $q=1$ (Supplementary Text S4).
 
 We note that none of these mechanisms allow coexistence of cooperation and defection.
 In many biological systems, such coexistence is often observed \citep{gore2009snowdrift,cordero2012public,kocher2018genetic,pollak2021public,lin2024interspecific}.
-Therefore, we move on to the final example, applying SCT to microbial cooperation, where nonlinear benefits and environmental context can promote coexistence of cooperators and defectors.
+Therefore, we move on to the next example, where environmental stochasticity can promote coexistence of cooperators and defectors.
 
 \section*{Can stochasticity prevent coexistence?}
 
@@ -335,6 +340,7 @@ Interestingly, \cite{wang2025evolution} also showed that stochasticity can gener
 Thus, although stochasticity can stabilize competition near the boundaries, it can also generate destabilizing frequency dependence in the interior. 
 This immediately raises the question of whether stochasticity can generate sufficiently strong positive frequency dependence to destabilize competition, thus pushing the system out of the coexistence regime.
 Here, we use SCT to separate these effects and clarify whether stochasticity stabilizes or destabilizes strategic competition (Supplementary Text S5).
+Although we refer to the two strategies as cooperation and defection for consistency, this analysis is not restricted to the Prisoner’s Dilemma and can be applied to any $2\times 2$ games.
 
 Following \cite{wang2025evolution}, we consider a $2\times 2$ game in the presence of environmental noise. 
 The stochastic payoff matrix is given by
@@ -417,12 +423,12 @@ When the system enters the competitive-exclusion regime, an additional stable in
 Furthermore, when mutual invasion is allowed, two stable coexistence equilibria are present.
 Therefore, while MCT and SCT accurately capture the behavior at the boundary via invasibility, they do not fully characterize the interior dynamics or all conditions under which coexistence is possible.
 
-\section*{Evolution of cooperation in multi-player, nonliear public goodsgames}
+\section*{Evolution of cooperation in multiplayer, nonlinear public goods games}
 
-Previous examples focused on evolutionary games based on two-player interactions but real world behaviors, especially cooperation, depend on interactions between multiple players.
+Previous case studies focused on evolutionary games based on pairwise interactions, but real-world behaviors, especially cooperation, often involve interactions among multiple players \citep{motro1991co,archetti2012game}.
 In particular, cooperators can contribute to shared public goods, from which other individuals can benefit.
-As our final study, we consider a N-player public-goods game to investigate the effects of multiplayer interaction on strategy competition.
-In doing so, we also consider the effect of nonlinear public goods and ask when nonlinearity can stabilize competition.
+As our final study, we consider an N-player public-goods game to investigate the effects of multiplayer interaction on strategy competition.
+In doing so, we also consider the effect of nonlinear public goods and ask when nonlinearity can stabilize or destabilize competition.
 
 To model the evolution of cooperation under multiplayer interactions,
 we begin by assuming that every individual receives the same amount of benefit $\beta(i)$ which increases monotonically with the number of cooperators $i$, and that cooperation incurs a constant cost $c > 0$.
@@ -443,7 +449,7 @@ The resulting replicator equation corresponds to:
 where $G(x) = \pi_C(x)-\pi_D(x)$ represents the payoff difference.
 
 While this game consists of interactions between multiple individuals, from the perspective of SCT, there are still two strategies competing.
-Thus, we can compute niche overlap $\rho$ and fitness difference $\kappa_C/\kappa_D$ using standard SCT, which in turn can be simplified in terms of payoff differences at the boundary:
+Thus, we can compute niche overlap $\rho$ and fitness difference $\kappa_D/\kappa_C$ using standard SCT, which in turn can be simplified in terms of payoff differences at the boundary:
 \begin{align}
 \rho &= \exp\left(\frac{\pi_C(1)+\pi_D(0)-\pi_C(0)-\pi_D(1)}{2}\right) = \exp\left(\frac{G(1)-G(0)}{2}\right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{\pi_D(0)+\pi_D(1)-\pi_C(1)-\pi_C(0)}{2}\right) = \exp\left(-\frac{G(1)+G(0)}{2}\right).
@@ -465,29 +471,41 @@ This formulation shows that mutual invasion is possible only when the marginal b
 
 We can now draw three conclusions from this observation.
 First, when the benefit of public good $\beta(i)$ increases linearly with $i$ (thus $\beta(1) - \beta(0) = \beta(N) - \beta(N-1)$), then there is complete niche overlap because $G(1) = G(0)$.
-In this case, cooperators competitively exclude defectors when the marginal benefit $\beta(1) - \beta(0)$ is greater than cost $c$, and defectors competitively exclude cooperators otherwise.
+In this case, cooperators competitively exclude defectors when the marginal benefit $\beta(1) - \beta(0)$ is greater than the cost $c$, and defectors competitively exclude cooperators when the marginal benefit is smaller than the cost.
 Stable coexistence becomes impossible.
-Second, when the benefit of public good $\beta(i)$ is a concave, increasing function of $i$ (i.e., $d\beta/di > 0$ and $d^2\beta/di^2 < 0$), we have $\beta(1)-\beta(0) >  \beta(N) - \beta(N-1)$.
-This means that nonliearity can generate niche difference and allow coexistence, provided that the cost $c$ lies between the inequality.
-This generalizes the result of \cite{gore2009snowdrift}, showing that the effect of concave nonlinearity on coexistence is robust to multiplayer extension (see Supplementary Text S1 and Figure S1 for detailed analyses).
-Third, when the benefit of public good $\beta(i)$ is a convex, increasing function of $i$ (i.e., $d\beta/di > 0$ and $d^2\beta/di^2 > 0$), we have $\beta(1)-\beta(0) < \beta(N) - \beta(N-1)$.
-In this case, nonliearity can allow bistability of two boundary conditions and generate priority effect.
+Second, when the benefit of public good $\beta(i)$ is a concave, increasing function of $i$ (i.e., $d\beta/di > 0$ and $d^2\beta/di^2 < 0$), we have $\beta(1)-\beta(0) >  \beta(N) - \beta(N-1)$ \citep{motro1991co}.
+This means that nonlinearity can generate niche difference and allow coexistence when
+\begin{equation}
+\beta(N) - \beta(N-1) < c < \beta(1) - \beta(0)
+\end{equation}
+This generalizes the result of \cite{gore2009snowdrift}, showing that the effect of concave nonlinearity on coexistence is robust to multiplayer extension (see Supplementary Text S6 and Figure S1 for detailed analyses).
+Third, when the benefit of public good $\beta(i)$ is a convex, increasing function of $i$ (i.e., $d\beta/di > 0$ and $d^2\beta/di^2 > 0$), we have $\beta(1)-\beta(0) < \beta(N) - \beta(N-1)$ \citep{motro1991co}.
+In this case, nonlinearity can allow bistability of two boundary monomorphic equilibria and generate priority effect when
+\begin{equation}
+\beta(1) - \beta(0) < c < \beta(N) - \beta(N-1).
+\end{equation}
+Therefore, SCT shows that nonlinearity can either stabilize or destabilize strategic coexistence depending on the shape of nonlinearity.
+Accordingly, $G(x)$ decreases monotonically for concave benefits and increases monotonically for convex benefits, so these cases can have at most one internal equilibrium.
 
-We note that this multi-player game can also permit 
+We note that this multiplayer game can also permit multiple internal equilibria.
+For example, \cite{archetti2012game} considers a scenario where $\beta(t)$ follows a sigmoid function, illustrating that coexistence between cooperators and defectors is possible even when defectors have higher payoffs at both boundaries.
+In such cases, SCT will be able to capture invasibility at the boundary but will not be able to predict internal dynamics, as we show in the previous case study.
 
 \section*{Discussion}
 
 Standard evolutionary game theory and replicator equations provide powerful tools for predicting the outcome of strategy competition, including strategic dominance, coexistence, and bistability \citep{motro1991co,doebeli2004evolutionary,hauert2004spatial,doebeli2005models,gore2009snowdrift,souza2009evolution,archetti2011coexistence,steidinger2014coexistence,tarnita2025reconciling}.
 However, these outcomes are typically understood by analyzing payoff differences within individual games, which makes it difficult to compare coexistence mechanisms across models.
-Building on Chesson's Modern Coexistence Theory from community ecology \citep{chesson2000mechanisms}, we developed a strategic coexistence theory (SCT) that allows us to decompose strategy competition in terms of stabilizing niche differences and fitness differences.
-This decomposition provides a unifying framework for comparing different games from the perspective of coexistence theory, allowing us to identify stabilizing and equalizing mechanisms for strategy competition.
+Building on Chesson's Modern Coexistence Theory from community ecology \citep{chesson2000mechanisms}, we developed a strategic coexistence theory (SCT) that allows us to decompose strategy competition at the invasion boundaries in terms of stabilizing niche differences and fitness differences.
 
-To demonstrate the utility of SCT, we considered three case studies.
+To demonstrate the utility of SCT, we considered four case studies.
 First, the analysis of classic two-strategy games showed that SCT recovers the original classification for these classic games, highlighting the similarities between evolutionary games and community ecology \citep{hauert2002effects,szabo2007evolutionary,cooney2020analysis,tarnita2025reconciling}.
-Then, we compared different mechanisms for the evolution of cooperation, which showed that each mechanism promotes cooperation via different dynamical routes \citep{nowak2006five}.
+Second, we compared different mechanisms for the evolution of cooperation, which showed that each mechanism promotes cooperation via different dynamical routes \citep{nowak2006five}.
 Kin selection, network reciprocity, and group selection primarily affect the fitness difference between cooperation and defection, whereas direct and indirect reciprocity can destabilize competition and generate priority effects.
-Finally, our analysis of microbial cooperation showed that coexistence between cooperators and defectors requires more than reducing the fitness cost of cooperation: nonlinear benefits can generate stabilizing niche differences while also reducing fitness asymmetry \citep{gore2009snowdrift}.
-Taken together, these examples show that SCT can provide new insights into ecological underpinnings of strategy competition.
+Third, we considered the effect of environmental stochasticity on strategy competition, showing that stochasticity cannot destabilize competition.
+Finally, a case study of multiplayer, public-goods games showed that nonlinear public benefit can either stabilize or destabilize competition.
+The final two applications also revealed an important limitation of analyses based on invasion growth rates at monomorphic boundary conditions: they are unable to predict the number or stability of interior equilibria.
+We note that SCT is not intended to produce dynamical predictions that differ from standard analyses in EGT.
+Instead, SCT provides a common visualization and expository framework for comparing how different mechanisms alter boundary invasibility through changes in strategic niche and fitness differences.
 
 There are several limitations to SCT.
 First, similar to MCT from community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies \citep{chesson2000mechanisms}.
@@ -641,7 +659,7 @@ Therefore, we have:
 \rho &= \exp\left(\frac{R + P - S - T}{2}\right),\\
 \frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right).
 \end{align}
-As before, SCT allows us to predict the mutual invasion of two strategy using the following inequality:
+As before, the mutual-invasion condition can be expressed as:
 \begin{equation}
 \rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
 \end{equation}
@@ -893,11 +911,13 @@ These solutions are real when:
 \end{equation}
 When these solutions fall between 0 and 1, they correspond to additional internal equilibria.
 
-
 \section*{S6 Microbial cooperation and public goods}
 
-Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}. 
-Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
+Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}.
+We note that this is a phenomenological approximation of a public-goods game as it does not explicitly consider interactions between multiple players \citep{archetti2011coexistence}.
+Nonetheless, this example provides a simple illustration of how a concave benefit function can promote coexistence.
+
+Invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
 Assuming a linear relationship between glucose availability and microbial growth, the payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
 \begin{align}
 \pi_C(f) &= \epsilon + f (1-\epsilon) - c,\\
@@ -932,6 +952,8 @@ Then, the dynamics of cooperators and defectors are described by the following r
 \frac{df}{dt} &= f(1-f)\left[\left\{\epsilon + f (1-\epsilon)\right\}^\alpha - c - \{f (1-\epsilon)\}^\alpha \right].
 \end{align}
 Under this nonlinear assumption, the payoff difference decreases with the cooperator fraction $f$, which can promote the coexistence of cooperators and defectors (Figure S1A): cooperators have a competitive advantage when rare, whereas defectors have a competitive advantage when cooperators are abundant.
+Because the payoff difference decreases monotonically with $f$, this model can have at most one internal equilibrium.
+Thus, while it provides a simple illustration of how concavity can promote coexistence, it cannot capture the multiple internal equilibria that can arise under more general nonlinear benefit functions, such as sigmoid functions.
 
 From a coexistence-theoretic perspective, this means that nonlinear growth can generate sufficient stabilizing niche difference to overcome the fitness difference. 
 In particular, the niche and fitness differences for this model correspond to:
@@ -948,7 +970,7 @@ In contrast, as $\alpha \to 0^+$, the fitness difference approaches
 \end{equation}
 which no longer depends on the private capture efficiency $\epsilon$ (Figure S1C). 
 Thus, strong concavity not only generates stabilizing niche differences, but also acts as an equalizing mechanism (Figure S1C).
-Such stabilizing mechanisms are key ingredients for coexistence of cooperators and defectors.
+Such stabilizing mechanisms are key ingredients for coexistence of competing strategies.
 
 \pagebreak
 
