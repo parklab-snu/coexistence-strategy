@@ -103,7 +103,27 @@ Sang Woo Park\textsuperscript{1,2,*}
 *Corresponding author: sangwoopark@snu.ac.kr
 \end{flushleft}
 
-Our analyses thus far focused on 
+Previous examples focused on evolutionary games based on two-player interactions but real world behaviors, especially cooperation, depend on interactions between multiple players.
+In particular, cooperators can contribute to shared public goods, from which other individuals can benefit.
+As our final study, we consider a N-player public-goods game to investigate the effects of multiplayer interaction on strategy competition.
+In doing so, we also consider the effect of nonlinear public goods and ask when nonlinearity can stabilize competition.
+
+To model the evolution of cooperation under multiplayer interactions,
+we begin by assuming that every individual receives the same amount of benefit $\beta(i)$ which increases monotonically with the number of cooperators $i$, and that cooperation incurs a constant cost $c$.
+Assuming that each individual interacts with $N-1$ other selected individuals, the average payoff for cooperators $\pi_C(x)$ and defectors $\pi_D(x)$ depends on the probability $f_j(x)$ of finding $j$ cooperators in the group, given $x$ proportion of cooperators in the population \citep{archetti2012game}:
+\begin{align}
+\pi_C(x) &= \sum_{j=0}^{N-1} f_j(x)\beta(j+1) -c\\
+\pi_D(x) &= \sum_{j=0}^{N-1} f_j(x)\beta(j)
+\end{align}
+Assuming random, homogeneous mixing in a large population, the probability $f_j(x)$ follows a binomial distribution:
+\begin{align}
+\pi_C(x) &= \sum_{j=0}^{N-1} \binom{N-1}{j} x^j (1-x)^{N-1-j} \beta(j+1) -c\\
+\pi_D(x) &= \sum_{j=0}^{N-1} \binom{N-1}{j} x^j (1-x)^{N-1-j}  \beta(j)
+\end{align}
+The resulting replicator equation corresponds to:
+\begin{align}
+\frac{dx}{dt} = x(1-x)\left(\pi_C(x)-\pi_D(x)\right)
+\end{align}
 
 \bibliography{coexistence-strategy}
 
