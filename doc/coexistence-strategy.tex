@@ -417,79 +417,63 @@ When the system enters the competitive-exclusion regime, an additional stable in
 Furthermore, when mutual invasion is allowed, two stable coexistence equilibria are present.
 Therefore, while MCT and SCT accurately capture the behavior at the boundary via invasibility, they do not fully characterize the interior dynamics or all conditions under which coexistence is possible.
 
-\section*{Microbial cooperation and public goods}
+\section*{Evolution of cooperation in multi-player, nonliear public goodsgames}
 
-Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}. 
-Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
-Assuming a linear relationship between glucose availability and microbial growth, the payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
-\begin{align}
-\pi_C(f) &= \epsilon + f (1-\epsilon) - c,\\
-\pi_D(f) &= f (1-\epsilon),
-\end{align}
-where the use of glucose depends on the fraction of cooperators $f$. 
-The dynamics of cooperators and defectors are described by the following replicator equation:
-\begin{align}
-\frac{df}{dt} &= f(1-f)\left[\pi_C(f)-\pi_D(f)\right]\\
-&= f(1-f)(\epsilon - c)
-\end{align}
-For this linear growth model, the payoff difference is fixed to $\epsilon-c$ independent of $f$ (Figure 4A).
-Therefore, cooperation is favored when efficiency is greater than the cost of cooperation, $\epsilon > c$, whereas defection is favored when the cost is greater than efficiency, $c > \epsilon$ \citep{gore2009snowdrift}.
+Previous examples focused on evolutionary games based on two-player interactions but real world behaviors, especially cooperation, depend on interactions between multiple players.
+In particular, cooperators can contribute to shared public goods, from which other individuals can benefit.
+As our final study, we consider a N-player public-goods game to investigate the effects of multiplayer interaction on strategy competition.
+In doing so, we also consider the effect of nonlinear public goods and ask when nonlinearity can stabilize competition.
 
-\begin{figure}[!th]
-\includegraphics[width=\textwidth]{../figure/figure_microbial.pdf}
-\caption{
-\textbf{Effects of nonlinear microbial growth on coexistence of cooperation and defection.}
-(A) Payoff differences between cooperation and defection for linear and nonlinear models of microbial growth.
-In panel A, we assumed $\epsilon=0.4$, $c=0.3$, and $\alpha=0.15$ for illustrative purposes.
-(B) Effect of nonlinearity $\alpha$ on niche difference $1-\rho$.
-Each line assumes a different value of efficiency $\epsilon$.
-Note that lines for $\epsilon=0.6$ and $\epsilon=0.4$ are nearly overlapping and are indistinguishable.
-(C) Effect of nonlinearity $\alpha$ on both niche difference $1-\rho$ and fitness difference $\log(\kappa_D/\kappa_C)$.
-The gray shaded area represents the coexistence regime.
-The square represents the condition when $\alpha \to 0^+$.
-The circles represent the condition when $\alpha=0.15$, which correspond to the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}.
-In panels B and C, we assumed $c=0.3$, while allowing $\epsilon$ and $\alpha$ to vary.
-}
-\end{figure}
-
-Our framework allows us to reinterpret this result from the perspective of coexistence theory. 
-In particular, the two strategies have no niche difference, corresponding to complete niche overlap, $\rho = 1$. 
-In contrast, the fitness difference is determined by the balance between private efficiency and the cost of cooperation:
-\begin{equation}
-\frac{\kappa_D}{\kappa_C} = \exp(c - \epsilon).
-\end{equation}
-Therefore, this model always predicts competitive exclusion, except in the neutral case $c=\epsilon$. 
-The outcome is determined entirely by the fitness difference between cooperators and defectors, rather than by stabilizing niche differences.
-This example resembles the prisoner's dilemma discussed in the previous example (Figure 3).
-
-In real biological systems, the effect of glucose on microbial growth follows a nonlinear relationship:
+To model the evolution of cooperation under multiplayer interactions,
+we begin by assuming that every individual receives the same amount of benefit $\beta(i)$ which increases monotonically with the number of cooperators $i$, and that cooperation incurs a constant cost $c > 0$.
+Assuming that each individual interacts with $N-1$ other selected individuals, the average payoff for cooperators $\pi_C(x)$ and defectors $\pi_D(x)$ depends on the probability $f_j(x)$ of finding $j$ cooperators in the group, given $x$ proportion of cooperators in the population \citep{archetti2012game}:
 \begin{align}
-\pi_C(f) &= \left[\epsilon + f (1-\epsilon)\right]^\alpha - c,\\
-\pi_D(f) &= [f (1-\epsilon)]^\alpha,
+\pi_C(x) &= \sum_{j=0}^{N-1} f_j(x)\beta(j+1) -c\\
+\pi_D(x) &= \sum_{j=0}^{N-1} f_j(x)\beta(j)
 \end{align}
-where $\alpha=0.15$ reflects the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}. 
-Then, the dynamics of cooperators and defectors are described by the following replicator equation:
+Assuming random, homogeneous mixing in a large population, the probability $f_j(x)$ follows a binomial distribution:
 \begin{align}
-\frac{df}{dt} &= f(1-f)\left[\left\{\epsilon + f (1-\epsilon)\right\}^\alpha - c - \{f (1-\epsilon)\}^\alpha \right].
+\pi_C(x) &= \sum_{j=0}^{N-1} \binom{N-1}{j} x^j (1-x)^{N-1-j} \beta(j+1) -c\\
+\pi_D(x) &= \sum_{j=0}^{N-1} \binom{N-1}{j} x^j (1-x)^{N-1-j}  \beta(j)
 \end{align}
-Under this nonlinear assumption, the payoff difference decreases with the cooperator fraction $f$, which can promote the coexistence of cooperators and defectors (Figure 4A): cooperators have a competitive advantage when rare, whereas defectors have a competitive advantage when cooperators are abundant.
+The resulting replicator equation corresponds to:
+\begin{align}
+\frac{dx}{dt} = x(1-x) G(x),
+\end{align}
+where $G(x) = \pi_C(x)-\pi_D(x)$ represents the payoff difference.
 
-From a coexistence-theoretic perspective, this means that nonlinear growth can generate sufficient stabilizing niche difference to overcome the fitness difference. 
-In particular, the niche and fitness differences for this model correspond to:
+While this game consists of interactions between multiple individuals, from the perspective of SCT, there are still two strategies competing.
+Thus, we can compute niche overlap $\rho$ and fitness difference $\kappa_C/\kappa_D$ using standard SCT, which in turn can be simplified in terms of payoff differences at the boundary:
 \begin{align}
-1- \rho &= 1- \exp\left(\frac{1 - \epsilon^\alpha - (1-\epsilon)^\alpha }{2}\right),\\
-\frac{\kappa_D}{\kappa_C} &= \exp\left(c + \frac{(1-\epsilon)^\alpha - 1 - \epsilon^{\alpha} }{2} \right).
+\rho &= \exp\left(\frac{\pi_C(1)+\pi_D(0)-\pi_C(0)-\pi_D(1)}{2}\right) = \exp\left(\frac{G(1)-G(0)}{2}\right)\\
+\frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{\pi_D(0)+\pi_D(1)-\pi_C(1)-\pi_C(0)}{2}\right) = \exp\left(-\frac{G(1)+G(0)}{2}\right).
 \end{align}
-These expressions clarify the separate roles of cost, efficiency, and nonlinearity.
-For example, the cost of cooperation does not affect niche difference and only affects fitness difference.  
-Instead, niche difference is generated by the concave relationship between glucose availability and microbial growth, which increases from 0 to $1-\exp(-1/2)$ as $\alpha$ goes from 1 to 0  (Figure 4B,C).
-In contrast, as $\alpha \to 0^+$, the fitness difference approaches 
-\begin{equation}
-\log(\kappa_D/\kappa_C) \to c-\frac{1}{2},
-\end{equation}
-which no longer depends on the private capture efficiency $\epsilon$ (Figure 4C). 
-Thus, strong concavity not only generates stabilizing niche differences, but also acts as an equalizing mechanism (Figure 4C).
-Such stabilizing mechanisms are key ingredients for coexistence of cooperators and defectors.
+Here, the payoff values at the boundary correspond to: 
+\begin{align}
+G(0) &= \beta(1) - \beta(0) -c\\
+G(1) &= \beta(N) - \beta(N-1) - c
+\end{align}
+Finally, mutual invasion at the boundary requires:
+\begin{align}
+\rho < \frac{\kappa_D}{\kappa_C} < \frac{1}{\rho}.
+\end{align}
+This expression can be equivalently written as:
+\begin{align}
+G(1) < 0 < G(0) \iff \beta(N) - \beta(N-1) < c < \beta(1) - \beta(0).
+\end{align}
+This formulation shows that mutual invasion is possible only when the marginal benefit generated by the first cooperator exceeds that generated by the \(N\)th cooperator, with the cost of cooperation lying between these two marginal benefits.
+
+We can now draw three conclusions from this observation.
+First, when the benefit of public good $\beta(i)$ increases linearly with $i$ (thus $\beta(1) - \beta(0) = \beta(N) - \beta(N-1)$), then there is complete niche overlap because $G(1) = G(0)$.
+In this case, cooperators competitively exclude defectors when the marginal benefit $\beta(1) - \beta(0)$ is greater than cost $c$, and defectors competitively exclude cooperators otherwise.
+Stable coexistence becomes impossible.
+Second, when the benefit of public good $\beta(i)$ is a concave, increasing function of $i$ (i.e., $d\beta/di > 0$ and $d^2\beta/di^2 < 0$), we have $\beta(1)-\beta(0) >  \beta(N) - \beta(N-1)$.
+This means that nonliearity can generate niche difference and allow coexistence, provided that the cost $c$ lies between the inequality.
+This generalizes the result of \cite{gore2009snowdrift}, showing that the effect of concave nonlinearity on coexistence is robust to multiplayer extension (see Supplementary Text S1 and Figure S1 for detailed analyses).
+Third, when the benefit of public good $\beta(i)$ is a convex, increasing function of $i$ (i.e., $d\beta/di > 0$ and $d^2\beta/di^2 > 0$), we have $\beta(1)-\beta(0) < \beta(N) - \beta(N-1)$.
+In this case, nonliearity can allow bistability of two boundary conditions and generate priority effect.
+
+We note that this multi-player game can also permit 
 
 \section*{Discussion}
 
@@ -908,6 +892,89 @@ These solutions are real when:
 \left(\frac{1}{2} - x^\ast \right)^2 + 4K > 0.
 \end{equation}
 When these solutions fall between 0 and 1, they correspond to additional internal equilibria.
+
+
+\section*{S6 Microbial cooperation and public goods}
+
+Here, we consider a simple, phenomenological model of competition between cooperating and cheating yeast in a cooperative sucrose-metabolism system, where invertase production by cooperators allows cheaters to utilize glucose, a public good released through sucrose hydrolysis \citep{carlson1982two,dickinson1998metabolism,gore2009snowdrift}. 
+Specifically, invertase production by cooperators incurs a cost $c$ and generates a total benefit of 1 that is captured privately with efficiency $\epsilon$. 
+Assuming a linear relationship between glucose availability and microbial growth, the payoffs for cooperators $\pi_C$ and cheaters (defectors) $\pi_D$ can then be written as
+\begin{align}
+\pi_C(f) &= \epsilon + f (1-\epsilon) - c,\\
+\pi_D(f) &= f (1-\epsilon),
+\end{align}
+where the use of glucose depends on the fraction of cooperators $f$. 
+The dynamics of cooperators and defectors are described by the following replicator equation:
+\begin{align}
+\frac{df}{dt} &= f(1-f)\left[\pi_C(f)-\pi_D(f)\right]\\
+&= f(1-f)(\epsilon - c)
+\end{align}
+For this linear growth model, the payoff difference is fixed to $\epsilon-c$ independent of $f$ (Figure S1A).
+Therefore, cooperation is favored when efficiency is greater than the cost of cooperation, $\epsilon > c$, whereas defection is favored when the cost is greater than efficiency, $c > \epsilon$ \citep{gore2009snowdrift}.
+
+Our framework allows us to reinterpret this result from the perspective of coexistence theory. 
+In particular, the two strategies have no niche difference, corresponding to complete niche overlap, $\rho = 1$. 
+In contrast, the fitness difference is determined by the balance between private efficiency and the cost of cooperation:
+\begin{equation}
+\frac{\kappa_D}{\kappa_C} = \exp(c - \epsilon).
+\end{equation}
+Therefore, this model always predicts competitive exclusion, except in the neutral case $c=\epsilon$. 
+The outcome is determined entirely by the fitness difference between cooperators and defectors, rather than by stabilizing niche differences.
+
+In real biological systems, the effect of glucose on microbial growth follows a nonlinear relationship:
+\begin{align}
+\pi_C(f) &= \left[\epsilon + f (1-\epsilon)\right]^\alpha - c,\\
+\pi_D(f) &= [f (1-\epsilon)]^\alpha,
+\end{align}
+where $\alpha=0.15$ reflects the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}. 
+Then, the dynamics of cooperators and defectors are described by the following replicator equation:
+\begin{align}
+\frac{df}{dt} &= f(1-f)\left[\left\{\epsilon + f (1-\epsilon)\right\}^\alpha - c - \{f (1-\epsilon)\}^\alpha \right].
+\end{align}
+Under this nonlinear assumption, the payoff difference decreases with the cooperator fraction $f$, which can promote the coexistence of cooperators and defectors (Figure S1A): cooperators have a competitive advantage when rare, whereas defectors have a competitive advantage when cooperators are abundant.
+
+From a coexistence-theoretic perspective, this means that nonlinear growth can generate sufficient stabilizing niche difference to overcome the fitness difference. 
+In particular, the niche and fitness differences for this model correspond to:
+\begin{align}
+1- \rho &= 1- \exp\left(\frac{1 - \epsilon^\alpha - (1-\epsilon)^\alpha }{2}\right),\\
+\frac{\kappa_D}{\kappa_C} &= \exp\left(c + \frac{(1-\epsilon)^\alpha - 1 - \epsilon^{\alpha} }{2} \right).
+\end{align}
+These expressions clarify the separate roles of cost, efficiency, and nonlinearity.
+For example, the cost of cooperation does not affect niche difference and only affects fitness difference.  
+Instead, niche difference is generated by the concave relationship between glucose availability and microbial growth, which increases from 0 to $1-\exp(-1/2)$ as $\alpha$ goes from 1 to 0  (Figure S1B,C).
+In contrast, as $\alpha \to 0^+$, the fitness difference approaches 
+\begin{equation}
+\log(\kappa_D/\kappa_C) \to c-\frac{1}{2},
+\end{equation}
+which no longer depends on the private capture efficiency $\epsilon$ (Figure S1C). 
+Thus, strong concavity not only generates stabilizing niche differences, but also acts as an equalizing mechanism (Figure S1C).
+Such stabilizing mechanisms are key ingredients for coexistence of cooperators and defectors.
+
+\pagebreak
+
+\section*{Supplementary Figure}
+
+\renewcommand\thefigure{S\arabic{figure}}    
+\setcounter{figure}{0}
+
+\begin{figure}[!th]
+\includegraphics[width=\textwidth]{../figure/figure_microbial.pdf}
+\caption{
+\textbf{Effects of nonlinear microbial growth on coexistence of cooperation and defection.}
+(A) Payoff differences between cooperation and defection for linear and nonlinear models of microbial growth.
+In panel A, we assumed $\epsilon=0.4$, $c=0.3$, and $\alpha=0.15$ for illustrative purposes.
+(B) Effect of nonlinearity $\alpha$ on niche difference $1-\rho$.
+Each line assumes a different value of efficiency $\epsilon$.
+Note that lines for $\epsilon=0.6$ and $\epsilon=0.4$ are nearly overlapping and are indistinguishable.
+(C) Effect of nonlinearity $\alpha$ on both niche difference $1-\rho$ and fitness difference $\log(\kappa_D/\kappa_C)$.
+The gray shaded area represents the coexistence regime.
+The square represents the condition when $\alpha \to 0^+$.
+The circles represent the condition when $\alpha=0.15$, which correspond to the experimental relationship between glucose and microbial growth \citep{gore2009snowdrift}.
+In panels B and C, we assumed $c=0.3$, while allowing $\epsilon$ and $\alpha$ to vary.
+}
+\end{figure}
+
+\pagebreak
 
 \bibliography{coexistence-strategy}
 
