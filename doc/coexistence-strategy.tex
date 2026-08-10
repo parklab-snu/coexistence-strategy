@@ -264,7 +264,8 @@ $R > P$ is assumed throughout, but this does not affect coexistence outcome in a
 }
 \end{figure}
 
-A coexistence-theoretic approach recovers the same classification but provides a different interpretation (Figure 2C). For a two-strategy game determined by this payoff matrix, the niche difference and fitness difference are given by the following set of equations (Supplementary Text S3):
+A coexistence-theoretic approach recovers the same classification (Figure 2C). 
+For a two-strategy game determined by this payoff matrix, the niche difference and fitness difference are given by the following set of equations (Supplementary Text S3):
 \begin{align}
 1- \rho &= 1 - \exp\left(\frac{R + P - S - T}{2}\right),\label{eq:nd}\\
 \frac{\kappa_2}{\kappa_1} &= \exp\left(\frac{T+P-R-S}{2}\right)\label{eq:fd}.
@@ -508,14 +509,19 @@ We note that SCT is not intended to produce dynamical predictions that differ fr
 Instead, SCT provides a common visualization and expository framework for comparing how different mechanisms alter boundary invasibility through changes in strategic niche and fitness differences.
 
 There are several limitations to SCT.
-First, similar to MCT from community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies \citep{chesson2000mechanisms}.
+First, similar to MCT in community ecology, SCT only allows for comparisons of pairwise strategies and therefore cannot determine the outcomes of games with more than two strategies \citep{chesson2000mechanisms}.
+While SCT can be still applied to multi-player interactions, conclusions based on 2-player games may not be robust to multi-player extensions, which can introduce nonlinearity.
+Thus, our analysis of cooperation mechanisms should be interpreted as specific to the pairwise formulations considered here and as an illustration of SCT, rather than as general conclusions about multiplayer versions of these mechanisms.
+
 Second, the exact values of strategic niche and fitness differences are sensitive to payoff scaling.
 SCT therefore supports quantitative comparisons only when models share a justified payoff normalization. 
-Without such normalization, comparisons are restricted to qualitative changes in dynamical regimes, directions, and boundary crossings.
+Without such normalization, comparisons are restricted to qualitative changes in dynamical regimes, directions, and boundary crossings. 
+
 Third, we focused on classic replicator equations, but \cite{tarnita2025reconciling} recently pointed out that these classic formulations implicitly ignore differences in intrinsic growth rates.
 In such cases, replicator equations may fail to predict the outcome of competition \citep{tarnita2025reconciling}, and a full Lotka-Volterra model is needed to describe the abundances, rather than frequencies, of strategies.
 Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone \citep{tarnita2025reconciling}.
 When strategies differ intrinsically in growth, MCT may be required instead to tease apart mechanisms of strategy coexistence.
+
 Finally, we have focused on simple examples to illustrate the utility of SCT, but many games involve additional complexities, including population structure \citep{nowak2010evolutionary}, stochasticity \citep{wang2025evolution,bodin2026eco}, and explicit ecological feedback \citep{tarnita2025reconciling}.
 Extending SCT to these settings will be necessary to determine how broadly stabilizing and equalizing mechanisms can be compared across evolutionary games.
 
