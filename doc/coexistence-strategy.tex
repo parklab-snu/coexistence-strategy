@@ -105,21 +105,22 @@ Sang Woo Park\textsuperscript{1,2,*}
 
 \section*{Abstract}
 
-Evolutionary game theory and ecological coexistence theory both seek to predict the outcome of competition between biological entities, be they strategies or species, but the two fields have relied on largely separate approaches.
-Replicator equations provide a foundation for predicting the outcome of strategic competition, yet they do not explicitly decompose the mechanisms underlying these outcomes.
-Inspired by modern coexistence theory from community ecology, we develop Strategic Coexistence Theory (SCT), which translates payoff-based invasion conditions into strategic niche differences and fitness differences between any two competing strategies described by classic replicator dynamics.
-SCT recovers the classic classification of two-strategy games, distinguishing competitive exclusion, coexistence, and priority effects within a shared niche–fitness difference space.
-Applying SCT to five mechanisms for the evolution of cooperation further reveals that these mechanisms promote cooperation through distinct dynamical routes: kin selection, network reciprocity, and group selection primarily reduce fitness differences, whereas direct and indirect reciprocity destabilize competition and generate priority effects.
-Finally, applying SCT to microbial public-goods competition shows that nonlinear microbial growth can both stabilize and equalize competition between cooperators and defectors, allowing coexistence.
-Together, these results show that SCT provides a common language for comparing coexistence mechanisms across evolutionary games.
+Evolutionary game theory and ecological coexistence theory both seek to predict the outcome of competition between biological entities, be they strategies or species, but the two fields have relied on largely separate approaches. 
+Replicator equations provide a foundation for predicting the outcome of strategic competition, but comparing how different mechanisms alter competition across games remains challenging. 
+Inspired by modern coexistence theory from community ecology, we develop Strategic Coexistence Theory (SCT), which translates payoff-based invasion conditions at monomorphic boundary conditions into strategic niche differences and fitness differences between any two competing strategies described by classic replicator dynamics.
+We show that SCT recovers the classic classification of two-strategy games and also allows us to compare mechanisms for the evolution of cooperation from different games on the shared niche-fitness difference space.
+In stochastic games, environmental stochasticity increases both boundary invasion growth rates, whereas in multiplayer public-goods games, nonlinear benefits can either stabilize or destabilize competition. 
+These applications also show that the number or stability of internal equilibria generally cannot be predicted from invasion growth rates at monomorphic boundaries, illustrating a key limitation of characterizing competitive systems using boundary invasion rates alone.
+Together, these results show that SCT provides a coexistence-theoretic perspective for characterizing how different mechanisms alter strategy competition across games.
 
 \section*{Significance statement}
 
-Evolutionary game theory provides a powerful framework for predicting the outcome of competition between strategies, including the dominance of one strategy, coexistence of multiple strategies, and bistability.
-However, a common framework for comparing how different mechanisms promote strategy coexistence remains elusive, even though stable polymorphisms, such as the coexistence of cooperators and defectors, are widely observed across biological systems.
-To address this gap, we developed Strategic Coexistence Theory (SCT), which extends Modern Coexistence Theory from community ecology to evolutionary games.
-Applying SCT to classic games, mechanisms of cooperation, and microbial public-goods competition shows that seemingly similar evolutionary outcomes can arise through distinct mechanisms.
-This approach links ecological theory with replicator dynamics, providing a complementary tool for analyzing evolutionary games.
+Evolutionary game theory provides a powerful framework for predicting the outcome of competition between strategies.
+However, comparing how different mechanisms contribute to different outcomes across games remains challenging. 
+Motivated by Modern Coexistence Theory from community ecology, we developed Strategic Coexistence Theory (SCT), which decomposes invasion rates of strategies when rare into strategic niche and fitness differences. 
+Applications to classic games, mechanisms of cooperation, environmental stochasticity, and multiplayer public-goods games place diverse models onto shared axes of niche and fitness differences.
+These applications also point to a limitation to predicting coexistence from mutual invasion conditions at the boundary.
+This approach links ecological theory with replicator dynamics, providing a common language for comparing strategy competition across games.
 
 \section*{Introduction}
 
@@ -143,7 +144,7 @@ From the perspective of MCT, stabilizing niche differences arise when each strat
 In contrast, fitness differences represent differences in the ability of each entity to compete under the limiting environments created by its competitor \citep{chesson2000mechanisms}.
 This differs from payoff differences in EGT, which depend on the underlying strategy frequency and therefore combine both stabilizing effects caused by changes in the strategic environment and residual fitness differences that favor one strategy over another \citep{taylor1978evolutionary,cressman2014replicator,tarnita2025reconciling}.
 
-So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that MCT can be extended beyond species competition, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
+So far, MCT has been primarily utilized for understanding species coexistence, but recent work showed that analogous framework can be derived for other biological systems, especially for studying pathogen strain competition, allowing one to directly quantify niche and fitness differences of competing entities, be they species or strains \citep{sieben2022quantifying,park2024predicting,park2026unifying}.
 Inspired by this effort, we present Strategic Coexistence Theory (SCT), which translates the invasion growth rates of competing strategies at monomorphic boundary conditions into strategic niche and fitness differences.
 In doing so, we apply SCT to four different case studies: classic two-strategy games, mechanisms for the evolution of cooperation, environmental stochasticity, and multiplayer public-goods games.
 For classic-game and stochasticity applications, we consider four different game types: Prisoner’s Dilemma, Hawk–Dove, Stag–Hunt, and Harmony.
@@ -198,6 +199,15 @@ Second, we define the fitness difference as the ratio between the geometric mean
 \frac{\kappa_j}{\kappa_i} = \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j)}{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}}.
 \end{equation}
 In other words, strategy $j$ has an average competitive advantage over strategy $i$ ($\kappa_j/\kappa_i > 1$) when it performs better, on average, across the environments generated by itself and its competitor.
+
+We note that niche and fitness difference can be equivalently written in terms of the invasion growth rates at the monomorphic boundary conditions:
+\begin{align}
+1- \rho &= 1 - \exp\left(-\frac{r_{i|j} + r_{j|i}}{2} \right),\\
+\frac{\kappa_j}{\kappa_i} &= \exp\left(\frac{r_{j|i} - r_{i|j}}{2}\right),
+\end{align}
+where $r_{i|j} = \pi_i(\mathbf{e}_j) - \pi_j(\mathbf{e}_j)$ and $r_{j|i} = \pi_j(\mathbf{e}_i) - \pi_i(\mathbf{e}_i)$ represent the growth rate of strategy $i$ and $j$ when strategy $j$ and $i$ are at monomorphic equilibrium, respectively.
+These growth rates also correspond to payoff differences.
+This parameterization is particularly useful because it allows us to compute niche and fitness differences even when the selection gradient governing replicator dynamics do not uniquely separate into two payoff values.
 
 Together, for any two strategies described by the classic replicator equation, mutual invasion requires stabilizing niche differences to overcome average fitness differences.
 Specifically, the condition for mutual invasion can be rewritten as \citep{chesson2000mechanisms}:
@@ -370,7 +380,7 @@ r_D &= T - R + \frac{1}{2}(\sigma_T - \sigma_R)^2.
 \end{align}
 This shows that invasion growth rates under environmental stochasticity will be greater than or equal to their deterministic counterparts, meaning that environmental stochasticity at the boundaries is intrinsically stabilizing.
 
-Then, an extended SCT decomposition shows that niche overlap and fitness difference can be written as:
+Applying SCT, niche overlap and fitness difference for this system can be written as:
 \begin{align}
 \rho &= \exp\left(\frac{R+P-S-T}{2} - \frac{(\sigma_R - \sigma_T)^2 + (\sigma_S - \sigma_P)^2}{4} \right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(\frac{T+P-R-S}{2} + \frac{(\sigma_R - \sigma_T)^2 - (\sigma_S - \sigma_P)^2}{4} \right)
@@ -417,7 +427,7 @@ at sufficiently large $k$, both boundary equilibria are unstable in all four gam
 Notably, for the SH game, the system begins from the priority effect regime and enters the competitive exclusion regime before eventually entering the mutual invasion regime (Figure 4B).
 Consequently, $x=1$ (pure cooperation) becomes unstable first, and then $x=0$ (pure defection) also becomes unstable.
 
-This example also illustrates an important limitation of the original MCT as well as its extension, SCT.
+This example also illustrates an important limitation shared by MCT and SCT.
 Since MCT and SCT solely rely on boundary conditions, they cannot predict the presence of multiple internal equilibria or their stability.
 In the SH example, there is an unstable internal equilibrium across all ranges of $k$ we consider (Figure 4C).
 When the system enters the competitive-exclusion regime, an additional stable internal equilibrium appears, allowing coexistence.
@@ -522,8 +532,16 @@ In such cases, replicator equations may fail to predict the outcome of competiti
 Thus, SCT inherits the same assumptions as the classic replicator framework: it is most appropriate when strategy competition can be described in terms of relative frequencies alone \citep{tarnita2025reconciling}.
 When strategies differ intrinsically in growth, MCT may be required instead to tease apart mechanisms of strategy coexistence.
 
-Finally, we have focused on simple examples to illustrate the utility of SCT, but many games involve additional complexities, including population structure \citep{nowak2010evolutionary}, stochasticity \citep{wang2025evolution,bodin2026eco}, and explicit ecological feedback \citep{tarnita2025reconciling}.
+Finally, we have focused on simple examples to illustrate the utility of SCT, but many games involve additional complexities, including population structure \citep{nowak2010evolutionary} and explicit ecological feedback \citep{weitz2016oscillating,tarnita2025reconciling}.
 Extending SCT to these settings will be necessary to determine how broadly stabilizing and equalizing mechanisms can be compared across evolutionary games.
+
+While SCT was inspired by MCT, there are important differences between the two frameworks.
+In particular, MCT describes changes in species abundance, whereas SCT describes changes in strategy frequency.
+For example, even when growth rates of the abundances of both competitors are negative, the growth rate of the frequency of a superior competitor will still be positive;
+this implies that the invasibility in frequency and abundance space are fundamentally different.
+Moreover, MCT relies on a simple, Lotka-Volterra model, which permits at most one internal equilibrium, which allows us to predict coexistence from mutual invasion.
+However, SCT relies on replicator dynamics, which can permit multiple internal equilibria, meaning that criterion for mutual invasion and coexistence can differ.
+Therefore, SCT should be interpreted as a decomposition framework that is inspired by MCT, rather than a direct extension.
 
 In conclusion, SCT provides a bridge between evolutionary game theory and community ecology, allowing strategy competition to be understood from the perspective of coexistence theory. 
 Therefore, rather than replacing existing EGT or replicator-dynamics frameworks, SCT provides a complementary tool for teasing apart the coexistence mechanisms underlying evolutionary games.
@@ -585,7 +603,30 @@ Thus, by defining niche overlap $\rho$ and fitness difference $\kappa_j/\kappa_i
 \rho &= \sqrt{\frac{W_i(\mathbf{e}_i) W_j(\mathbf{e}_j)}{W_j(\mathbf{e}_i) W_i(\mathbf{e}_j) }},\\
 \frac{\kappa_j}{\kappa_i} &= \sqrt{\frac{W_j(\mathbf{e}_i)W_j(\mathbf{e}_j) }{W_i(\mathbf{e}_i) W_i(\mathbf{e}_j)}},
 \end{align}
-we obtain the following inequality that defines conditions for mutual invasion and long-term coexistence of two competing strategies:
+we obtain the following inequality that defines conditions for mutual invasion:
+\begin{equation}
+\rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
+\end{equation}
+
+Note that mutual invasion condition can be also written in terms of invasion growth rates at monomorphic equilibrium $r_{i|j}$ and $r_{j|i}$:
+\begin{align}
+0 &< r_{i|j},\\
+0 &< r_{j|i}.
+\end{align}
+Analogous to the previous derivation, the mutual condition can be then rewritten as:
+\begin{align}
+-\frac{r_{j|i}+r_{j|i}}{2} < \frac{r_{j|i}-r_{j|i}}{2} < \frac{r_{i|j} + r_{j|i}}{2}.
+\end{align}
+Exponentiating all sides preserves the inequality and keep them positive:
+\begin{align}
+\exp\left(-\frac{r_{j|i}+r_{j|i}}{2}\right) < \exp\left(\frac{r_{j|i}-r_{j|i}}{2}\right) < \exp\left(\frac{r_{i|j} + r_{j|i}}{2}\right).
+\end{align}
+Thus, by defining niche overlap $\rho$ and fitness difference $\kappa_j/\kappa_i$ as follows,
+\begin{align}
+\rho &= \exp\left(-\frac{r_{j|i}+r_{j|i}}{2}\right),\\
+\frac{\kappa_j}{\kappa_i} &= \exp\left(\frac{r_{j|i}-r_{j|i}}{2}\right),
+\end{align}
+we obtain the following inequality that defines conditions for mutual invasion:
 \begin{equation}
 \rho < \frac{\kappa_j}{\kappa_i} < \frac{1}{\rho}.
 \end{equation}
@@ -855,24 +896,9 @@ G(x) = \left(\pi_C - \pi_D + \left(\frac{1}{2} - x \right) (\sigma_C - \sigma_D)
 \end{equation}
 Thus, the sign of $G(x)$ at boundary conditions determines whether a strategy can invade when the competing strategy is at equilibrium.
 
-Note that we cannot immediately apply the original SCT presented in the main text here because $G(x)$ does not uniquely separate into two payoff measures.
-Instead, we can still utilize the invasion growth rate when rare and follow the same procedure.
-In particular, the mutual invasion condition at the monomorphic boundary can be written as:
+Since $G(x)$ does not uniquely separate into two payoff measures, we define niche and fitness difference based on the invasion growth rates $r_{C|D} = G(0)$ and $r_{D|C} = -G(1)$:
 \begin{align}
-0 &< G(0)\\
-0 &< -G(1)
-\end{align}
-Exponentiating both, we can combine them into a single inequality:
-\begin{align}
-\exp(G(1)) < 1< \exp(G(0))
-\end{align}
-Dividing both sides by $\exp((G(1) + G(0))/2)$, we get:
-\begin{align}
-\exp\left(\frac{G(1)-G(0)}{2}\right)<  \exp\left(-\frac{G(1)+G(0)}{2}\right) < \exp\left(\frac{G(0)-G(1)}{2}\right),
-\end{align}
-which gives us expressions for niche overlap and fitness difference:
-\begin{align}
-\rho &= \exp\left(\frac{G(1)-G(0)}{2}\right)\\
+1 -\rho &= - \exp\left(\frac{G(1)-G(0)}{2}\right)\\
 \frac{\kappa_D}{\kappa_C} &= \exp\left(-\frac{G(1)+G(0)}{2}\right)
 \end{align}
 Then, by substituting expressions for $G(0)$ and $G(1)$, we obtain the following expressions for niche and fitness difference:
