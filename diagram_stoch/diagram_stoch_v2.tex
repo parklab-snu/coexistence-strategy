@@ -1,0 +1,96 @@
+\documentclass[tikz,border=2mm]{standalone}
+
+\usepackage{amsmath}
+\usetikzlibrary{arrows,positioning}
+\usetikzlibrary{fit,backgrounds}
+\usepackage{xcolor}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    >=stealth,
+    font=\small,
+    gamelabel/.style={
+        font=\scriptsize,
+        align=center,
+        text width=1.75cm,
+        inner sep=2pt
+    },
+    reglabel/.style={
+        font=\scriptsize,
+        align=center,
+        text width=1.75cm,
+        inner sep=0pt
+    }
+]
+
+% ---------------------------------
+% Colors
+% ---------------------------------
+\colorlet{pdcol}{red!12}
+\colorlet{hdcol}{green!14}
+\colorlet{shcol}{blue!10}
+\colorlet{hmcol}{orange!12}
+
+% ---------------------------------
+% Left: payoff matrix
+% ---------------------------------
+\node at (-5, 2) {\textbf{(A)}};
+
+\node at (-2.7, 1) {\textbf{Prisoner's Dilemma}};
+
+\node at (-2.7, 0.2) {
+    $\left(
+    \begin{array}{cc}
+    1 & -1 \\
+    8 & 0
+    \end{array}
+    \right)$
+};
+
+\node at (1, 1) {\textbf{Hawk-Dove Game}};
+
+\node at (1, 0.2) {
+    $\left(
+    \begin{array}{cc}
+    1 & 1 \\
+    8 & 0
+    \end{array}
+    \right)$
+};
+
+\node at (-2.7, 1-2) {\textbf{Stag-Hunt Game}};
+
+\node at (-2.7, 0.2-2) {
+    $\left(
+    \begin{array}{cc}
+    8 & -1 \\
+    1 & 0
+    \end{array}
+    \right)$
+};
+
+\node at (1, 1-2) {\textbf{Harmony Game}};
+
+\node at (1, 0.2-2) {
+    $\left(
+    \begin{array}{cc}
+    8 & 1 \\
+    1 & 0
+    \end{array}
+    \right)$
+};
+
+\node at (3.5, 2) {\textbf{(B)}};
+\pgfdeclareimage[width=6cm]{img1a}{figure_stoch_v2.pdf}
+  \node (img1a) at (7, -1) {\pgfuseimage{img1a}};
+
+\pgfdeclareimage{img2a}{figure_stoch_bifur_v2.pdf}
+  \node (img2a) at (2.5, -9) {\pgfuseimage{img2a}};
+
+
+\node at (-5, -4) {\textbf{(C)}};
+
+
+\end{tikzpicture}
+\end{document}
